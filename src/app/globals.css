@@ -24,3 +24,63 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes bounce-exit {
+  0% {
+    transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+  }
+
+  20% {
+    transform: matrix3d(1.41,-0.513,0,0,0.513,1.41,0,0,0,0,1,0,0,0,0,1);
+  }
+  
+  100% {
+    transform: matrix3d(0,0.1,0,0,0.1,0,0,0,0,0,1,0,0,0,0,1);
+  }
+}
+
+@layer components {
+  .selector-prev {
+    transform: matrix3d(1.3,-0.06,-0.342,-0.002,-0.06,1.3,-0.342,0,0.342,0.342,0.94,0,0,0,0,1);
+  }
+
+  .selector-current {
+    transform: matrix3d(1.4,0,0.00,-0.002,0.00,1.3,0.00,0,0,0,1,0,5,0,0,1);
+    margin: 30px 0;
+  }
+
+  .selector-next {
+    transform: matrix3d(1.3,0.06,0.342,-0.002,0.06,1.3,-0.342,0,-0.342,0.342,0.94,0,0,0,0,1);
+  }
+
+  .inner-box {
+    opacity: 0;
+    background-image: url('/test-image.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .outer-box {
+    opacity: 0;
+    backdrop-filter: invert(100%);
+  }
+
+  .selector-current .inner-box {
+    opacity: 1;
+    transform: matrix3d(0.94,-0.342,0,-0.002,0.342,0.94,0,0,0,0,1,0,-10,0,0,1);
+  }
+
+  .selector-current .outer-box {
+    opacity: 1;
+    transform: matrix3d(0.94,-0.342,0,-0.002,0.342,0.94,0,0,0,0,1,0,-10,0,0,1);
+  }
+
+  .menu-closed {
+    transform: matrix3d(-0.1,0,0,0,0,-0.1,0,0,0,0,1,0,0,0,0,1);
+    opacity: 0;
+  }
+}
