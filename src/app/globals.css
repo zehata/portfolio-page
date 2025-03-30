@@ -83,4 +83,67 @@ body {
     transform: matrix3d(-0.1,0,0,0,0,-0.1,0,0,0,0,1,0,0,0,0,1);
     opacity: 0;
   }
+  
+  .sidebar {
+    view-transition-name: sidebar;
+  }
+  
+  .sidebar-item {
+    view-transition-name: sidebar-item;
+  }
+  
+  .no-view-transition {
+    view-transition-name: none;
+  }
+
+  .subMenu {
+    view-transition-name: sub-menu;
+  }
+
+  .blogid {
+    view-transition-name: blogid;
+  }
+
+  .paper {
+    view-transition-name: paper;
+  }
+
+  .blog-content {
+    view-transition-name: blog-content;
+  }
+
+  .background-image {
+    view-transition-name: background-image;
+  }
+
+  .contact {
+    view-transition-name: contact;
+  }
+
+  ::view-transition-old(blog-content) {
+    opacity: 1 !important;
+  }
+
+  ::view-transition-old(background-image) {
+    opacity: 1 !important;
+    z-index: -10;
+  }
+
+  ::view-transition-new(background-image) {
+    display: none;
+  }
+
+
+  @media (width < 64rem) {
+    ::view-transition-new(sidebar-item) {
+      animation-duration: 100ms;
+      opacity: 0;
+    }
+  }
+
+  @media (width >= 64rem /* 1024px */) {
+    ::view-transition-new(sidebar-item) {
+      background-color: white;
+    }
+  }
 }

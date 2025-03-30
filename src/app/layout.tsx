@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import MainMenu from "@/components/main-menu/MainMenu";
-import PagePositioner from "@/components/PagePositioner/PagePositioner";
-import React, { unstable_ViewTransition as ViewTransition } from "react";
+import React from "react";
+import { ViewTransitions } from 'next-view-transitions'
+import Backgrounds from "@/components/backgrounds";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,15 +12,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  backgrounds,
 }: Readonly<{
   children: React.ReactNode;
+  backgrounds: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased overflow-hidden">
-        <MainMenu />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang='en'>
+        <body className="overflow-hidden">
+          <Backgrounds>
+            {backgrounds}
+          </Backgrounds>
+          <MainMenu/>
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
