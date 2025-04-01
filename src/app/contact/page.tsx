@@ -1,7 +1,12 @@
 export const BlogLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className="absolute w-[40rem] h-[40rem] left-[calc(50vw+10rem)] top-[calc(50vh-20rem)] bg-blue-500 contact">
+      <div
+        className="absolute w-[30vw] h-[30vw] left-[70vw] top-[calc(50vh-15vw)] bg-white contact"
+        style={{
+          transform: `matrix3d(1,0,1,-${0.0},0,1,0,0,-1,0,1,0,0,0,0,1)`,
+        }}
+      >
         Contact info
       </div>
     </>

@@ -83,6 +83,14 @@ body {
     transform: matrix3d(-0.1,0,0,0,0,-0.1,0,0,0,0,1,0,0,0,0,1);
     opacity: 0;
   }
+
+  .shadow-center {
+    box-shadow: 0 0 10px -5px;
+  }
+
+  .bounce-timing {
+    transition-timing-function: cubic-bezier(.21,1.47,.7,.95);
+  }
   
   .sidebar {
     view-transition-name: sidebar;
@@ -120,12 +128,23 @@ body {
     view-transition-name: contact;
   }
 
+  ::view-transition-old(root) {
+    display: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
   ::view-transition-old(blog-content) {
     opacity: 1 !important;
   }
 
+  ::view-transition-group(contact) {
+    animation-duration: 1s;
+  }
+
   ::view-transition-old(background-image) {
-    opacity: 1 !important;
     z-index: -10;
   }
 

@@ -1,11 +1,9 @@
-import Sidebar from "@/components/sidebar/sidebar";
-import SidebarItem from "@/components/sidebar/sidebar-item";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarItem from "@/components/sidebar/SidebarItem";
 import classNames from "classnames";
 
 export const SidebarPanel = async () => {
-  return (
-    <Sidebar/>
-  )
-}
+  return <Sidebar />;
+};
 
 export default SidebarPanel;

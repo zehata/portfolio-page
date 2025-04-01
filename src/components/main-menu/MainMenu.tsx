@@ -2,12 +2,14 @@
 import React from "react";
 import classNames from "classnames";
 import { usePathname, useRouter } from "next/navigation";
-import { useTransitionRouter } from 'next-view-transitions'
+import { useTransitionRouter } from "next-view-transitions";
 
 export const MainMenu = () => {
   const pathname = usePathname();
   const router = useTransitionRouter();
   const menuOpen = pathname === "/";
+  const shouldShowTransitionAnimation =
+    menuOpen || pathname.split("/")[1] === "contact";
 
   const [menuClosing, setMenuClosing] = React.useState<boolean>(false);
   React.useEffect(() => {
@@ -26,34 +28,39 @@ export const MainMenu = () => {
     y: number;
   }>({ x: -20, y: -20 });
 
-  const closeMenu = () => {
+  const closeMenu = (index: number) => {
     setMenuClosing(true);
     if (!transitionAnimation.current) return;
-    transitionAnimation.current!.style.transition = "0s";
+    transitionAnimation.current.style.transition = "0s";
     transitionAnimation.current.style.transform = `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,${pageTransitionOrigin.x},${pageTransitionOrigin.y},0,1)`;
+    if (index === 3) return;
     setTimeout(() => {
       transitionAnimation.current!.style.transition = "500ms ease-in-out";
       transitionAnimation.current!.style.removeProperty("transform");
     });
   };
 
-  const [subMenuSelectorPosition, setMenuSelectorPosition] = React.useState<
-    { x: number; y: number; width: number; height: number } | null
-  >(null);
+  const [subMenuSelectorPosition, setMenuSelectorPosition] = React.useState<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null>(null);
 
-  const linkHrefs = ["/blog", "/contact", "/", "/", "/"];
+  const linkHrefs = ["/about", "/blog", "/", "/contact", "/"];
 
   const hoverSubMenu = React.useCallback((event: React.PointerEvent) => {
     const subMenuPosition = event.currentTarget.getBoundingClientRect();
-    const parentPosition = event.currentTarget.parentElement?.getBoundingClientRect();
-    if (!parentPosition) return
+    const parentPosition =
+      event.currentTarget.parentElement?.getBoundingClientRect();
+    if (!parentPosition) return;
     setMenuSelectorPosition({
       x: subMenuPosition.x - parentPosition.x,
       y: subMenuPosition.y - parentPosition.y,
       width: subMenuPosition.width,
       height: subMenuPosition.height,
-    }
-  )}, [])
+    });
+  }, []);
 
   return (
     <>
@@ -64,39 +71,46 @@ export const MainMenu = () => {
           {},
         )}
         style={{
-          transform: menuOpen
+          transform: shouldShowTransitionAnimation
             ? `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,${pageTransitionOrigin.x},${pageTransitionOrigin.y},0,1)`
             : "",
         }}
       ></div>
-      <div className={classNames("flex flex-col justify-end absolute lg:left-[40vw] w-[100vw] h-[40vh] p-4 bg-white transform-gpu ease-in-out duration-250 subMenu", {
-        ["-rotate-5 top-[-30vh]"]: !menuOpen,
-        ["top-[-40vh]"]: menuOpen
-      })}>
+      <div
+        className={classNames(
+          "flex flex-col justify-end absolute lg:left-[40vw] w-[100vw] h-[40vh] p-4 bg-white transform-gpu ease-in-out duration-250 subMenu",
+          {
+            ["-rotate-5 top-[-30vh]"]: !menuOpen,
+            ["top-[-40vh]"]: menuOpen,
+          },
+        )}
+      >
         <div
           className="rotate-5 transform-gpu flex"
           onPointerLeave={() => {
-            if (!subMenuSelectorPosition) return
+            if (!subMenuSelectorPosition) return;
             setMenuSelectorPosition({
               x: subMenuSelectorPosition.x + subMenuSelectorPosition.width / 2,
               y: subMenuSelectorPosition.y + subMenuSelectorPosition.height / 2,
               width: 0,
               height: 0,
-            })
+            });
           }}
         >
           <div
-            className={classNames("fixed backdrop-invert-100 z-1  ease-in-out hover:transform-[matrix3d(1.1,-0.06,-0.342,-0.001,-0.06,1.2,-0.342,0,0.342,0.342,0.94,0,-5,0,0,1)]", {
-              ["duration-100"]: subMenuSelectorPosition != null
-            })}
+            className={classNames(
+              "fixed backdrop-invert-100 z-1  ease-in-out hover:transform-[matrix3d(1.1,-0.06,-0.342,-0.001,-0.06,1.2,-0.342,0,0.342,0.342,0.94,0,-5,0,0,1)]",
+              {
+                ["duration-100"]: subMenuSelectorPosition != null,
+              },
+            )}
             style={{
               left: subMenuSelectorPosition?.x,
               top: subMenuSelectorPosition?.y,
               width: subMenuSelectorPosition?.width,
               height: subMenuSelectorPosition?.height,
             }}
-          >
-          </div>
+          ></div>
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
@@ -125,7 +139,7 @@ export const MainMenu = () => {
                   x: currentTarget.x + 0.5 * currentTarget.width,
                   y: currentTarget.y + 0.5 * currentTarget.height,
                 });
-                closeMenu();
+                closeMenu(index);
                 router.push(linkHrefs[index]);
               }}
               className={classNames(

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import MainMenu from "@/components/main-menu/MainMenu";
 import React from "react";
-import { ViewTransitions } from 'next-view-transitions'
-import Backgrounds from "@/components/backgrounds";
+import { ViewTransitions } from "next-view-transitions";
+import MovingBackgrounds from "@/components/backgrounds/MovingBackgrounds";
+import BaseBackground from "@/components/backgrounds/BaseBackground";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,12 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang='en'>
+      <html lang="en">
         <body className="overflow-hidden">
-          <Backgrounds>
-            {backgrounds}
-          </Backgrounds>
-          <MainMenu/>
+          <BaseBackground />
+          <MovingBackgrounds>{backgrounds}</MovingBackgrounds>
+          <MainMenu />
           {children}
         </body>
       </html>
