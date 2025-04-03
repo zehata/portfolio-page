@@ -17,6 +17,7 @@ const eslintConfig = [
       "plugin:prettier/recommended",
     ],
     rules: {
+      "@next/next/no-img-element": "ignore",
       "@typescript-eslint/no-unused-vars": "warn",
       "prettier/prettier": "warn",
     },

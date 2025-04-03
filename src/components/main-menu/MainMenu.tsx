@@ -47,7 +47,7 @@ export const MainMenu = () => {
     height: number;
   } | null>(null);
 
-  const linkHrefs = ["/about", "/blog", "/", "/contact", "/"];
+  const linkHrefs = ["/about/0", "/blog", "/", "/contact", "/"];
 
   const hoverSubMenu = React.useCallback((event: React.PointerEvent) => {
     const subMenuPosition = event.currentTarget.getBoundingClientRect();

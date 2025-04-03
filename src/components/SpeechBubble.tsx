@@ -1,49 +1,129 @@
+import classNames from "classnames";
 import React from "react";
 
 export const SpeechBubble = ({
   windowWidth,
   dialog = "",
+  proceed,
 }: {
-  windowWidth: number;
-  dialog?: string;
+  windowWidth: number | null;
+  dialog?: React.ReactNode;
+  proceed: () => void;
 }) => {
-  const bubble = React.useRef<HTMLDivElement>(null);
-  const text = React.useRef<HTMLDivElement>(null);
-  const previousDialogText = React.useRef<string>("");
-
-  const setSpeechBubbleWidth = React.useCallback(() => {
-    if (!bubble.current) return;
-    bubble.current.style.transform = `scale3d(${(0.7*windowWidth-30)/200},1.2,1)`
-  }, [windowWidth])
+  const previousDialogText = React.useRef<React.ReactNode>(null);
+  const [shouldExpand, setShouldExpand] = React.useState<boolean>(false);
+  const [isProceeding, setProceeding] = React.useState<boolean>(false);
+  const proceedTimer = React.useRef<NodeJS.Timeout>(null);
 
   React.useEffect(() => {
-    if (dialog === previousDialogText.current || !bubble.current || !text.current) return;
+    if (dialog === previousDialogText.current) return;
     previousDialogText.current = dialog;
-    bubble.current.style.transition = "none";
-    bubble.current.style.transform = `scale3d(0.01,0.01,1)`
-    text.current.style.transition = "none";
-    text.current.style.opacity = "0";
+    setShouldExpand(false);
+    setProceeding(false);
     setTimeout(() => {
-      bubble.current!.style.transition = "500ms cubic-bezier(.21,1.47,.7,.95)";
-      setSpeechBubbleWidth();
-      text.current!.style.transition = "250ms ease-out 500ms";
-      text.current!.style.opacity = "1";
-    })
-  }, [setSpeechBubbleWidth, dialog])
+      setShouldExpand(true);
+      proceedTimer.current = setTimeout(() => {
+        proceedTimer.current = setTimeout(() => {
+          proceed();
+          setProceeding(true);
+        }, 250);
+        setProceeding(true);
+      }, 2000);
+    }, 500);
 
-  return <>
-    <div
-      ref={bubble}
-      className="absolute left-[calc(10vw+5rem)] bottom-[3rem] w-[200px] h-[200px] origin-[-10%_100%]"
-      style={{
-        transform: `scale3d(${(0.7*windowWidth-30)/200},1.2,1)`,
-      }}
-    >
-      <div className="absolute w-[200px] h-[200px] bg-black transform-[matrix3d(-0.9925,-0.1219,0,0.0005,0.1219,-0.9925,0,0.0005,0,0,1,0,0,0,0,1)] -z-1"></div>
-      <div className="absolute w-[200px] h-[200px] bg-white transform-[matrix3d(-0.9994,-0.0349,0,0.0004,-0.0349,0.9994,0,-0.0004,0,0,1,0,5,0,0,1)] -z-1"></div>
-    </div>
-    <div ref={text} className="absolute left-[calc(23vw+4rem)] bottom-[4rem] w-[calc(63vw-2rem)] h-[13rem]">{dialog}</div>
-  </>
-}
+    return () => {
+      if (!proceedTimer.current) return;
+      clearTimeout(proceedTimer.current);
+    };
+  }, [proceed, dialog]);
+
+  const skip = React.useCallback(() => {
+    setProceeding(true);
+    proceed();
+    if (!proceedTimer.current) return;
+    clearTimeout(proceedTimer.current);
+  }, [proceed]);
+
+  return (
+    <>
+      <div
+        className="absolute left-[calc(5vw+6rem)] bottom-[3rem] w-[200px] h-[200px] origin-[-10%_100%] speech-bubble"
+        style={{
+          transition: shouldExpand
+            ? "500ms cubic-bezier(.21,1.47,.7,.95)"
+            : "none",
+          transform: shouldExpand && windowWidth
+            ? `scale3d(${(0.7 * windowWidth - 30) / 200},1.2,1)`
+            : "scale3d(0.001,0.001,1)",
+        }}
+      >
+        <div
+          className="absolute w-[200px] h-[200px] bg-black -z-1"
+          style={{
+            transform: shouldExpand
+              ? "matrix3d(-1,-0.1219,0,0.0012,0.1,-1,0,-0.0002,0,0,1,0,0,-3,0,1)"
+              : "matrix3d(-1,0.1,0,0,0,-1,0,0,0,0,1,0,0,-3,0,1)",
+            transition: shouldExpand ? "250ms ease-out" : "none",
+          }}
+        ></div>
+        <div
+          className="absolute w-[200px] h-[200px] bg-white -z-1"
+          style={{
+            transform: shouldExpand
+              ? "matrix3d(0.98,0.0349,0,-0.0012,-0.0349,0.98,0,0.0004,0,0,1,0,2,0,0,1)"
+              : "matrix3d(1,0,0,-0.001,0,1,0,0,0,0,1,0,0,0,0,1)",
+            transition: shouldExpand ? "250ms ease-out 250ms" : "none",
+          }}
+        ></div>
+      </div>
+      <div
+        className={classNames(
+          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem]",
+          {
+            ["oapcity-100"]: shouldExpand,
+            ["opacity-0"]: !shouldExpand,
+          },
+        )}
+        style={{
+          transition: shouldExpand ? "250ms ease-out 500ms" : "none",
+        }}
+      >
+        {dialog}
+        <div
+          className={classNames(
+            "absolute w-12 h-10 top-[calc(100%-2.5rem)] overflow-hidden",
+            {
+              ["right-0"]: shouldExpand && !isProceeding,
+              ["right-5"]: !shouldExpand,
+              ["-right-5 opacity-0"]: isProceeding,
+            },
+          )}
+          style={{
+            transition: shouldExpand
+              ? isProceeding
+                ? "250ms ease-out"
+                : "250ms ease-out 500ms"
+              : "none",
+          }}
+          onClick={skip}
+        >
+          <div
+            className={classNames(
+              "absolute top-[calc(1.25rem-2px)] right-2 h-1 bg-black",
+              {
+                ["w-0"]: shouldExpand,
+                ["w-10"]: !shouldExpand,
+              },
+            )}
+            style={{
+              transition: shouldExpand ? "1000ms ease-out 1000ms" : "none",
+            }}
+          ></div>
+          <div className="absolute right-3 border-t-4 border-r-4 w-10 h-10 rotate-45"></div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default SpeechBubble;

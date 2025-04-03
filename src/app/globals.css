@@ -29,17 +29,25 @@ body {
   navigation: auto;
 }
 
-@keyframes bounce-exit {
+@keyframes slide-in-left {
   0% {
-    transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
-  }
-
-  20% {
-    transform: matrix3d(1.41,-0.513,0,0,0.513,1.41,0,0,0,0,1,0,0,0,0,1);
+    translate: -50px;
+    opacity: 0;
   }
   
   100% {
-    transform: matrix3d(0,0.1,0,0,0.1,0,0,0,0,0,1,0,0,0,0,1);
+    translate: none;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
   }
 }
 
@@ -128,6 +136,14 @@ body {
     view-transition-name: contact;
   }
 
+  .speech-bubble {
+    view-transition-name: speech-bubble;
+  }
+
+  .dialog-portrait {
+    view-transition-name: dialog-portrait;
+  }
+
   ::view-transition-old(root) {
     display: none;
   }
@@ -144,14 +160,21 @@ body {
     animation-duration: 1s;
   }
 
-  ::view-transition-old(background-image) {
+  /* ::view-transition-old(background-image) {
     z-index: -10;
+  } */
+
+  ::view-transition-new(dialog-portrait):only-child {
+    animation: 500ms slide-in-left;
   }
 
-  ::view-transition-new(background-image) {
+  ::view-transition-old(speech-bubble) {
     display: none;
   }
 
+  ::view-transition-new(speech-bubble) {
+    animation: none;
+  }
 
   @media (width < 64rem) {
     ::view-transition-new(sidebar-item) {
