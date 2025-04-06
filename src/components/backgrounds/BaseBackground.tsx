@@ -14,12 +14,22 @@ export const BaseBackground = () => {
   return (
     <div
       className={classNames(
-        "absolute left-0 w-[150vw] h-screen bg-center bg-cover bg-[url('/library-background.png')] -z-2 ease-in-out duration-1000 no-view-transition",
+        "absolute left-0 w-[167vw] h-screen bg-center bg-cover bg-[url('/library-background.png')] ease-in-out -z-2 duration-1000 no-view-transition",
         {
-          ["left-[-50vw]"]: shiftRight,
+          ["left-[-66vw]"]: shiftRight,
         },
       )}
-    ></div>
+    >
+      {/* <div
+        className={classNames("absolute top-[calc(50vh-20rem)] right-[7vw] w-[min(60vw,40rem)] h-[40rem] duration-1000", {
+          ["transform-[matrix3d(1,0,0,-0.0005,0,1,0,0,0,0,1,0,0,0,0,1)]"]: !shiftRight
+        })}
+      >
+        <div className="bg-white h-[min(75%,25rem)]">
+
+        </div>
+      </div> */}
+    </div>
   );
 };
 

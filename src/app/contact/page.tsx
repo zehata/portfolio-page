@@ -1,13 +1,10 @@
-export const BlogLayout = ({ children }: { children: React.ReactNode }) => {
+import React from "react";
+
+export const BlogLayout = () => {
   return (
     <>
-      <div
-        className="absolute w-[30vw] h-[30vw] left-[70vw] top-[calc(50vh-15vw)] bg-white contact"
-        style={{
-          transform: `matrix3d(1,0,1,-${0.0},0,1,0,0,-1,0,1,0,0,0,0,1)`,
-        }}
-      >
-        Contact info
+      <div className="fixed top-[calc(50vh-15rem)] right-[7vw] w-[min(60vw,30rem)] h-[30rem] contact">
+        <div className="bg-white h-[min(75%,25rem)]"></div>
       </div>
     </>
   );

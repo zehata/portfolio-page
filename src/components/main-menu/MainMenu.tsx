@@ -1,15 +1,33 @@
 "use client";
 import React from "react";
 import classNames from "classnames";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
+import SubMenu from "./SubMenu";
+import GlobalContext from "../context/GlobalContext";
+
+const linkHrefs = ["about", "blog", "projects", "contact", "github"];
 
 export const MainMenu = () => {
+  const globalContext = React.useContext(GlobalContext);
+  const viewportDimensions = globalContext?.state.viewportDimensions;
+  React.useEffect(() => {
+    if (!viewportDimensions || activeMenuIndex < 0) return
+    const menuPosition = calculateMenuPosition(activeMenuIndex);
+    document.body.style.setProperty("--transition-animation-origin-x", `${menuPosition.x}`);
+    document.body.style.setProperty("--transition-animation-origin-y", `${menuPosition.y}`);
+  }, [viewportDimensions])
+
   const pathname = usePathname();
+  const path = React.useMemo(() => pathname.split("/")[1], [pathname])
+  const activeMenuIndex = React.useMemo(() => linkHrefs.indexOf(path), [path]);
+  const menuOpen = React.useMemo(() => path === "", [path]);
+  const shouldCloseTransitionAnimation = React.useMemo(() => menuOpen || path === "contact", [menuOpen, path]);
+  const [transitionAnimationOriginSet, setTransitionAnimationOrigin] = React.useState<boolean>(false);
+
   const router = useTransitionRouter();
-  const menuOpen = pathname === "/";
-  const shouldShowTransitionAnimation =
-    menuOpen || pathname.split("/")[1] === "contact";
+    
+  const startTransition = React.useTransition()[1];
 
   const [menuClosing, setMenuClosing] = React.useState<boolean>(false);
   React.useEffect(() => {
@@ -23,44 +41,23 @@ export const MainMenu = () => {
   const [hoveredMenuItem, hoverMenuItem] = React.useState<number | null>();
   const transitionAnimation = React.useRef<HTMLDivElement | null>(null);
 
-  const [pageTransitionOrigin, setPageTransitionOrigin] = React.useState<{
-    x: number;
-    y: number;
-  }>({ x: -20, y: -20 });
-
   const closeMenu = (index: number) => {
+    const menuPosition = calculateMenuPosition(index);
+    document.body.style.setProperty("--transition-animation-origin-x", `${menuPosition.x}`);
+    document.body.style.setProperty("--transition-animation-origin-y", `${menuPosition.y}`);
+    setTransitionAnimationOrigin(true);
     setMenuClosing(true);
-    if (!transitionAnimation.current) return;
-    transitionAnimation.current.style.transition = "0s";
-    transitionAnimation.current.style.transform = `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,${pageTransitionOrigin.x},${pageTransitionOrigin.y},0,1)`;
-    if (index === 3) return;
-    setTimeout(() => {
-      transitionAnimation.current!.style.transition = "500ms ease-in-out";
-      transitionAnimation.current!.style.removeProperty("transform");
-    });
   };
 
-  const [subMenuSelectorPosition, setMenuSelectorPosition] = React.useState<{
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  } | null>(null);
+  const calculateMenuPosition = React.useCallback((index: number) => {
+    const boundingClientRect = menuRefs.current[index].getBoundingClientRect()
+    return {
+      x: boundingClientRect.x + 0.5 * boundingClientRect.width,
+      y: boundingClientRect.y + 0.5 * boundingClientRect.height,
+    }
+  }, [])
 
-  const linkHrefs = ["/about/0", "/blog", "/", "/contact", "/"];
-
-  const hoverSubMenu = React.useCallback((event: React.PointerEvent) => {
-    const subMenuPosition = event.currentTarget.getBoundingClientRect();
-    const parentPosition =
-      event.currentTarget.parentElement?.getBoundingClientRect();
-    if (!parentPosition) return;
-    setMenuSelectorPosition({
-      x: subMenuPosition.x - parentPosition.x,
-      y: subMenuPosition.y - parentPosition.y,
-      width: subMenuPosition.width,
-      height: subMenuPosition.height,
-    });
-  }, []);
+  const menuRefs = React.useRef<HTMLDivElement[]>(Array.from({ length: linkHrefs.length }));
 
   return (
     <>
@@ -71,75 +68,31 @@ export const MainMenu = () => {
           {},
         )}
         style={{
-          transform: shouldShowTransitionAnimation
-            ? `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,${pageTransitionOrigin.x},${pageTransitionOrigin.y},0,1)`
+          animation: transitionAnimationOriginSet ? (shouldCloseTransitionAnimation ? "500ms transition-animation-out" : "500ms transition-animation") : "",
+          transform: shouldCloseTransitionAnimation
+            ? `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,var(--transition-animation-origin-x),var(--transition-animation-origin-y),0,1)`
             : "",
         }}
       ></div>
-      <div
-        className={classNames(
-          "flex flex-col justify-end absolute lg:left-[40vw] w-[100vw] h-[40vh] p-4 bg-white transform-gpu ease-in-out duration-250 subMenu",
-          {
-            ["-rotate-5 top-[-30vh]"]: !menuOpen,
-            ["top-[-40vh]"]: menuOpen,
-          },
-        )}
-      >
-        <div
-          className="rotate-5 transform-gpu flex"
-          onPointerLeave={() => {
-            if (!subMenuSelectorPosition) return;
-            setMenuSelectorPosition({
-              x: subMenuSelectorPosition.x + subMenuSelectorPosition.width / 2,
-              y: subMenuSelectorPosition.y + subMenuSelectorPosition.height / 2,
-              width: 0,
-              height: 0,
-            });
-          }}
-        >
-          <div
-            className={classNames(
-              "fixed backdrop-invert-100 z-1  ease-in-out hover:transform-[matrix3d(1.1,-0.06,-0.342,-0.001,-0.06,1.2,-0.342,0,0.342,0.342,0.94,0,-5,0,0,1)]",
-              {
-                ["duration-100"]: subMenuSelectorPosition != null,
-              },
-            )}
-            style={{
-              left: subMenuSelectorPosition?.x,
-              top: subMenuSelectorPosition?.y,
-              width: subMenuSelectorPosition?.width,
-              height: subMenuSelectorPosition?.height,
-            }}
-          ></div>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div
-              key={index}
-              className="px-4 py-2"
-              onPointerEnter={(event) => hoverSubMenu(event)}
-            >
-              {`Menu Item ${index}`}
-            </div>
-          ))}
-        </div>
-      </div>
+      <SubMenu menuOpen={menuOpen} />
       <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
         <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:relative *:transition-all *:duration-500">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
+              ref={(element) => {
+                if(!element) return
+                menuRefs.current[index] = element
+              }}
               key={index}
               onMouseEnter={() => {
                 hoverMenuItem(index);
                 setLastHoveredMenuItem(index);
               }}
               onMouseLeave={() => hoverMenuItem(null)}
-              onClick={(event) => {
-                const currentTarget =
-                  event.currentTarget.getBoundingClientRect();
-                setPageTransitionOrigin({
-                  x: currentTarget.x + 0.5 * currentTarget.width,
-                  y: currentTarget.y + 0.5 * currentTarget.height,
-                });
-                closeMenu(index);
+              onClick={() => {
+                startTransition(() =>
+                  closeMenu(index),
+                );
                 router.push(linkHrefs[index]);
               }}
               className={classNames(
@@ -162,7 +115,7 @@ export const MainMenu = () => {
               }}
             >
               <div className="absolute w-full h-full overflow-hidden no-view-transition">
-                <div className="w-36 h-20 bg-green-500 transition-all inner-box"></div>
+                <div className="w-36 h-20 transition-all inner-box"></div>
               </div>
               <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
             </div>

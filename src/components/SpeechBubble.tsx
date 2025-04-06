@@ -52,9 +52,10 @@ export const SpeechBubble = ({
           transition: shouldExpand
             ? "500ms cubic-bezier(.21,1.47,.7,.95)"
             : "none",
-          transform: shouldExpand && windowWidth
-            ? `scale3d(${(0.7 * windowWidth - 30) / 200},1.2,1)`
-            : "scale3d(0.001,0.001,1)",
+          transform:
+            shouldExpand && windowWidth
+              ? `scale3d(${(0.7 * windowWidth - 30) / 200},1.2,1)`
+              : "scale3d(0.001,0.001,1)",
         }}
       >
         <div
@@ -78,14 +79,12 @@ export const SpeechBubble = ({
       </div>
       <div
         className={classNames(
-          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem]",
-          {
-            ["oapcity-100"]: shouldExpand,
+          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem]", {
             ["opacity-0"]: !shouldExpand,
-          },
+          }
         )}
         style={{
-          transition: shouldExpand ? "250ms ease-out 500ms" : "none",
+          animation: shouldExpand ? "1000ms ease delayed-fade-in" : "",
         }}
       >
         {dialog}

@@ -10,14 +10,18 @@ export type Dialog = {
 export const dialogs = {
   "0": {
     portrait: "/portrait.png",
-    text: "No rotation",
+    text: "Question 0",
     responses: [
       {
-        text: "Pretty cool",
+        text: "Response 0",
         link: "1",
       },
       {
-        text: "Still needs work",
+        text: "Response 1",
+        link: "2",
+      },
+      {
+        text: "Response 2",
         link: "2",
       },
     ],

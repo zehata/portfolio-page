@@ -1,12 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useTransition } from "react";
 import SidebarItem from "./SidebarItem";
 import classNames from "classnames";
-import { Link } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 
 export const Sidebar = ({ blogId }: { blogId?: string }) => {
   const [shiftSidebar, setShiftSidebar] = React.useState<boolean>(false);
+  React.useEffect(() => setClickedId(blogId ?? null), [blogId])
+  const [clickedId, setClickedId] = React.useState<string | null>(blogId ?? null);
+  const startTransition = React.useTransition()[1];
+  const router = useTransitionRouter();
+  
   return (
     <div
       className={classNames(
@@ -19,19 +24,28 @@ export const Sidebar = ({ blogId }: { blogId?: string }) => {
       )}
     >
       {Array.from({ length: 5 }).map((_, index) => (
-        <Link key={index} href={`/blog/${index}`}>
-          <SidebarItem
-            index={index}
-            selectedId={blogId}
-            onPointerEnter={() => {
-              if (blogId && String(index) === blogId) return;
-              setShiftSidebar(true);
-            }}
-            onPointerLeave={() => {
-              setShiftSidebar(false);
-            }}
-          />
-        </Link>
+        <SidebarItem
+          key={index}
+          index={String(index)}
+          clickedId={clickedId}
+          onClick={() => {
+            startTransition(() => {
+              setClickedId(String(index))
+              if(!blogId) return
+              setShiftSidebar(false)
+            })
+            setTimeout(() => {
+              router.push(`/blog/${index}`)
+            }, 250)
+          }}
+          onPointerEnter={() => {
+            if (blogId && String(index) === blogId) return;
+            setShiftSidebar(true);
+          }}
+          onPointerLeave={() => {
+            setShiftSidebar(false);
+          }}
+        />
       ))}
     </div>
   );

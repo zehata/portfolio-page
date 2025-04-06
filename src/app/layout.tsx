@@ -5,6 +5,7 @@ import React from "react";
 import { ViewTransitions } from "next-view-transitions";
 import MovingBackgrounds from "@/components/backgrounds/MovingBackgrounds";
 import BaseBackground from "@/components/backgrounds/BaseBackground";
+import { GlobalContextProvider } from "@/components/context/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,10 +23,12 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body className="overflow-hidden">
-          <BaseBackground />
-          <MovingBackgrounds>{backgrounds}</MovingBackgrounds>
-          <MainMenu />
-          {children}
+          <GlobalContextProvider>
+            <BaseBackground />
+            <MovingBackgrounds>{backgrounds}</MovingBackgrounds>
+            <MainMenu />
+            {children}
+          </GlobalContextProvider>
         </body>
       </html>
     </ViewTransitions>

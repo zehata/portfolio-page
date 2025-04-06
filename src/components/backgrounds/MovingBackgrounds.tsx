@@ -15,8 +15,6 @@ export const MovingBackgrounds = ({
     [pathname],
   );
 
-  console.log(showMovingBackground)
-
   return (
     <div
       className={classNames("absolute w-full h-full -z-1 duration-1000", {
