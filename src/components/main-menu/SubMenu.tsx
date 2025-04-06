@@ -1,64 +1,68 @@
 import classNames from "classnames";
+import { useTransitionRouter } from "next-view-transitions";
 import React from "react";
 
-export const SubMenu = ({ menuOpen }: { menuOpen: boolean }) => {
-  const [subMenuSelectorPosition, setMenuSelectorPosition] = React.useState<{
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  } | null>(null);
-
-  const hoverSubMenu = React.useCallback((event: React.PointerEvent) => {
-    const subMenuPosition = event.currentTarget.getBoundingClientRect();
-    setMenuSelectorPosition({
-      x: subMenuPosition.x,
-      y: subMenuPosition.y,
-      width: subMenuPosition.width,
-      height: subMenuPosition.height,
-    });
-  }, []);
-
+export const SubMenu = ({
+  menuOpen,
+  linkHrefs,
+  activeMenuIndex,
+}: {
+  menuOpen: boolean;
+  linkHrefs: string[];
+  activeMenuIndex: number;
+}) => {
+  const [shiftSubMenuList, setShiftSubMenuList] = React.useState<boolean>(false);
+  const [clickedIndex, setClickedIndex] = React.useState<number>(-1);
+  React.useEffect(() => setClickedIndex(activeMenuIndex), [activeMenuIndex])
+  const router = useTransitionRouter();
   return (
-    <div className={classNames("absolute top-[-15rem] -right-5 w-[max(32rem,50vw)] h-[20rem] flex flex-col justify-end bg-blue-500 origin-[300%_100%] subMenu", {
+    <div className={classNames("absolute top-[-16rem] -right-5 w-[calc(60vw-5rem)] h-[20rem] flex flex-col justify-end bg-blue-500 origin-[300%_100%] subMenu", {
       ["rotate-5"]: menuOpen,
     })}>
-      <div className="absolute w-full h-full bg-white origin-bottom-right -rotate-5"></div>
-      <div
-        className="relative flex ml-4 mb-4"
-        onPointerLeave={() => {
-          if (!subMenuSelectorPosition) return;
-          setMenuSelectorPosition({
-            x: subMenuSelectorPosition.x + subMenuSelectorPosition.width / 2,
-            y: subMenuSelectorPosition.y + subMenuSelectorPosition.height / 2,
-            width: 0,
-            height: 0,
-          });
-        }}
-      >
-        <div
-          className={classNames(
-            "fixed backdrop-invert-100 z-1  ease-in-out hover:transform-[matrix3d(1.1,-0.06,-0.342,-0.001,-0.06,1.2,-0.342,0,0.342,0.342,0.94,0,-5,0,0,1)]",
-            {
-              ["duration-100"]: subMenuSelectorPosition != null,
-            },
-          )}
-          style={{
-            left: subMenuSelectorPosition?.x,
-            top: subMenuSelectorPosition?.y,
-            width: subMenuSelectorPosition?.width,
-            height: subMenuSelectorPosition?.height,
-          }}
-        ></div>
-        {Array.from({ length: 5 }).map((_, index) => (
+      <div className="absolute w-full h-full bg-white origin-bottom-right -rotate-5 -z-1"></div>
+      <div className={classNames("flex duration-250", {
+        ["ml-6"]: !shiftSubMenuList,
+        ["ml-4"]: shiftSubMenuList,
+      })}>
+        {linkHrefs.map((_, index) =>
           <div
             key={index}
-            className="px-4 py-2"
-            onPointerEnter={(event) => hoverSubMenu(event)}
+            className={classNames("relative duration-250 mx-4 hover:mx-6 submenu-item", {
+              ["mx-6 active-submenu"]: clickedIndex === index,
+            })}
           >
-            {`Menu Item ${index}`}
+            <div className="absolute w-full h-full bg-black duration-250 submenu-outline"/>
+            {activeMenuIndex === index && <div className="absolute w-full h-full submenu-indicator z-2">
+              <div className={classNames("absolute w-full h-full flex justify-center items-center bg-blue-500 ease-in-out duration-250", {
+                ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]: clickedIndex === index,
+              })}>
+                {`Item ${index}`}
+              </div>
+            </div>}
+            <div
+              className={classNames("relative flex justify-center items-center w-30 h-10 border-black bg-white border-2 origin-center duration-250 hover:transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)] hover:z-1", {
+                ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]: clickedIndex === index,
+              })}
+              onPointerEnter={() => {
+                if (activeMenuIndex === index) return
+                setShiftSubMenuList(true);
+              }}
+              onPointerLeave={() => {
+                setShiftSubMenuList(false);
+              }}
+              onClick={() => {
+                setShiftSubMenuList(false);
+                setClickedIndex(index);
+                setTimeout(() => {
+                  router.push(`/${linkHrefs[index]}`)
+                }, 250)
+              }}
+            >
+              <div className="absolute w-full h-full bg-blue-500 -z-1 duration-250 submenu-background"/>
+              {`Item ${index}`}
+            </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

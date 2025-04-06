@@ -74,7 +74,7 @@ export const MainMenu = () => {
             : "",
         }}
       ></div>
-      <SubMenu menuOpen={menuOpen} />
+      <SubMenu activeMenuIndex={activeMenuIndex} linkHrefs={linkHrefs} menuOpen={menuOpen} />
       <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
         <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:relative *:transition-all *:duration-500">
           {Array.from({ length: 5 }).map((_, index) => (
