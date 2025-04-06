@@ -191,6 +191,37 @@ body {
   }
 }
 
+@keyframes sidebar-item-bounce-out {
+  0% {
+    left: -1.25rem;
+  }
+
+  80% {
+    left: 0.25rem;
+  }
+
+  100% {
+    left: 0rem;
+  }
+}
+
+@keyframes sidebar-bookmark-bounce-out {
+  0% {
+    bottom: 110%;
+    scale: 1 1;
+  }
+
+  50% {
+    bottom: 50%;
+    scale: 1 1.5;
+  }
+
+  100% {
+    bottom: 50%;
+    scale: 1 1;
+  }
+}
+
 @layer components {
   .selector-prev {
     transform: matrix3d(1.3,-0.06,-0.342,-0.002,-0.06,1.3,-0.342,0,0.342,0.342,0.94,0,0,0,0,1);
@@ -239,33 +270,9 @@ body {
   .bounce-timing {
     transition-timing-function: cubic-bezier(.21,1.47,.7,.95);
   }
-  
-  .sidebar-item::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: white;
-    transition-duration: 250ms;
-    z-index: -1;
-  }
-  
-  .sidebar-item.clicked::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    transition-duration: 250ms;
-    z-index: -1;
-  }
-  
-  .sidebar-item:hover::after {
-    width: 100%;
+
+  .bookmark {
+    mask: conic-gradient(from -45deg at bottom, #0000, #000 0deg 90deg, #0000 90deg) 1rem / 110% 110%;
   }
   
   .sidebar {

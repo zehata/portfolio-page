@@ -28,6 +28,7 @@ export const Sidebar = ({ blogId }: { blogId?: string }) => {
           key={index}
           index={String(index)}
           clickedId={clickedId}
+          selectedId={blogId}
           onClick={() => {
             startTransition(() => {
               setClickedId(String(index))
