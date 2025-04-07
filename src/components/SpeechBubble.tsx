@@ -43,7 +43,7 @@ export const SpeechBubble = ({
     if (!proceedTimer.current) return;
     clearTimeout(proceedTimer.current);
   }, [proceed]);
-  
+
   return (
     <>
       <div
@@ -79,9 +79,10 @@ export const SpeechBubble = ({
       </div>
       <div
         className={classNames(
-          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem] dialog-text", {
+          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem] dialog-text",
+          {
             ["opacity-0"]: !shouldExpand,
-          }
+          },
         )}
         style={{
           animation: shouldExpand ? "1000ms ease delayed-fade-in" : "",

@@ -86,7 +86,9 @@ export const MePage = ({
                 width: `calc(${23 - (responses.length - index) * 1}vw + 10rem)`,
                 marginRight: `${index * 0.25}rem`,
                 "--rotate-angle": `${-4 + (responses.length - index) * 2}deg`,
-                animation: showResponses ? `${500 + (responses.length - index) * 50}ms ease-out rotate-responses` : "",
+                animation: showResponses
+                  ? `${500 + (responses.length - index) * 50}ms ease-out rotate-responses`
+                  : "",
                 rotate: showResponses
                   ? `${-4 + (responses.length - index) * 2}deg`
                   : "-4deg",
