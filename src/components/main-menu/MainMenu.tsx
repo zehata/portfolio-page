@@ -63,15 +63,13 @@ export const MainMenu = () => {
     <>
       <div
         ref={transitionAnimation}
-        className={classNames(
-          "fixed left-[calc(0vw-0.5*max(200vw,200vh))] top-[calc(0vh-0.5*max(200vw,200vh))] w-[max(200vw,200vh)] h-[max(200vw,200vh)] bg-black -z-2 no-view-transition",
-          {},
-        )}
+        className="fixed left-[calc(0vw-0.5*max(200vw,200vh))] top-[calc(0vh-0.5*max(200vw,200vh))] w-[max(200vw,200vh)] h-[max(200vw,200vh)] bg-black -z-2 no-view-transition"
         style={{
           animation: transitionAnimationOriginSet ? (shouldCloseTransitionAnimation ? "500ms transition-animation-out" : "500ms transition-animation") : "",
           transform: shouldCloseTransitionAnimation
             ? `matrix3d(-0.000707,-0.000707,0,0.000001,0.000707,-0.000707,0,0,0,0,1,0,var(--transition-animation-origin-x),var(--transition-animation-origin-y),0,1)`
             : "",
+          display: shouldCloseTransitionAnimation ? "none" : "block",
         }}
       ></div>
       <SubMenu activeMenuIndex={activeMenuIndex} linkHrefs={linkHrefs} menuOpen={menuOpen} />

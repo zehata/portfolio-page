@@ -16,7 +16,7 @@ export const SubMenu = ({
   React.useEffect(() => setClickedIndex(activeMenuIndex), [activeMenuIndex])
   const router = useTransitionRouter();
   return (
-    <div className={classNames("absolute top-[-16rem] -right-5 w-[calc(60vw-5rem)] h-[20rem] flex flex-col justify-end bg-blue-500 origin-[300%_100%] subMenu", {
+    <div className={classNames("absolute top-[-16rem] -right-5 w-[calc(60vw-5rem)] h-[20rem] flex flex-col justify-end bg-blue-500 origin-[300%_100%] subMenu z-2", {
       ["rotate-5"]: menuOpen,
     })}>
       <div className="absolute w-full h-full bg-white origin-bottom-right -rotate-5 -z-1"></div>

@@ -39,7 +39,7 @@ export const MePage = ({
   };
 
   return (
-    <div className="w-full h-full">
+    <div className="absolute w-full h-full">
       <div
         className={classNames(
           "absolute left-0 bottom-0 w-screen h-20 ease-in-out duration-500",
@@ -66,7 +66,7 @@ export const MePage = ({
       </div>
       <div
         className={classNames(
-          "absolute flex flex-col items-end -right-26 bottom-20 duration-500 ease-in-out origin-[1000%_100%]",
+          "absolute flex flex-col items-end -right-26 bottom-20 duration-500 ease-in-out origin-[1000%_100%] z-1 responses",
           {
             ["rotate-0"]: showResponses,
             ["-rotate-20"]: !showResponses,
