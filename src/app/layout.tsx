@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className="overflow-hidden">
+        <body className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
           <GlobalContextProvider>
             <BaseBackground />
             <MovingBackgrounds>{backgrounds}</MovingBackgrounds>

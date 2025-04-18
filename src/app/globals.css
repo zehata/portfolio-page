@@ -163,39 +163,80 @@ body {
 @keyframes swing-in {
   0% {
     position: fixed;
-    right: -60vw;
-    transform: matrix3d(1,0,0,-0.0005,0,1,0,0,0,0,1,0,0,0,0,1);
+    right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem) - max(200vw / 3, 3200vh / 27));
+    transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
     top: calc(50vh - 15rem);
-    width: min(60vw, 30rem);
+    width: min(60vw, 24rem);
     height: 30rem;
   }
 
   100% {
     position: fixed;
-    right: 7vw;
+    right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem));
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
     top: calc(50vh - 15rem);
-    width: min(60vw, 30rem);
+    width: min(60vw, 24rem);
     height: 30rem;
+  }
+}
+
+@keyframes indicator-swing-in {
+  0% {
+    position: fixed;
+    right: calc(max(60vw / 3, 960vh / 27) - 2px - max(200vw / 3, 3200vh / 27));
+    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh) + max(6.75vw, 12vh));
+    width: 4px;
+    height: 0;
+  }
+
+  50% {
+    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh) + max(6.75vw, 12vh));
+    height: 0;
+  }
+
+  100% {
+    position: fixed;
+    right: calc(max(60vw / 3, 960vh / 27) - 2px);
+    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    width: 4px;
+    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+  }
+}
+
+@keyframes indicator-swing-out {
+  0% {
+    position: fixed;
+    right: calc(max(60vw / 3, 960vh / 27) - 2px);
+    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    width: 4px;
+    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+  }
+
+  100% {
+    position: fixed;
+    right: calc(max(60vw / 3, 960vh / 27) - 2px - max(200vw / 3, 3200vh / 27));
+    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    width: 4px;
+    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
   }
 }
 
 @keyframes swing-out {
   0% {
     position: fixed;
-    right: 7vw;
+    right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem));
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
     top: calc(50vh - 15rem);
-    width: min(60vw, 30rem);
+    width: min(60vw, 24rem);
     height: 30rem;
   }
 
   100% {
     position: fixed;
-    right: -60vw;
-    transform: matrix3d(1,0,0,-0.0005,0,1,0,0,0,0,1,0,0,0,0,1);
+    right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem) - max(-200vw / 3, 3200vh / 27));
+    transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
     top: calc(50vh - 15rem);
-    width: min(60vw, 30rem);
+    width: min(60vw, 24rem);
     height: 30rem;
   }
 }
@@ -231,7 +272,65 @@ body {
   }
 }
 
+@keyframes flickering {
+  0% {
+    --lamp-light-color: #0000;
+  }
+
+  99% {
+    --lamp-light-color: #0000;
+  }
+
+  100% {
+    --lamp-light-color: #000;
+  }
+}
+
+@property --progress {
+  syntax: '<angle>';
+  initial-value: 180deg;
+  inherits: false;
+}
+
+@keyframes spiral {
+  0% {
+    --progress: 0deg;
+  }
+
+  50% {
+    --progress: 0deg;
+  }
+
+  62.5% {
+    --progress: 45deg;
+  }
+
+  87.5% {
+    --progress: 135deg;
+  }
+
+  100% {
+    --progress: 180deg;
+  }
+}
+
+@keyframes main-menu-items-slide-in {
+  0% {
+    left: calc(-10vw - 14rem);
+  }
+  
+  100% {
+    left: 0;
+  }
+}
+
 @layer components {
+  .test-mask {
+    mask: conic-gradient(from 180deg at center, #000 0, #0000 0 calc(360deg - var(--progress)), #000 calc(360deg - var(--progress))) 50% 50% / 100% 100% no-repeat,
+          conic-gradient(from 0deg at center, #0000 180deg, #000 180deg calc(180deg + var(--progress)), #0000 calc(180deg + var(--progress))) 50% 50% / 100% 100% no-repeat;
+    animation: 2s ease-in-out spiral;
+  }
+  
   .selector-prev {
     transform: matrix3d(1.3,-0.06,-0.342,-0.002,-0.06,1.3,-0.342,0,0.342,0.342,0.94,0,0,0,0,1);
   }
@@ -250,6 +349,7 @@ body {
     background-image: url('/test-image.jpg');
     background-size: cover;
     background-position: 50% 50%;
+    filter: brightness(50%);
   }
 
   .outer-box {
@@ -268,7 +368,7 @@ body {
   }
 
   .menu-closed {
-    transform: matrix3d(-0.1,0,0,0,0,-0.1,0,0,0,0,1,0,0,0,0,1);
+    left: -10rem;
     opacity: 0;
   }
 
@@ -296,6 +396,13 @@ body {
   .submenu-item:hover .submenu-background,
   .active-submenu .submenu-background {
     opacity: 100;
+  } 
+
+  .lamp-light {
+    mask: conic-gradient(from 125deg, #000, var(--lamp-light-color) 5deg 65deg, #000 70deg) 50% 70% / 100% 80% no-repeat,
+          radial-gradient(ellipse 100% 20% at calc(750%/15) 52.5%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat,
+          radial-gradient(ellipse 10% 30% at calc(749%/15) 52.9%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat;
+    /* animation: 5s ease flickering infinite; */
   }
   
   .sidebar {
@@ -335,7 +442,12 @@ body {
   }
 
   .contact {
+    mask: conic-gradient(from 90deg at bottom,#0000 0deg,#0000 180deg, #000 180deg) 100% 0%/ 100% 75% no-repeat;
     view-transition-name: contact;
+  }
+
+  .contact-indicator {
+    view-transition-name: contact-indicator;
   }
 
   .submenu-indicator {
@@ -384,6 +496,11 @@ body {
     transform: none;
   }
 
+  ::view-transition-group(contact-indicator) {
+    animation: none;
+    transform: none;
+  }
+
   ::view-transition-new(contact):only-child {
     animation: 1s swing-in;
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -391,6 +508,16 @@ body {
 
   ::view-transition-old(contact):only-child {
     animation: 1s swing-out;
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  }
+
+  ::view-transition-new(contact-indicator):only-child {
+    animation: 1s indicator-swing-in;
+    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  }
+
+  ::view-transition-old(contact-indicator):only-child {
+    animation: 1s indicator-swing-out;
     animation-timing-function: cubic-bezier(.4, 0, .2, 1);
   }
 

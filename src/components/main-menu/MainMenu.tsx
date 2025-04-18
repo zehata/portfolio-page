@@ -2,11 +2,31 @@
 import React from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
-import { useTransitionRouter } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 import SubMenu from "./SubMenu";
 import GlobalContext from "../context/GlobalContext";
 
-const linkHrefs = ["about", "blog", "projects", "contact", "github"];
+const linkHrefs = [
+  {
+    text: "Me",
+    url: "/about"
+  },
+  {
+    text: "Dev Blog",
+    url: "/blog"
+  },
+  {
+    text: "Projects",
+    url: "/projects"
+  },
+  {
+    text: "Contacts",
+    url: "/contact"
+  },
+  {
+    text: "GitHub",
+    url: "/github"
+  }];
 
 export const MainMenu = () => {
   const globalContext = React.useContext(GlobalContext);
@@ -14,7 +34,7 @@ export const MainMenu = () => {
 
   const pathname = usePathname();
   const path = React.useMemo(() => pathname.split("/")[1], [pathname]);
-  const activeMenuIndex = React.useMemo(() => linkHrefs.indexOf(path), [path]);
+  const activeMenuIndex = React.useMemo(() => linkHrefs.map(link => link.url).indexOf(path), [path]);
   const menuOpen = React.useMemo(() => path === "", [path]);
   const shouldCloseTransitionAnimation = React.useMemo(
     () => menuOpen || path === "contact",
@@ -78,9 +98,14 @@ export const MainMenu = () => {
 
   return (
     <>
+      <div className={classNames("absolute left-0 w-[calc(10vw+14rem)] h-full bg-white -z-1 ease-in-out duration-1000",
+        {["left-[calc(-10vw-14rem)]"]: !menuOpen},
+      )}>
+
+      </div>
       <div
         ref={transitionAnimation}
-        className="fixed left-[calc(0vw-0.5*max(200vw,200vh))] top-[calc(0vh-0.5*max(200vw,200vh))] w-[max(200vw,200vh)] h-[max(200vw,200vh)] bg-black -z-2 no-view-transition"
+        className="fixed left-[calc(0vw-0.5*200vmax)] top-[calc(0vh-0.5*200vmax)] w-[200vmax] h-[200vmax] bg-black -z-2 no-view-transition"
         style={{
           animation: transitionAnimationOriginSet
             ? shouldCloseTransitionAnimation
@@ -99,46 +124,53 @@ export const MainMenu = () => {
         menuOpen={menuOpen}
       />
       <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
-        <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:relative *:transition-all *:duration-500">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div
-              ref={(element) => {
-                if (!element) return;
-                menuRefs.current[index] = element;
-              }}
-              key={index}
-              onMouseEnter={() => {
-                hoverMenuItem(index);
-                setLastHoveredMenuItem(index);
-              }}
-              onMouseLeave={() => hoverMenuItem(null)}
-              onClick={() => {
-                React.startTransition(() => closeMenu(index));
-                router.push(linkHrefs[index]);
-              }}
-              className={classNames(
-                "border-black border-2 bg-red-200 hover:bg-red-400 no-view-transition",
-                {
-                  [`selector-prev`]: hoveredMenuItem === index + 1,
-                  [`selector-current`]: hoveredMenuItem === index,
-                  [`selector-next`]: hoveredMenuItem === index - 1,
-                  [`z-1`]:
-                    lastHoveredMenuItem === index - 1 ||
-                    lastHoveredMenuItem === index + 1,
-                  [`z-2`]: lastHoveredMenuItem === index,
-                  [`menu-closed`]: !menuOpen || menuClosing,
-                },
-              )}
-              style={{
-                transitionDelay: menuClosing
-                  ? `${Math.abs((lastHoveredMenuItem ?? 0) - index) * 50}ms`
-                  : "0s",
-              }}
-            >
-              <div className="absolute w-full h-full overflow-hidden no-view-transition">
-                <div className="w-36 h-20 transition-all inner-box"></div>
-              </div>
-              <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
+        <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:hover:text-white *:relative *:transition-all *:duration-500">
+          {linkHrefs.map((menuItem, index) => (
+              <div
+                key={index}
+                ref={(element) => {
+                  if (!element) return;
+                  menuRefs.current[index] = element;
+                }}
+                onMouseEnter={() => {
+                  hoverMenuItem(index);
+                  setLastHoveredMenuItem(index);
+                }}
+                onMouseLeave={() => hoverMenuItem(null)}
+                className={classNames(
+                  "relative border-2 border-transparent hover:border-black no-view-transition",
+                  {
+                    [`selector-prev`]: hoveredMenuItem === index + 1,
+                    [`selector-current`]: hoveredMenuItem === index,
+                    [`selector-next`]: hoveredMenuItem === index - 1,
+                    [`z-1`]:
+                      lastHoveredMenuItem === index - 1 ||
+                      lastHoveredMenuItem === index + 1,
+                    [`z-2`]: lastHoveredMenuItem === index,
+                    ["left-0 animate-[1s_ease-in-out_main-menu-items-slide-in]"]: menuOpen,
+                    [`duration-1000 left-[calc(-10vw-14rem)] opacity-0`]: !menuOpen,
+                  },
+                )}
+                style={{
+                  transitionDelay: menuClosing
+                    ? `${Math.abs((lastHoveredMenuItem ?? 0) - index) * 50}ms`
+                    : "0s",
+                }}
+              >
+              <Link
+                href={menuItem.url}
+                onClick={(event) => {
+                  event.preventDefault();
+                  React.startTransition(() => closeMenu(index));
+                  router.push(menuItem.url);
+                }}
+              >
+                <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
+                <div className="absolute w-full h-full overflow-hidden no-view-transition">
+                  <div className="w-36 h-20 transition-all inner-box"></div>
+                </div>
+                <div className="relative w-full h-full flex justify-center items-center z-2">{menuItem.text}</div>
+              </Link>
             </div>
           ))}
         </div>

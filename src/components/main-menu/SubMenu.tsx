@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTransitionRouter } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 import React from "react";
 
 export const SubMenu = ({
@@ -8,7 +8,10 @@ export const SubMenu = ({
   activeMenuIndex,
 }: {
   menuOpen: boolean;
-  linkHrefs: string[];
+  linkHrefs: {
+    text: string;
+    url: string;
+  }[];
   activeMenuIndex: number;
 }) => {
   const [shiftSubMenuList, setShiftSubMenuList] =
@@ -32,7 +35,7 @@ export const SubMenu = ({
           ["ml-4"]: shiftSubMenuList,
         })}
       >
-        {linkHrefs.map((_, index) => (
+        {linkHrefs.map((menuItem, index) => (
           <div
             key={index}
             className={classNames(
@@ -42,6 +45,13 @@ export const SubMenu = ({
               },
             )}
           >
+            <Link
+              href={menuItem.url}
+              onClick={(event) => {
+                event.preventDefault();
+                router.push(menuItem.url);
+              }}
+            >
             <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
             {activeMenuIndex === index && (
               <div className="absolute w-full h-full submenu-indicator z-2">
@@ -77,13 +87,14 @@ export const SubMenu = ({
                 setShiftSubMenuList(false);
                 setClickedIndex(index);
                 setTimeout(() => {
-                  router.push(`/${linkHrefs[index]}`);
+                  router.push(menuItem.url);
                 }, 250);
               }}
             >
               <div className="absolute w-full h-full bg-blue-500 -z-1 duration-250 submenu-background" />
-              {`Item ${index}`}
+              {menuItem.text}
             </div>
+            </Link>
           </div>
         ))}
       </div>

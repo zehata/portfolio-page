@@ -14,21 +14,18 @@ export const BaseBackground = () => {
   return (
     <div
       className={classNames(
-        "absolute left-0 w-[167vw] h-screen bg-center bg-cover bg-[url('/library-background.png')] ease-in-out -z-2 duration-1000 no-view-transition",
+        "absolute flex justify-end ease-in-out -z-2 duration-1000 no-view-transition",
         {
-          ["left-[-66vw]"]: shiftRight,
+          ["right-[min(-200vw/3,-3200vh/27)]"]: !shiftRight,
+          ["right-0"]: shiftRight,
         },
       )}
     >
-      {/* <div
-        className={classNames("absolute top-[calc(50vh-20rem)] right-[7vw] w-[min(60vw,40rem)] h-[40rem] duration-1000", {
-          ["transform-[matrix3d(1,0,0,-0.0005,0,1,0,0,0,0,1,0,0,0,0,1)]"]: !shiftRight
-        })}
-      >
-        <div className="bg-white h-[min(75%,25rem)]">
-
-        </div>
-      </div> */}
+      <div className="absolute w-[calc(500vw/3)] h-screen flex justify-end items-center">
+        <div className="absolute w-[max(500vw/3,8000vh/27)] h-[max(56.25vw,100vh)] bg-cover bg-[url('/library-background.png')]">
+        <div className="absolute w-[max(500vw/3,8000vh/27)] h-[max(56.25vw,100vh)] top-0 left-0 lamp-light bg-black opacity-60 z-1"></div>
+      </div>
+      </div>
     </div>
   );
 };
