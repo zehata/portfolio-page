@@ -21,7 +21,7 @@ export const SidebarItem = ({
         "relative w-[calc(100%+1.25rem)] pl-20 p-4 hover:py-6 bg-gray-100 hover:bg-white duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
         {
           ["-left-5"]: index != clickedId,
-          ["left-0 py-6 clicked bg-white"]: index === clickedId,
+          ["left-0 py-6 clicked bg-white z-2"]: index === clickedId,
         },
       )}
       style={{

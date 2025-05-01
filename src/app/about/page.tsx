@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-export const DefaultAboutPage = () => {
+const DefaultAboutPage = () => {
   redirect("/about/0");
   return <></>;
 };

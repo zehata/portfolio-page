@@ -3,7 +3,6 @@ import "./globals.css";
 import MainMenu from "@/components/main-menu/MainMenu";
 import React from "react";
 import { ViewTransitions } from "next-view-transitions";
-import MovingBackgrounds from "@/components/backgrounds/MovingBackgrounds";
 import BaseBackground from "@/components/backgrounds/BaseBackground";
 import { GlobalContextProvider } from "@/components/context/GlobalContext";
 
@@ -14,10 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  backgrounds,
 }: Readonly<{
   children: React.ReactNode;
-  backgrounds: React.ReactNode;
 }>) {
   return (
     <ViewTransitions>
@@ -25,7 +22,6 @@ export default function RootLayout({
         <body className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
           <GlobalContextProvider>
             <BaseBackground />
-            <MovingBackgrounds>{backgrounds}</MovingBackgrounds>
             <MainMenu />
             {children}
           </GlobalContextProvider>

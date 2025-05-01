@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 
-export const SpeechBubble = ({
+const SpeechBubble = ({
   windowWidth,
   dialog = "",
   proceed,
@@ -47,14 +47,14 @@ export const SpeechBubble = ({
   return (
     <>
       <div
-        className="absolute left-[calc(5vw+6rem)] bottom-[3rem] w-[200px] h-[200px] origin-[-10%_100%] speech-bubble"
+        className="absolute left-[calc(12vw+0rem)] bottom-[5rem] w-[200px] h-[200px] origin-[-10%_85%] speech-bubble"
         style={{
           transition: shouldExpand
             ? "500ms cubic-bezier(.21,1.47,.7,.95)"
             : "none",
           transform:
             shouldExpand && windowWidth
-              ? `scale3d(${(0.7 * windowWidth - 30) / 200},1.2,1)`
+              ? `scale3d(${(0.5 * windowWidth + 50) / 200},1.2,1)`
               : "scale3d(0.001,0.001,1)",
         }}
       >
@@ -62,7 +62,7 @@ export const SpeechBubble = ({
           className="absolute w-[200px] h-[200px] bg-black -z-1"
           style={{
             transform: shouldExpand
-              ? "matrix3d(-1,-0.1219,0,0.0012,0.1,-1,0,-0.0002,0,0,1,0,0,-3,0,1)"
+              ? "matrix3d(-0.9,-0.26,0,0.0012,0.238,-0.973,0,-0.0001,0,0,1,0,0,-3,0,1)"
               : "matrix3d(-1,0.1,0,0,0,-1,0,0,0,0,1,0,0,-3,0,1)",
             transition: shouldExpand ? "250ms ease-out" : "none",
           }}
@@ -79,7 +79,7 @@ export const SpeechBubble = ({
       </div>
       <div
         className={classNames(
-          "absolute left-[calc(18vw+5rem)] bottom-[5rem] w-[calc(65vw-3rem)] h-[11.5rem] dialog-text",
+          "absolute left-[calc(21vw-0rem)] bottom-[7rem] w-[calc(50vw-1rem)] h-[11.5rem] dialog-text",
           {
             ["opacity-0"]: !shouldExpand,
           },
