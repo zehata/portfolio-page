@@ -9,6 +9,6 @@ export const getFriendlyDatetime = (date: number) => {
   if (timeSince < 2 * 24 * hourDuration) return "(A couple of days ago)";
   if (timeSince < 7 * 24 * hourDuration) return "(A few days ago)";
   return "";
-}
+};
 
 export default getFriendlyDatetime;

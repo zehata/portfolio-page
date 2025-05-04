@@ -20,7 +20,9 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     setBlogItems(null);
-    isDatabaseActive().then(databaseActive => setServerStarting(!databaseActive));
+    isDatabaseActive().then((databaseActive) =>
+      setServerStarting(!databaseActive),
+    );
     getAllArticles(ArticleType.Blog).then(setBlogItems);
   }, []);
 
@@ -28,13 +30,14 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <DynamicBackground name="blogs"/>
-      <div className="absolute top-30 w-full h-[calc(100vh-7.5rem)] z-1 flex flex-row">
+      <DynamicBackground name="blogs" />
+      <div className="absolute top-50 w-full h-[calc(100vh-12.5rem)] z-1 flex flex-row">
         <Sidebar
           articleType={ArticleType.Blog}
           items={blogItems}
           id={blogId}
-          serverStarting={serverStarting && !blogItems} />
+          serverStarting={serverStarting && !blogItems}
+        />
         {children}
       </div>
     </>

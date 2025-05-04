@@ -36,31 +36,41 @@ export const Sidebar = ({
         },
       )}
     >
-      <div className={classNames("absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250", {
-        ["opacity-0"]: items,
-        ["animate-[250ms_ease_fade-in]"]: !items,
-      })}>
-        {
-          serverStarting ? 
+      <div
+        className={classNames(
+          "absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250",
+          {
+            ["opacity-0"]: items,
+            ["animate-[250ms_ease_fade-in]"]: !items,
+          },
+        )}
+      >
+        {serverStarting ? (
           <>
-            <LoadingAnimation/>
+            <LoadingAnimation />
             {`Starting Database`}
-          </> : 
+          </>
+        ) : (
           <>
-            <LoadingAnimation/>
+            <LoadingAnimation />
             {`Loading`}
           </>
-        }
+        )}
       </div>
-      <div className={classNames("absolute w-full h-full ease-in-out duration-250", {
-        ["-left-full"]: !items,
-        ["left-0"]: items,
-      })}>
+      <div
+        className={classNames(
+          "absolute w-full h-full ease-in-out duration-250",
+          {
+            ["-left-full"]: !items,
+            ["left-0"]: items,
+          },
+        )}
+      >
         {items?.map((item, index) => (
           <Link
             key={index}
             href={`/${tables[articleType]}/${item.id}`}
-            onClick={event => {
+            onClick={(event) => {
               event.preventDefault();
               React.startTransition(() => {
                 setClickedId(item.id);

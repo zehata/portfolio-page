@@ -1,12 +1,14 @@
 import classNames from "classnames";
-import { Link, useTransitionRouter } from "next-view-transitions";
 import React, { CSSProperties } from "react";
 import { Menu, SquareArrowOutUpRight, X } from "lucide-react";
+import Link from "next/link";
 
 export const SubMenu = ({
   menuOpen,
   linkHrefs,
   activeMenuIndex,
+  submenuRefs,
+  handleSubmenuClick,
 }: {
   menuOpen: boolean;
   linkHrefs: {
@@ -15,21 +17,32 @@ export const SubMenu = ({
     image?: string;
   }[];
   activeMenuIndex: number;
+  submenuRefs: React.RefObject<HTMLDivElement[]>;
+  handleSubmenuClick: (index: number) => void;
 }) => {
   const [shiftSubMenuList, setShiftSubMenuList] =
     React.useState<boolean>(false);
   const [clickedIndex, setClickedIndex] = React.useState<number>(-1);
   React.useEffect(() => setClickedIndex(activeMenuIndex), [activeMenuIndex]);
-  const router = useTransitionRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState<boolean>(false);
   React.useEffect(() => {
     if (!menuOpen) return;
     setMobileMenuOpen(false);
   }, [menuOpen]);
+
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent, index: number) => {
+      event.preventDefault();
+      setShiftSubMenuList(false);
+      setClickedIndex(index);
+      handleSubmenuClick(index);
+    },
+    [handleSubmenuClick],
+  );
   return (
     <div
       className={classNames(
-        "absolute top-0 xl:top-[-16rem] right-0 xl:-right-5 w-full xl:w-[calc(80vw-5rem)] h-[var(--mobile-menu-height)] xl:h-[20rem] xl:pt-0 xl:pb-0 flex flex-row xl:flex-col items-center xl:items-start justify-center xl:justify-end xl:origin-[300%_100%] submenu z-2 duration-500",
+        "absolute top-0 xl:top-[-16rem] right-0 xl:-right-5 w-full xl:w-[calc(80vw-5rem)] h-[var(--mobile-menu-height)] xl:h-[20rem] xl:pt-0 xl:pb-0 flex flex-row xl:flex-col items-center xl:items-start justify-center xl:justify-end xl:origin-[300%_100%] submenu z-2 duration-250",
         {
           ["origin-[calc(100%-3rem)_calc(2rem)] rotate-0 xl:rotate-0"]:
             mobileMenuOpen && !menuOpen,
@@ -59,6 +72,10 @@ export const SubMenu = ({
         {linkHrefs.map((menuItem, index) => (
           <div
             key={index}
+            ref={(element) => {
+              if (!element) return;
+              submenuRefs.current[index] = element;
+            }}
             className={classNames(
               "relative w-40 xl:w-30 h-14 xl:h-10 duration-250 mx-4 hover:mx-6 submenu-item hover:my-2 xl:hover:my-0",
               {
@@ -68,12 +85,7 @@ export const SubMenu = ({
           >
             <Link
               href={menuItem.url}
-              onClick={(event) => {
-                event.preventDefault();
-                setShiftSubMenuList(false);
-                setClickedIndex(index);
-                router.push(menuItem.url);
-              }}
+              onClick={(event) => handleClick(event, index)}
               onPointerEnter={() => {
                 if (activeMenuIndex === index) return;
                 setShiftSubMenuList(true);
@@ -97,14 +109,17 @@ export const SubMenu = ({
                     <div
                       className="absolute w-full h-full -z-1 brightness-50"
                       style={{
-                        backgroundImage: menuItem.image ? `url('${menuItem.image}')` : "",
+                        backgroundImage: menuItem.image
+                          ? `url('${menuItem.image}')`
+                          : "",
                       }}
                     />
                     {menuItem.text}
                   </div>
-                </div>) :
+                </div>
+              ) : (
                 <></>
-              }
+              )}
               <div
                 className={classNames(
                   "relative w-full h-full flex justify-center items-center gap-1 border-black bg-white border-2 origin-center duration-250 submenu-button",
@@ -115,13 +130,19 @@ export const SubMenu = ({
                 )}
               >
                 <div
-                  className="absolute w-full h-full -z-1 duration-250 brightness-50 submenu-background" 
+                  className="absolute w-full h-full -z-1 duration-250 brightness-50 submenu-background"
                   style={{
-                    backgroundImage: menuItem.image ? `url('${menuItem.image}')` : "",
+                    backgroundImage: menuItem.image
+                      ? `url('${menuItem.image}')`
+                      : "",
                   }}
                 />
                 {menuItem.text}
-                {menuItem.url[0] != "/" ? <SquareArrowOutUpRight width={16} height={16}/> : <></>}
+                {menuItem.url[0] != "/" ? (
+                  <SquareArrowOutUpRight width={16} height={16} />
+                ) : (
+                  <></>
+                )}
               </div>
             </Link>
           </div>
@@ -129,7 +150,7 @@ export const SubMenu = ({
       </div>
       <div
         className={classNames(
-          "absolute right-1 w-24 h-24 z-2 flex justify-center items-center duration-500",
+          "absolute right-1 w-24 h-24 z-2 flex justify-center items-center duration-250",
           {
             ["top-0"]: mobileMenuOpen,
             ["-top-5"]: !mobileMenuOpen,
@@ -140,14 +161,14 @@ export const SubMenu = ({
         <Menu
           width={48}
           height={48}
-          className={classNames("absolute duration-500", {
+          className={classNames("absolute duration-250", {
             ["opacity-0"]: mobileMenuOpen,
           })}
         />
         <X
           width={48}
           height={48}
-          className={classNames("absolute duration-500", {
+          className={classNames("absolute duration-250", {
             ["opacity-0"]: !mobileMenuOpen,
           })}
         />

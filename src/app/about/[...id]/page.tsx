@@ -16,10 +16,12 @@ const MePage = async ({
 }) => {
   const { id } = await params;
 
-  return <>
-    <DynamicBackground name="about"/>
-    <Dialog id={id} />
-  </>;
+  return (
+    <>
+      <DynamicBackground name="about" />
+      <Dialog id={id} />
+    </>
+  );
 };
 
 export default MePage;

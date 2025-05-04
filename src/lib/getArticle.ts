@@ -11,9 +11,9 @@ export const getArticle = async (articleType: ArticleType, id: string) =>
       const pool = await Connection.requestConnectionPool();
 
       const data = await queryArticle(pool, articleType, id);
-    
+
       await Connection.requestConnectionPoolEnd();
-    
+
       return {
         id: data.id,
         title: data.title,

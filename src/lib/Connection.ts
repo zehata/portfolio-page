@@ -4,7 +4,7 @@ import { createPgDriverFactory } from "@slonik/pg-driver";
 import fetchDatabaseState from "./fetchDatabaseState";
 
 export class Connection {
-  static lastRequest = 0; 
+  static lastRequest = 0;
   static connectionLastEnded = 0;
   static connectionPool: DatabasePool | null = null;
 
@@ -46,12 +46,10 @@ export class Connection {
     if (this.connectionPool && this.connectionPool.state().state === "ACTIVE")
       return true;
 
-     // Neon computes scales to zero only after 5 minutes
-    if (Date.now() < this.lastRequest + 5 * 60 * 1000)
-      return true;
+    // Neon computes scales to zero only after 5 minutes
+    if (Date.now() < this.lastRequest + 5 * 60 * 1000) return true;
 
-    if (Date.now() < this.connectionLastEnded + 5 * 60 * 1000)
-      return true;
+    if (Date.now() < this.connectionLastEnded + 5 * 60 * 1000) return true;
 
     return (await fetchDatabaseState()) === "active";
   };

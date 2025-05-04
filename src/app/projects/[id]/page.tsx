@@ -17,7 +17,7 @@ const ProjectPage = async ({
     id: string;
   }>;
 }) => {
-  const articleRequest = getArticle(ArticleType.Project, (await params).id)
+  const articleRequest = getArticle(ArticleType.Project, (await params).id);
 
   return (
     <div className="absolute lg:relative -left-10 lg:-left-5 flex-shrink-0 w-full h-full pl-10 lg:w-2/3 blogid z-3">
