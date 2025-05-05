@@ -220,7 +220,7 @@ export const MainMenu = () => {
       </div>
       <div
         ref={transitionAnimation}
-        className="fixed left-[calc(0vw-0.5*200vmax)] top-[calc(0vh-0.5*200vmax)] w-[200vmax] h-[200vmax] bg-black -z-1 no-view-transition"
+        className="fixed left-[calc(0vw-0.5*200vmax)] top-[calc(0vh-0.5*200vmax)] w-[200vmax] h-[200vmax] bg-black -z-1 transition-animation"
         style={{
           animation:
             hasTransitionAnimationOrigin &&

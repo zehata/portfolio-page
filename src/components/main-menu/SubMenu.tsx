@@ -42,7 +42,7 @@ export const SubMenu = ({
   return (
     <div
       className={classNames(
-        "absolute top-0 xl:top-[-16rem] right-0 xl:-right-5 w-full xl:w-[calc(80vw-5rem)] h-[var(--mobile-menu-height)] xl:h-[20rem] xl:pt-0 xl:pb-0 flex flex-row xl:flex-col items-center xl:items-start justify-center xl:justify-end xl:origin-[300%_100%] submenu z-2 duration-250",
+        "absolute top-0 xl:top-[-16rem] right-0 xl:-right-5 w-full xl:w-[calc(80vw-5rem)] h-[var(--mobile-menu-height)] xl:h-[20rem] xl:pt-0 xl:pb-0 flex flex-row xl:flex-col items-center xl:items-start justify-center xl:justify-end xl:origin-[300%_100%] submenu z-2 duration-500",
         {
           ["origin-[calc(100%-3rem)_calc(2rem)] rotate-0 xl:rotate-0"]:
             mobileMenuOpen && !menuOpen,
@@ -77,22 +77,23 @@ export const SubMenu = ({
               submenuRefs.current[index] = element;
             }}
             className={classNames(
-              "relative w-40 xl:w-30 h-14 xl:h-10 duration-250 mx-4 hover:mx-6 submenu-item hover:my-2 xl:hover:my-0",
+              "relative w-40 xl:w-30 h-14 xl:h-10 duration-250 mx-4 hover:mx-6 submenu-item",
               {
                 ["mx-6 active-submenu"]: clickedIndex === index,
+                ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
               },
             )}
+            onPointerEnter={() => {
+              if (activeMenuIndex === index) return;
+              setShiftSubMenuList(true);
+            }}
+            onPointerLeave={() => {
+              setShiftSubMenuList(false);
+            }}
           >
             <Link
               href={menuItem.url}
               onClick={(event) => handleClick(event, index)}
-              onPointerEnter={() => {
-                if (activeMenuIndex === index) return;
-                setShiftSubMenuList(true);
-              }}
-              onPointerLeave={() => {
-                setShiftSubMenuList(false);
-              }}
             >
               <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
               {activeMenuIndex === index ? (
