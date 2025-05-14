@@ -1,5 +1,5 @@
 "use client";
-import Sidebar from "@/components/sidebar/Sidebar";
+import Sidebar from "@/components/sidebar/sidebar";
 import getAllArticles from "@/lib/getAllArticles";
 import { ArticleType } from "@/lib/ArticleTypes";
 import { usePathname } from "next/navigation";
