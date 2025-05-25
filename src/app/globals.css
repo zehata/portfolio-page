@@ -277,7 +277,7 @@ body {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem) - max(200vw / 3, 3200vh / 27));
     transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
-    top: calc(50vh - 15rem);
+    top: calc(50vh - 10rem);
     width: min(60vw, 24rem);
     height: 30rem;
   }
@@ -286,7 +286,7 @@ body {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem));
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
-    top: calc(50vh - 15rem);
+    top: calc(50vh - 10rem);
     width: min(60vw, 24rem);
     height: 30rem;
   }
@@ -296,9 +296,9 @@ body {
   0% {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - 2px - max(200vw / 3, 3200vh / 27));
-    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    top: calc(50vh + 12.5rem + max(0.5625vw, 1vh));
     width: 4px;
-    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+    height: calc(50vh - 12.5rem - max(6.1875vw, 11vh));
     mask: linear-gradient(#000) 100% 100% / 100% 0 no-repeat;
   }
 
@@ -309,9 +309,9 @@ body {
   100% {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - 2px);
-    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    top: calc(50vh + 12.5rem + max(0.5625vw, 1vh));
     width: 4px;
-    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+    height: calc(50vh - 12.5rem - max(6.1875vw, 11vh));
     mask: linear-gradient(#000) 100% 100% / 100% 100% no-repeat;
   }
 }
@@ -330,17 +330,17 @@ body {
   0% {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - 2px);
-    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    top: calc(50vh + 12.5rem + max(0.5625vw, 1vh));
     width: 4px;
-    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+    height: calc(50vh - 12.5rem - max(6.1875vw, 11vh));
   }
 
   100% {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - 2px - max(200vw / 3, 3200vh / 27));
-    top: calc(50vh + 7.5rem + max(0.5625vw, 1vh));
+    top: calc(50vh + 12.5rem + max(0.5625vw, 1vh));
     width: 4px;
-    height: calc(50vh - 7.5rem - max(6.1875vw, 11vh));
+    height: calc(50vh - 12.5rem - max(6.1875vw, 11vh));
   }
 }
 
@@ -349,7 +349,7 @@ body {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem));
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
-    top: calc(50vh - 15rem);
+    top: calc(50vh - 10rem);
     width: min(60vw, 24rem);
     height: 30rem;
   }
@@ -358,7 +358,7 @@ body {
     position: fixed;
     right: calc(max(60vw / 3, 960vh / 27) - min(30vw, 12rem) - max(-200vw / 3, 3200vh / 27));
     transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
-    top: calc(50vh - 15rem);
+    top: calc(50vh - 10rem);
     width: min(60vw, 24rem);
     height: 30rem;
   }
@@ -553,17 +553,17 @@ body {
 @layer components {
   .portrait-mouth-1 {
     opacity: 0;
-    animation: 1s mouth-speaking 250ms infinite;
+    /* animation: 1s mouth-speaking 250ms infinite; */
   }
   
   .portrait-mouth-2 {
     opacity: 0;
-    animation: 1s mouth-speaking 750ms infinite;
+    /* animation: 1s mouth-speaking 750ms infinite; */
   }
   
   .eyes-closed {
     opacity: 0;
-    animation: 5.5s eyes-blinking infinite;
+    /* animation: 5.5s eyes-blinking infinite; */
   }
 
   .background-image-darken {
@@ -774,7 +774,7 @@ body {
   }
 
   ::view-transition-new(dialog-portrait):only-child {
-    animation: 500ms slide-in-left;
+    animation: 500ms ease slide-in-left;
   }
 
   ::view-transition-old(speech-bubble) {
@@ -788,10 +788,6 @@ body {
 
   ::view-transition-new(speech-bubble) {
     animation: none;
-  }
-
-  ::view-transition-old(transition-animation) {
-    /* display: none; */
   }
 
   ::view-transition-group(contact) {

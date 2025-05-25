@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { CSSProperties } from "react";
 import SidebarItem from "./SidebarItem";
 import classNames from "classnames";
 import { useTransitionRouter } from "next-view-transitions";
@@ -19,26 +19,20 @@ export const Sidebar = ({
   items: { id: string; title: string }[] | null;
   serverStarting: boolean;
 }) => {
-  const [shiftSidebar, setShiftSidebar] = React.useState<boolean>(false);
   React.useEffect(() => setClickedId(id ?? null), [id]);
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
   const router = useTransitionRouter();
 
+  const showComingSoon = React.useMemo(
+    () => items && items.length < 10,
+    [items],
+  );
+
   return (
-    <div
-      className={classNames(
-        "relative top-2 w-full h-full duration-250 sidebar",
-        {
-          ["-left-5"]: !id,
-          ["-left-10"]: id,
-          ["-mt-2"]: (!id && shiftSidebar) || (id && !shiftSidebar),
-          ["-mt-4"]: id && shiftSidebar,
-        },
-      )}
-    >
+    <div className="relative w-full h-full overflow-auto sidebar">
       <div
         className={classNames(
-          "absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250",
+          "absolute top-0 left-0 pr-5 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250",
           {
             ["opacity-0"]: items,
             ["animate-[250ms_ease_fade-in]"]: !items,
@@ -59,44 +53,66 @@ export const Sidebar = ({
       </div>
       <div
         className={classNames(
-          "absolute w-full h-full ease-in-out duration-250",
+          "relative w-full h-[var(--sidebar-height)] flex flex-col justify-center",
           {
-            ["-left-full"]: !items,
-            ["left-0"]: items,
+            ["-left-5"]: !id,
+            ["-left-10"]: id,
           },
         )}
+        style={
+          {
+            "--sidebar-height": items
+              ? `calc(2rem + ${showComingSoon ? 15 : 0}rem + 4 * ${items.length}rem)`
+              : "100%",
+          } as CSSProperties
+        }
       >
-        {items?.map((item, index) => (
-          <Link
-            key={index}
-            href={`/${tables[articleType]}/${item.id}`}
-            onClick={(event) => {
-              event.preventDefault();
-              React.startTransition(() => {
-                setClickedId(item.id);
-                if (!id) return;
-                setShiftSidebar(false);
-              });
-              setTimeout(() => {
-                router.push(`/${tables[articleType]}/${item.id}`);
-              }, 250);
-            }}
-          >
-            <SidebarItem
-              index={item.id}
-              label={item.title}
-              clickedId={clickedId}
-              selectedId={id}
-              onPointerEnter={() => {
-                if (id && item.id === id) return;
-                setShiftSidebar(true);
+        <div
+          className={classNames("relative w-full ease-in-out duration-250", {
+            ["-left-full"]: !items,
+            ["left-0"]: items,
+          })}
+        >
+          {items?.map((item, index) => (
+            <Link
+              key={index}
+              href={`/${tables[articleType]}/${item.id}`}
+              onClick={(event) => {
+                event.preventDefault();
+                React.startTransition(() => {
+                  setClickedId(item.id);
+                });
+                setTimeout(() => {
+                  router.push(`/${tables[articleType]}/${item.id}`);
+                }, 250);
               }}
-              onPointerLeave={() => {
-                setShiftSidebar(false);
-              }}
-            />
-          </Link>
-        ))}
+              className="relative w-full"
+            >
+              <SidebarItem
+                index={item.id}
+                label={item.title}
+                clickedId={clickedId}
+                selectedId={id}
+              />
+            </Link>
+          ))}
+          {showComingSoon ? (
+            <div className="pl-10 w-full h-60 flex flex-col justify-center items-center gap-4">
+              <img
+                className="w-20 h-auto"
+                src="/articles/typewriter.svg"
+                alt=""
+              />
+              <p className="text-white">
+                {items?.length
+                  ? `More articles coming soon...`
+                  : `Still working on articles...`}
+              </p>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

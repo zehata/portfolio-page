@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SpeechBubble from "@/components/SpeechBubble";
+import SpeechBubble from "@/components/about/SpeechBubble";
 import classNames from "classnames";
 import { Link } from "next-view-transitions";
 import { Dialog, dialogs } from "@/lib/dialogs";
@@ -35,14 +35,14 @@ export const DialogComponent = ({ id }: { id: string }) => {
     <div className="absolute left-0 bottom-0 w-full h-full">
       <div
         className={classNames(
-          "absolute left-0 bottom-0 w-screen h-20 ease-in-out duration-500",
+          "absolute left-0 bottom-0 w-screen h-20 ease-in-out duration-250",
           {
             ["left-[calc(-5vw+2rem)]"]: showResponses,
           },
         )}
       >
         <DialogPortrait
-          className="absolute bottom-0 left-[calc(16vw-22rem)] w-120 h-fit dialog-portrait"
+          className="absolute bottom-0 left-[calc(16vw-22rem)] w-120 h-full dialog-portrait"
           mood={"neutral"}
           speaking={!showResponses}
         />
@@ -56,7 +56,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
       </div>
       <div
         className={classNames(
-          "absolute flex flex-col items-end -right-26 bottom-20 duration-500 ease-in-out origin-[1000%_100%] z-1 responses",
+          "absolute flex flex-col items-end -right-26 bottom-20 duration-250 ease-in-out origin-[1000%_100%] z-1 responses",
           {
             ["rotate-0"]: showResponses,
             ["-rotate-20"]: !showResponses,
@@ -65,11 +65,11 @@ export const DialogComponent = ({ id }: { id: string }) => {
       >
         {currentQuestion?.responses.map((response, index, responses) => (
           <Link
-            href={`/about/${response.link}`}
+            href={response.link}
             onClick={() => setChangingQuestion(true)}
             key={index}
             className={classNames(
-              `relative bg-white -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-500 left-0 hover:-left-6`,
+              `relative bg-white -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-250 left-0 hover:-left-6`,
             )}
             style={
               {
@@ -77,7 +77,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
                 marginRight: `${index * 0.25}rem`,
                 "--rotate-angle": `${-4 + (responses.length - index) * 2}deg`,
                 animation: showResponses
-                  ? `${500 + (responses.length - index) * 50}ms ease-out rotate-responses`
+                  ? `250ms ease-out rotate-responses`
                   : "",
                 rotate: showResponses
                   ? `${-4 + (responses.length - index) * 2}deg`

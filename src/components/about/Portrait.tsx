@@ -44,9 +44,9 @@ export const DialogPortrait = ({
   return (
     <div
       className={className}
-      style={{
-        animation: "500ms slide-in-left",
-      }}
+      // style={{
+      //   animation: "500ms slide-in-left",
+      // }}
     >
       <img
         alt=""

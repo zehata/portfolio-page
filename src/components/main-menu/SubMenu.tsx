@@ -20,8 +20,6 @@ export const SubMenu = ({
   submenuRefs: React.RefObject<HTMLDivElement[]>;
   handleSubmenuClick: (index: number) => void;
 }) => {
-  const [shiftSubMenuList, setShiftSubMenuList] =
-    React.useState<boolean>(false);
   const [clickedIndex, setClickedIndex] = React.useState<number>(-1);
   React.useEffect(() => setClickedIndex(activeMenuIndex), [activeMenuIndex]);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState<boolean>(false);
@@ -33,7 +31,6 @@ export const SubMenu = ({
   const handleClick = React.useCallback(
     (event: React.MouseEvent, index: number) => {
       event.preventDefault();
-      setShiftSubMenuList(false);
       setClickedIndex(index);
       handleSubmenuClick(index);
     },
@@ -60,94 +57,85 @@ export const SubMenu = ({
     >
       <div className="absolute left-1 xl:left-0 -top-5 xl:top-0 w-full h-full bg-white origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
       <div className="absolute -left-5 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+2rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
-      <div
-        className={classNames(
-          "w-fit flex flex-col gap-4 xl:gap-0 xl:flex-row items-center duration-250",
-          {
-            ["xl:ml-6"]: !shiftSubMenuList,
-            ["xl:ml-4"]: shiftSubMenuList,
-          },
-        )}
-      >
-        {linkHrefs.map((menuItem, index) => (
-          <div
-            key={index}
-            ref={(element) => {
-              if (!element) return;
-              submenuRefs.current[index] = element;
-            }}
-            className={classNames(
-              "relative w-40 xl:w-30 h-14 xl:h-10 duration-250 mx-4 hover:mx-6 submenu-item",
-              {
-                ["mx-6 active-submenu"]: clickedIndex === index,
-                ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
-              },
-            )}
-            onPointerEnter={() => {
-              if (activeMenuIndex === index) return;
-              setShiftSubMenuList(true);
-            }}
-            onPointerLeave={() => {
-              setShiftSubMenuList(false);
-            }}
-          >
-            <Link
-              href={menuItem.url}
-              onClick={(event) => handleClick(event, index)}
-            >
-              <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
-              {activeMenuIndex === index ? (
-                <div className="absolute w-full h-full submenu-indicator z-2">
-                  <div
-                    className={classNames(
-                      "absolute w-full h-full flex justify-center items-center ease-in-out duration-250 text-white",
-                      {
-                        ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
-                          clickedIndex === index,
-                      },
-                    )}
-                  >
-                    <div
-                      className="absolute w-full h-full -z-1 brightness-50"
-                      style={{
-                        backgroundImage: menuItem.image
-                          ? `url('${menuItem.image}')`
-                          : "",
-                      }}
-                    />
-                    {menuItem.text}
-                  </div>
-                </div>
-              ) : (
-                <></>
+      <div className="absolute xl:w-[calc(80vw-10rem)] xl:h-14 flex justify-center">
+        <div
+          className={classNames(
+            "w-fit h-full flex flex-col gap-4 xl:gap-0 xl:flex-row items-center ease-in-out duration-250",
+          )}
+        >
+          {linkHrefs.map((menuItem, index) => (
+            <div
+              key={index}
+              ref={(element) => {
+                if (!element) return;
+                submenuRefs.current[index] = element;
+              }}
+              className={classNames(
+                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 submenu-item",
+                {
+                  ["mx-6 active-submenu"]: clickedIndex === index,
+                  ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
+                },
               )}
-              <div
-                className={classNames(
-                  "relative w-full h-full flex justify-center items-center gap-1 border-black bg-white border-2 origin-center duration-250 submenu-button",
-                  {
-                    ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
-                      clickedIndex === index,
-                  },
-                )}
+            >
+              <Link
+                href={menuItem.url}
+                onClick={(event) => handleClick(event, index)}
               >
-                <div
-                  className="absolute w-full h-full -z-1 duration-250 brightness-50 submenu-background"
-                  style={{
-                    backgroundImage: menuItem.image
-                      ? `url('${menuItem.image}')`
-                      : "",
-                  }}
-                />
-                {menuItem.text}
-                {menuItem.url[0] != "/" ? (
-                  <SquareArrowOutUpRight width={16} height={16} />
+                <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
+                {activeMenuIndex === index ? (
+                  <div className="absolute w-full h-full submenu-indicator z-2">
+                    <div
+                      className={classNames(
+                        "absolute w-full h-full flex justify-center items-center ease-in-out duration-250 text-white",
+                        {
+                          ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
+                            clickedIndex === index,
+                        },
+                      )}
+                    >
+                      <div
+                        className="absolute w-full h-full -z-1 brightness-50"
+                        style={{
+                          backgroundImage: menuItem.image
+                            ? `url('${menuItem.image}')`
+                            : "",
+                        }}
+                      />
+                      {menuItem.text}
+                    </div>
+                  </div>
                 ) : (
                   <></>
                 )}
-              </div>
-            </Link>
-          </div>
-        ))}
+                <div
+                  className={classNames(
+                    "relative w-full h-full flex justify-center items-center gap-1 border-black bg-white border-2 origin-center duration-250 submenu-button",
+                    {
+                      ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
+                        clickedIndex === index,
+                    },
+                  )}
+                >
+                  <div
+                    className="absolute w-full h-full -z-1 duration-250 brightness-50 submenu-background"
+                    style={{
+                      backgroundImage: menuItem.image
+                        ? `url('${menuItem.image}')`
+                        : "",
+                    }}
+                  />
+                  {menuItem.text}
+                  {menuItem.url[0] != "/" ? (
+                    <SquareArrowOutUpRight width={16} height={16} />
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <div
         className={classNames(

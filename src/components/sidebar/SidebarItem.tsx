@@ -18,10 +18,10 @@ export const SidebarItem = ({
   return (
     <div
       className={classNames(
-        "relative w-[calc(100%+1.25rem)] pl-20 p-4 hover:py-6 bg-gray-100 hover:bg-white duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
+        "relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 hover:h-20 hover:py-6 flex items-center bg-gray-100 hover:bg-white duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
         {
           ["-left-5"]: index != clickedId,
-          ["left-0 py-6 clicked bg-white z-2"]: index === clickedId,
+          ["left-0 h-20 py-6 clicked bg-white z-2"]: index === clickedId,
         },
       )}
       style={{
@@ -47,7 +47,7 @@ export const SidebarItem = ({
               : "none",
         }}
       />
-      {label}
+      <span className="truncate text-ellipsis">{label}</span>
     </div>
   );
 };

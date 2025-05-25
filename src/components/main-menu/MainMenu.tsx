@@ -12,7 +12,7 @@ import Link from "next/link";
 const linkHrefs = [
   {
     text: "Me",
-    url: "/about",
+    url: "/about/hello",
     image: "/menu-item-backgrounds/about.webp",
   },
   {
@@ -102,7 +102,11 @@ export const MainMenu = () => {
   React.useEffect(() => {
     if (!viewportDimensions || activeMenuIndex < 0) return;
     setTransitionAnimationOrigin(activeMenuIndex);
-    if (linkHrefs[activeMenuIndex].url === "/contact") return;
+    if (
+      linkHrefs[activeMenuIndex].url === "/contact" &&
+      hasTransitionAnimationOrigin
+    )
+      return;
     setSubmenuTransitionAnimationOrigin(activeMenuIndex);
   }, [
     activeMenuIndex,
@@ -110,6 +114,7 @@ export const MainMenu = () => {
     viewportDimensions,
     setSubmenuTransitionAnimationOrigin,
     setTransitionAnimationOrigin,
+    hasTransitionAnimationOrigin,
   ]);
 
   const [transitionAnimationClosed, setTransitionAnimationClosed] =
@@ -165,7 +170,7 @@ export const MainMenu = () => {
       debounce((index: number) => {
         hoverMenuItem(index);
         setLastHoveredMenuItem(index);
-      }),
+      }, 10),
     [],
   );
 
@@ -173,7 +178,7 @@ export const MainMenu = () => {
     () =>
       debounce(() => {
         hoverMenuItem(null);
-      }),
+      }, 10),
     [],
   );
 
@@ -182,6 +187,7 @@ export const MainMenu = () => {
       event.preventDefault();
       React.startTransition(() => {
         setTransitionAnimationOrigin(index);
+        setSubmenuTransitionAnimationOrigin(index);
         if (linkHrefs[index].url === "/contact") return;
         setMenuClosing(true);
         closeTransitionAnimation(false);
@@ -190,12 +196,18 @@ export const MainMenu = () => {
         router.push(linkHrefs[index].url);
       }, 500);
     },
-    [closeTransitionAnimation, router, setTransitionAnimationOrigin],
+    [
+      closeTransitionAnimation,
+      router,
+      setTransitionAnimationOrigin,
+      setSubmenuTransitionAnimationOrigin,
+    ],
   );
 
   const handleSubmenuClick = React.useCallback(
     (index: number) => {
       React.startTransition(() => {
+        setTransitionAnimationOrigin(index);
         if (linkHrefs[index].url === "/contact") return;
         setSubmenuTransitionAnimationOrigin(index);
         setMenuClosing(true);
@@ -205,7 +217,12 @@ export const MainMenu = () => {
         router.push(linkHrefs[index].url);
       }, 500);
     },
-    [closeTransitionAnimation, router, setSubmenuTransitionAnimationOrigin],
+    [
+      closeTransitionAnimation,
+      router,
+      setTransitionAnimationOrigin,
+      setSubmenuTransitionAnimationOrigin,
+    ],
   );
 
   return (
