@@ -9,36 +9,45 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { debounce } from "lodash";
 import Link from "next/link";
 
-const linkHrefs = [
+const menuItems = [
   {
     text: "Me",
-    url: "/about/hello",
+    path: "about",
+    link: "/about/hello",
     image: "/menu-item-backgrounds/about.webp",
   },
   {
     text: "Dev Blog",
-    url: "/blogs",
+    path: "blogs",
+    link: "/blogs",
     image: "/menu-item-backgrounds/blogs.webp",
   },
   {
     text: "Projects",
-    url: "/projects",
+    path: "projects",
+    link: "/projects",
     image: "/menu-item-backgrounds/projects.webp",
   },
   {
     text: "Contacts",
-    url: "/contact",
+    path: "contact",
+    link: "/contact",
     image: "/menu-item-backgrounds/contacts.webp",
   },
   {
     text: "GitHub",
-    url: "https://github.com/zehata",
+    link: "https://github.com/zehata",
   },
   {
     text: "LinkedIn",
-    url: "https://www.linkedin.com/in/zehata/",
+    link: "https://www.linkedin.com/in/zehata/",
   },
-];
+] as {
+  text: string;
+  link: string;
+  path?: string;
+  image?: string;
+}[];
 
 export const MainMenu = () => {
   const globalContext = React.useContext(GlobalContext);
@@ -47,7 +56,7 @@ export const MainMenu = () => {
   const pathname = usePathname();
   const path = React.useMemo(() => pathname.split("/")[1], [pathname]);
   const activeMenuIndex = React.useMemo(
-    () => linkHrefs.map((link) => link.url).indexOf(`/${path}`),
+    () => menuItems.map((menuItem) => menuItem.path).indexOf(path),
     [path],
   );
   const menuOpen = React.useMemo(() => path === "", [path]);
@@ -103,7 +112,7 @@ export const MainMenu = () => {
     if (!viewportDimensions || activeMenuIndex < 0) return;
     setTransitionAnimationOrigin(activeMenuIndex);
     if (
-      linkHrefs[activeMenuIndex].url === "/contact" &&
+      menuItems[activeMenuIndex].path === "contact" &&
       hasTransitionAnimationOrigin
     )
       return;
@@ -158,11 +167,11 @@ export const MainMenu = () => {
   const transitionAnimation = React.useRef<HTMLDivElement | null>(null);
 
   const menuRefs = React.useRef<HTMLDivElement[]>(
-    Array.from({ length: linkHrefs.length }),
+    Array.from({ length: menuItems.length }),
   );
 
   const submenuRefs = React.useRef<HTMLDivElement[]>(
-    Array.from({ length: linkHrefs.length }),
+    Array.from({ length: menuItems.length }),
   );
 
   const handlePointerEnter = React.useMemo(
@@ -188,12 +197,12 @@ export const MainMenu = () => {
       React.startTransition(() => {
         setTransitionAnimationOrigin(index);
         setSubmenuTransitionAnimationOrigin(index);
-        if (linkHrefs[index].url === "/contact") return;
+        if (menuItems[index].path === "contact") return;
         setMenuClosing(true);
         closeTransitionAnimation(false);
       });
       setTimeout(() => {
-        router.push(linkHrefs[index].url);
+        router.push(menuItems[index].link);
       }, 500);
     },
     [
@@ -208,13 +217,13 @@ export const MainMenu = () => {
     (index: number) => {
       React.startTransition(() => {
         setTransitionAnimationOrigin(index);
-        if (linkHrefs[index].url === "/contact") return;
+        if (menuItems[index].path === "contact") return;
         setSubmenuTransitionAnimationOrigin(index);
         setMenuClosing(true);
         closeTransitionAnimation(false);
       });
       setTimeout(() => {
-        router.push(linkHrefs[index].url);
+        router.push(menuItems[index].link);
       }, 500);
     },
     [
@@ -261,14 +270,14 @@ export const MainMenu = () => {
       ></div>
       <SubMenu
         activeMenuIndex={activeMenuIndex}
-        linkHrefs={linkHrefs}
+        menuItems={menuItems}
         menuOpen={menuOpen}
         submenuRefs={submenuRefs}
         handleSubmenuClick={handleSubmenuClick}
       />
       <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
         <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:hover:text-white *:relative *:transition-all *:duration-500">
-          {linkHrefs.map((menuItem, index) => (
+          {menuItems.map((menuItem, index) => (
             <div
               key={index}
               ref={(element) => {
@@ -301,7 +310,7 @@ export const MainMenu = () => {
               }}
             >
               <Link
-                href={menuItem.url}
+                href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
               >
                 <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
@@ -317,10 +326,10 @@ export const MainMenu = () => {
                 </div>
                 <div className="relative w-full h-full flex justify-center items-center gap-2 z-2">
                   {menuItem.text}
-                  {menuItem.url[0] != "/" ? (
-                    <SquareArrowOutUpRight width={20} height={20} />
-                  ) : (
+                  {menuItem.path ? (
                     <></>
+                  ) : (
+                    <SquareArrowOutUpRight width={20} height={20} />
                   )}
                 </div>
               </Link>

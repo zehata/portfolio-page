@@ -5,15 +5,16 @@ import Link from "next/link";
 
 export const SubMenu = ({
   menuOpen,
-  linkHrefs,
+  menuItems,
   activeMenuIndex,
   submenuRefs,
   handleSubmenuClick,
 }: {
   menuOpen: boolean;
-  linkHrefs: {
+  menuItems: {
     text: string;
-    url: string;
+    link: string;
+    path?: string;
     image?: string;
   }[];
   activeMenuIndex: number;
@@ -51,7 +52,7 @@ export const SubMenu = ({
       )}
       style={
         {
-          "--mobile-menu-height": `calc(10rem + 3.5rem * ${linkHrefs.length})`,
+          "--mobile-menu-height": `calc(10rem + 3.5rem * ${menuItems.length})`,
         } as CSSProperties
       }
     >
@@ -63,7 +64,7 @@ export const SubMenu = ({
             "w-fit h-full flex flex-col gap-4 xl:gap-0 xl:flex-row items-center ease-in-out duration-250",
           )}
         >
-          {linkHrefs.map((menuItem, index) => (
+          {menuItems.map((menuItem, index) => (
             <div
               key={index}
               ref={(element) => {
@@ -79,7 +80,7 @@ export const SubMenu = ({
               )}
             >
               <Link
-                href={menuItem.url}
+                href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
               >
                 <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
@@ -126,10 +127,10 @@ export const SubMenu = ({
                     }}
                   />
                   {menuItem.text}
-                  {menuItem.url[0] != "/" ? (
-                    <SquareArrowOutUpRight width={16} height={16} />
-                  ) : (
+                  {menuItem.path ? (
                     <></>
+                  ) : (
+                    <SquareArrowOutUpRight width={20} height={20} />
                   )}
                 </div>
               </Link>
