@@ -11,7 +11,10 @@ const ContactLayout = () => {
         <div className="absolute w-full h-[min(75%,25rem)] flex flex-col justify-end items-end">
           <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80"></div>
           <div className="absolute top-0 left-0 w-full h-full border-white border-4 opacity-100 spiral z-1"></div>
-          <div className="relative w-full h-full z-1 p-4 flex flex-col space-y-4 justify-end text-lg">
+          <div
+            id="main-content"
+            className="relative w-full h-full z-1 p-4 flex flex-col space-y-4 justify-end text-lg"
+          >
             <section className="text-right">
               <h2 className="text-xl">{`Email`}</h2>
               <div className="flex justify-end items-center space-x-2">
