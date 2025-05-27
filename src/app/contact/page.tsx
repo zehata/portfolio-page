@@ -14,6 +14,7 @@ const ContactLayout = () => {
           <div
             id="main-content"
             className="relative w-full h-full z-1 p-4 flex flex-col space-y-4 justify-end text-lg"
+            tabIndex={0}
           >
             <section className="text-right">
               <h2 className="text-xl">{`Email`}</h2>
