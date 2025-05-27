@@ -276,7 +276,7 @@ export const MainMenu = () => {
         handleSubmenuClick={handleSubmenuClick}
       />
       <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
-        <div className="*:w-36 *:h-20 *:text-2xl *:relative *:transition-all *:duration-500">
+        <div className="*:w-36 *:h-20 *:text-2xl *:text-black *:hover:text-white *:relative *:transition-all *:duration-500">
           {menuItems.map((menuItem, index) => (
             <div
               key={index}
@@ -290,7 +290,7 @@ export const MainMenu = () => {
                 "relative border-2 border-transparent hover:border-black no-view-transition",
                 {
                   [`selector-prev`]: hoveredMenuItem === index + 1,
-                  [`selector-current text-white`]: hoveredMenuItem === index,
+                  [`selector-current`]: hoveredMenuItem === index,
                   [`selector-next`]: hoveredMenuItem === index - 1,
                   [`z-1`]:
                     lastHoveredMenuItem === index - 1 ||
@@ -312,8 +312,6 @@ export const MainMenu = () => {
               <Link
                 href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
-                onFocus={() => handlePointerEnter(index)}
-                tabIndex={menuOpen ? 0 : -1}
               >
                 <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
                 <div className="absolute w-full h-full overflow-hidden no-view-transition">
