@@ -16,7 +16,10 @@ export const ArticlePage = ({
   }, [articleRequest]);
 
   return (
-    <div className="relative w-full h-full mt-10 p-10 pt-5 article-content overflow-auto">
+    <div
+      id="main-content"
+      className="relative w-full h-full mt-10 p-10 pt-5 article-content overflow-auto"
+    >
       {article ? (
         <h1 className="mb-2 text-xl">{article.title}</h1>
       ) : (
