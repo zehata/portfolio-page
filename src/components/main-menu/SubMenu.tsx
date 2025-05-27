@@ -72,7 +72,7 @@ export const SubMenu = ({
                 submenuRefs.current[index] = element;
               }}
               className={classNames(
-                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 submenu-item",
+                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 focus-within:mx-6 submenu-item",
                 {
                   ["mx-6 active-submenu"]: clickedIndex === index,
                   ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
@@ -82,6 +82,7 @@ export const SubMenu = ({
               <Link
                 href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
+                tabIndex={menuOpen ? -1 : 0}
               >
                 <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
                 {activeMenuIndex === index ? (
