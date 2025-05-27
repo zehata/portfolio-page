@@ -7,6 +7,7 @@ import { useTransitionRouter } from "next-view-transitions";
 import { ArticleType, tables } from "@/lib/ArticleTypes";
 import LoadingAnimation from "./LoadingAnimation";
 import Link from "next/link";
+import Mousetrap from "mousetrap";
 
 export const Sidebar = ({
   articleType,
@@ -27,6 +28,49 @@ export const Sidebar = ({
     () => items && items.length < 10,
     [items],
   );
+
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const focusedListItemIndex = React.useRef<number>(0);
+  const listItemsRef = React.useRef<HTMLAnchorElement[]>([]);
+
+  const focusListItemIndex = React.useCallback((focusIndex: number) => {
+    listItemsRef.current.map((listItem, index) => {
+      listItem.tabIndex = index === focusIndex ? 0 : -1;
+    });
+    listItemsRef.current[focusIndex].focus();
+  }, []);
+
+  const focusPreviousListIndex = React.useCallback(() => {
+    if (!items?.length) return;
+    const index =
+      (items?.length + focusedListItemIndex.current - 1) % items?.length;
+    focusedListItemIndex.current = index;
+    focusListItemIndex(index);
+  }, [items, focusListItemIndex]);
+
+  const focusNextListIndex = React.useCallback(() => {
+    if (!items?.length) return;
+    const index = (focusedListItemIndex.current + 1) % items?.length;
+    focusedListItemIndex.current = index;
+    focusListItemIndex(index);
+  }, [items, focusListItemIndex]);
+
+  React.useEffect(() => {
+    if (!listRef.current) return;
+
+    const sidebarList = listRef.current;
+    Mousetrap(sidebarList).bind("up", focusPreviousListIndex);
+    Mousetrap(sidebarList).bind("down", focusNextListIndex);
+    Mousetrap(sidebarList).bind("left", focusPreviousListIndex);
+    Mousetrap(sidebarList).bind("right", focusNextListIndex);
+
+    return () => {
+      Mousetrap(sidebarList).unbind("up");
+      Mousetrap(sidebarList).unbind("down");
+      Mousetrap(sidebarList).unbind("left");
+      Mousetrap(sidebarList).unbind("right");
+    };
+  }, [focusPreviousListIndex, focusNextListIndex]);
 
   return (
     <div className="relative w-full h-full overflow-auto sidebar">
@@ -62,7 +106,7 @@ export const Sidebar = ({
         style={
           {
             "--sidebar-height": items
-              ? `calc(2rem + ${showComingSoon ? 15 : 0}rem + 4 * ${items.length}rem)`
+              ? `calc(4rem + ${showComingSoon ? 15 : 0}rem + 4 * ${items.length}rem)`
               : "100%",
           } as CSSProperties
         }
@@ -72,13 +116,19 @@ export const Sidebar = ({
             ["-left-full"]: !items,
             ["left-0"]: items,
           })}
+          ref={listRef}
         >
           {items?.map((item, index) => (
             <Link
               key={index}
+              ref={(element) => {
+                if (!element) return;
+                listItemsRef.current[index] = element;
+              }}
               href={`/${tables[articleType]}/${item.id}`}
               onClick={(event) => {
                 event.preventDefault();
+                focusedListItemIndex.current = index;
                 React.startTransition(() => {
                   setClickedId(item.id);
                 });
@@ -86,7 +136,16 @@ export const Sidebar = ({
                   router.push(`/${tables[articleType]}/${item.id}`);
                 }, 250);
               }}
-              className="relative w-full"
+              className={classNames(
+                "relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 focus:h-20 hover:h-20 focus:py-6 hover:py-6 flex items-center bg-gray-100 hover:bg-white duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
+                {
+                  ["-left-5 hover:-left-4 focus:-left-4 active:left-1"]:
+                    item.id != clickedId,
+                  ["left-0 h-20 py-6 clicked bg-white z-2"]:
+                    item.id === clickedId,
+                },
+              )}
+              tabIndex={index ? -1 : 0}
             >
               <SidebarItem
                 index={item.id}
@@ -97,18 +156,20 @@ export const Sidebar = ({
             </Link>
           ))}
           {showComingSoon ? (
-            <div className="pl-10 w-full h-60 flex flex-col justify-center items-center gap-4">
-              <img
-                className="w-20 h-auto"
-                src="/articles/typewriter.svg"
-                alt=""
-              />
-              <p className="text-white">
-                {items?.length
-                  ? `More articles coming soon...`
-                  : `Still working on articles...`}
-              </p>
-            </div>
+            <li>
+              <div className="pl-10 w-full h-60 flex flex-col justify-center items-center gap-4">
+                <img
+                  className="w-20 h-auto"
+                  src="/articles/typewriter.svg"
+                  alt=""
+                />
+                <p className="text-white">
+                  {items?.length
+                    ? `More articles coming soon...`
+                    : `Still working on articles...`}
+                </p>
+              </div>
+            </li>
           ) : (
             <></>
           )}
