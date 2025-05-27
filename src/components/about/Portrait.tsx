@@ -50,7 +50,7 @@ export const DialogPortrait = ({
     >
       <img
         alt=""
-        src={`${portraits[mood].image}/face.png`}
+        src={`${portraits[mood].image}/face.webp`}
         className="absolute w-full bottom-0"
       />
       <div
@@ -64,7 +64,7 @@ export const DialogPortrait = ({
         <img
           alt=""
           className="absolute w-full left-0 bottom-0"
-          src={`${portraits[mood].image}/mouth-closed.png`}
+          src={`${portraits[mood].image}/mouth-closed.webp`}
         />
         <img
           alt=""
@@ -72,7 +72,7 @@ export const DialogPortrait = ({
             ["portrait-mouth-1"]: speaking,
             ["opacity-0"]: !speaking,
           })}
-          src={`${portraits[mood].image}/mouth-1.png`}
+          src={`${portraits[mood].image}/mouth-1.webp`}
         />
         <img
           alt=""
@@ -80,7 +80,7 @@ export const DialogPortrait = ({
             ["portrait-mouth-2"]: speaking,
             ["opacity-0"]: !speaking,
           })}
-          src={`${portraits[mood].image}/mouth-2.png`}
+          src={`${portraits[mood].image}/mouth-2.webp`}
         />
       </div>
       <div
@@ -94,12 +94,12 @@ export const DialogPortrait = ({
         <img
           alt=""
           className="absolute w-full left-0 bottom-0 opacity-25"
-          src={`${portraits[mood].image}/eyes.png`}
+          src={`${portraits[mood].image}/eyes.webp`}
         />
         <img
           alt=""
           className="absolute w-full left-0 bottom-0 eyes-closed"
-          src={`${portraits[mood].image}/eyes-closed.png`}
+          src={`${portraits[mood].image}/eyes-closed.webp`}
         />
       </div>
     </div>
