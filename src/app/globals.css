@@ -629,11 +629,13 @@ body {
   }
 
   .submenu-item:hover .submenu-outline,
+  .submenu-item:focus-within .submenu-outline,
   .active-submenu .submenu-outline {
     transform: matrix3d(1.3,0.045,0,-0.001,-0.045,1.29,0,0.002,0,0,1,0,-6,0,0,1);
   }
 
   .submenu-item:hover .submenu-button,
+  .submenu-item:focus-within .submenu-button,
   .active-submenu .submenu-button {
     transform: matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1);
     z-index: 1;
@@ -645,6 +647,7 @@ body {
   }
 
   .submenu-item:hover .submenu-background,
+  .submenu-item:focus-within .submenu-background,
   .active-submenu .submenu-background {
     background-color: black;
     opacity: 100;
