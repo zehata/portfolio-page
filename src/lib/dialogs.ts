@@ -1,5 +1,4 @@
 export type Dialog = {
-  portrait: string;
   text: string;
   responses: {
     text: string;
@@ -9,7 +8,6 @@ export type Dialog = {
 
 export const dialogs: Record<string, Dialog> = {
   hello: {
-    portrait: "/portrait.png",
     text: "Hello there. May I help you?",
     responses: [
       {
@@ -27,7 +25,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "me-1": {
-    portrait: "/portrait2.png",
     text: "Sure, what do you want to know?",
     responses: [
       {
@@ -49,7 +46,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "me-2": {
-    portrait: "/portrait2.png",
     text: "Sure, what do you want to know?",
     responses: [
       {
@@ -71,7 +67,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "me-3": {
-    portrait: "/portrait2.png",
     text: "Sure, what do you want to know?",
     responses: [
       {
@@ -93,7 +88,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "skills-1": {
-    portrait: "/portrait2.png",
     text: "I have been programming for about 10 years, in several languages. I am most comfortable with TypeScript and Python, since these are the languages used by the companies I have worked in. Most of my work were frontend, and I am familiar with are React and Vue. For backend I am experienced in Node.js. Database solutions I am familiar with are PostgreSQL and Firebase. I have competitive programming experience in C++ and Java as well.",
     responses: [
       {
@@ -111,7 +105,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "skills-2": {
-    portrait: "/portrait2.png",
     text: "I have also written a number of scripts for both school projects and for fun. I used Python with the Mediapipe library to do gait analysis for a school project, C++ for several school projects involving Arduino. I also used PyTorch to demonstrate Monte Carlo photon diffusion simulation to my professor and classmates. I have also used VBA for various tasks during my internship at SingHealth.",
     responses: [
       {
@@ -121,7 +114,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "surprise-pikachu": {
-    portrait: "/portrait2.png",
     text: "Ah yes, sorry. Actually I also do software engineering. In fact, I started programming a long time before university. I took biomedical engineering because I am interested to know how I can apply my programming experience in other fields too. I guess I just like learning?",
     responses: [
       {
@@ -131,7 +123,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "weaknesses-and-strengths": {
-    portrait: "/portrait2.png",
     text: "Which would you like to hear first?",
     responses: [
       {
@@ -145,7 +136,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "weakness-1": {
-    portrait: "/portrait2.png",
     text: "I spend a lot of more time on doing the same quantity of work than other people since I am quite critical of my own work. Even when things work correctly, I would spend more time to polish it up, for both users and my teammates. I am less critical of other people's work though, and I prefer to learn from all the things that they are doing better than me, but really low-effort shoddy products would get me worked up.",
     responses: [
       {
@@ -159,7 +149,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "weakness-2": {
-    portrait: "/portrait2.png",
     text: "I can be quite careless at times, particularly when I am swamped with tasks. To avoid this I would use automated testing tools like regviz to ensure that I did not introduce any unintended changes. These mistakes stick with me forever and I make sure that they never happen again.",
     responses: [
       {
@@ -173,7 +162,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "weakness-3": {
-    portrait: "/portrait2.png",
     text: "I really hate it when there's nothing that I can work on, like when I have finished my work and is waiting for my code to be reviewed, and so I tend to bite off more than I can chew. I try to be as helpful as possible, so when there's nothing that I can worrk at the moment I want to to take on more things, and that can lead to me having to much to do at once.",
     responses: [
       {
@@ -183,12 +171,10 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "weakness-4": {
-    portrait: "/portrait2.png",
     text: "Bullets. I am weak to bullets. Seriously, why do you have so little confidence in me that you would change the url manually to try to get to more? Besides, are you even considering a person if everything you can see in them are flaws?",
     responses: [],
   },
   "strength-1": {
-    portrait: "/portrait2.png",
     text: "Some of my friends say that I am very hardworking, but it's actually because I become genuinely interested in things I do. I take pride in my own work. I'm constantly aware of the genuine positive impact that my work can have on other people. I often spend a lot of time outside work thinking about my tasks, about the entire project in general and thinking about how I can improve the experience for users.",
     responses: [
       {
@@ -202,7 +188,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "strength-2": {
-    portrait: "/portrait2.png",
     text: "I am a very resourceful and flexible person. It means that I am good at working with restrictions, and I really enjoy challenges, since they force me to come up with innovative solutions to work around problems. However, I don't compromise when it comes to the experience of the users.",
     responses: [
       {
@@ -216,7 +201,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "strength-3": {
-    portrait: "/portrait2.png",
     text: "I am a team player. There are often times chores that need to be done, that which will not look very flashy on my resume, but someone has to do them so I will just volunteer to take one for the team.",
     responses: [
       {
@@ -230,7 +214,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "projects-and-experience": {
-    portrait: "/portrait2.png",
     text: "I have written a number of projects and about 3.5 years of internship experience working in technical roles. You can read the briefs on these projects on this site, and you can also find some of my thoughts over at dev blogs.",
     responses: [
       {
@@ -244,7 +227,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "3-to-5-words": {
-    portrait: "/portrait2.png",
     text: "Analytic, resourceful, curious, tactful",
     responses: [
       {
@@ -254,7 +236,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   contact: {
-    portrait: "/portrait2.png",
     text: "You can visit the contact page to see the different ways you can contact me.",
     responses: [
       {
@@ -268,7 +249,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "stressful-situations": {
-    portrait: "/portrait2.png",
     text: "Stress gives me adrenaline. When there is a critical issue or a deadline, I become hyper focused on the task, and I would work forget the time, and eating, etc. I would prefer otherwise though, it is not exactly healthy.",
     responses: [
       {
@@ -278,7 +258,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "alone-or-team": {
-    portrait: "/portrait2.png",
     text: "In a team. Even when I am working on my own task I quite enjoy the company and the healthy peer pressure to keep me focused.",
     responses: [
       {
@@ -288,7 +267,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "in-5-years": {
-    portrait: "/portrait2.png",
     text: "I am planning to save up my income for postgraduate education, if possible I would like to pursue a master's degree in 5 years.",
     responses: [
       {
@@ -298,7 +276,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "singaporean-or-pr": {
-    portrait: "/portrait2.png",
     text: "I have been living in Singapore for about 15 years. I am exempted from minimum Employment Pass wages requirement by MOM, having studied under MOE Tuition Grant and thus required to work in Singapore.",
     responses: [
       {
@@ -308,7 +285,6 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "ep-letter-deadline": {
-    portrait: "/portrait2.png",
     text: "The catch is that you have to make up your mind by September. If I am hired before then, you can be sure that my EP application will be successful without salary restrictions, but because MOM is only recognizing this letter until then, you will have to offer me a significantly higher salary to sponsor my Employment Pass.",
     responses: [
       {
