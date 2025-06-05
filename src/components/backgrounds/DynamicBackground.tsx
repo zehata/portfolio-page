@@ -10,17 +10,17 @@ const backgrounds: Record<
 > = {
   about: {
     align: "bottom",
-    base: "/dynamic-backgrounds/base/about-background.webp",
+    base: "https://images.zehata.dev/public/dynamic-backgrounds/base/about-background.webp",
   },
   blogs: {
     align: "top left",
-    base: "/dynamic-backgrounds/base/article-background.webp",
-    label: "/dynamic-backgrounds/label/devblog.svg",
+    base: "https://images.zehata.dev/public/dynamic-backgrounds/base/article-background.webp",
+    label: "https://images.zehata.dev/public/dynamic-backgrounds/label/devblog.svg",
   },
   projects: {
     align: "top left",
-    base: "/dynamic-backgrounds/base/article-background.webp",
-    label: "/dynamic-backgrounds/label/projects.svg",
+    base: "https://images.zehata.dev/public/dynamic-backgrounds/base/article-background.webp",
+    label: "https://images.zehata.dev/public/dynamic-backgrounds/label/projects.svg",
   },
 } as const;
 
