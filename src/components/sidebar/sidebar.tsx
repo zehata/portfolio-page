@@ -160,7 +160,7 @@ export const Sidebar = ({
               <div className="pl-10 w-full h-60 flex flex-col justify-center items-center gap-4">
                 <img
                   className="w-20 h-auto"
-                  src="/articles/typewriter.svg"
+                  src="https://images.zehata.dev/public/articles/typewriter.svg"
                   alt=""
                 />
                 <p className="text-white">
