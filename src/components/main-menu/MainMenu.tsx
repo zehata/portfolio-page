@@ -26,13 +26,15 @@ const menuItems = [
     text: "Projects",
     path: "projects",
     link: "/projects",
-    image: "https://images.zehata.dev/public/menu-item-backgrounds/projects.webp",
+    image:
+      "https://images.zehata.dev/public/menu-item-backgrounds/projects.webp",
   },
   {
     text: "Contacts",
     path: "contact",
     link: "/contact",
-    image: "https://images.zehata.dev/public/menu-item-backgrounds/contacts.webp",
+    image:
+      "https://images.zehata.dev/public/menu-item-backgrounds/contacts.webp",
   },
   {
     text: "GitHub",
