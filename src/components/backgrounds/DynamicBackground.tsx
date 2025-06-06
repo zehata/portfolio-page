@@ -15,12 +15,14 @@ const backgrounds: Record<
   blogs: {
     align: "top left",
     base: "https://images.zehata.dev/public/dynamic-backgrounds/base/article-background.webp",
-    label: "https://images.zehata.dev/public/dynamic-backgrounds/label/devblog.svg",
+    label:
+      "https://images.zehata.dev/public/dynamic-backgrounds/label/devblog.svg",
   },
   projects: {
     align: "top left",
     base: "https://images.zehata.dev/public/dynamic-backgrounds/base/article-background.webp",
-    label: "https://images.zehata.dev/public/dynamic-backgrounds/label/projects.svg",
+    label:
+      "https://images.zehata.dev/public/dynamic-backgrounds/label/projects.svg",
   },
 } as const;
 
