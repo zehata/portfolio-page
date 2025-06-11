@@ -56,7 +56,7 @@ export const SubMenu = ({
         } as CSSProperties
       }
     >
-      <div className="absolute left-1 xl:left-0 -top-5 xl:top-0 w-full h-full bg-white origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
+      <div className="absolute left-1 xl:left-0 -top-5 xl:top-0 w-full h-full bg-background origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
       <div className="absolute -left-5 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+2rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
       <div className="absolute xl:w-[calc(80vw-10rem)] xl:h-14 flex justify-center">
         <div
@@ -89,7 +89,7 @@ export const SubMenu = ({
                   <div className="absolute w-full h-full submenu-indicator z-2">
                     <div
                       className={classNames(
-                        "absolute w-full h-full flex justify-center items-center ease-in-out duration-250 text-white",
+                        "absolute w-full h-full flex justify-center items-center ease-in-out duration-250 text-white border-2 border-foreground",
                         {
                           ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
                             clickedIndex === index,
@@ -112,7 +112,7 @@ export const SubMenu = ({
                 )}
                 <div
                   className={classNames(
-                    "relative w-full h-full flex justify-center items-center gap-1 border-black bg-white border-2 origin-center duration-250 submenu-button",
+                    "relative w-full h-full flex justify-center items-center gap-1 border-foreground bg-background border-2 origin-center duration-250 submenu-button",
                     {
                       ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
                         clickedIndex === index,

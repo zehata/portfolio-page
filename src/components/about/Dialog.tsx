@@ -69,7 +69,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
             onClick={() => setChangingQuestion(true)}
             key={index}
             className={classNames(
-              `relative bg-white -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-250 left-0 hover:-left-6`,
+              `relative bg-background -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-250 left-0 hover:-left-6`,
             )}
             style={
               {

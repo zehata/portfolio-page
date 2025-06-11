@@ -9,7 +9,7 @@ const ContactLayout = () => {
       <div className="absolute w-full h-full left-[-34vw] top-0 dynamic-background"></div>
       <div className="fixed top-[calc(50vh-10rem)] right-[calc(max(60vw/3,960vh/27)-min(30vw,12rem))] w-[min(60vw,24rem)] h-[30rem] -z-2 contact-open contact">
         <div className="absolute w-full h-[min(75%,25rem)] flex flex-col justify-end items-end">
-          <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-background opacity-80"></div>
           <div className="absolute top-0 left-0 w-full h-full border-white border-4 opacity-100 spiral z-1"></div>
           <div
             id="main-content"

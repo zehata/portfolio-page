@@ -244,7 +244,7 @@ export const MainMenu = () => {
           { ["left-[calc(-10vw-15rem)]"]: menuClosing || !menuOpen },
         )}
       >
-        <div className="w-full h-full bg-white opacity-75"></div>
+        <div className="w-full h-full bg-background opacity-75"></div>
       </div>
       <div
         ref={transitionAnimation}
@@ -289,7 +289,7 @@ export const MainMenu = () => {
               onPointerEnter={() => handlePointerEnter(index)}
               onPointerLeave={() => handlePointerLeave()}
               className={classNames(
-                "relative border-2 border-transparent hover:border-black no-view-transition",
+                "relative border-2 border-transparent hover:border-foreground no-view-transition",
                 {
                   [`selector-prev`]: hoveredMenuItem === index + 1,
                   [`selector-current text-white`]: hoveredMenuItem === index,
@@ -317,7 +317,7 @@ export const MainMenu = () => {
                 onFocus={() => handlePointerEnter(index)}
                 tabIndex={menuOpen ? 0 : -1}
               >
-                <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black"></div>
+                <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black border border-foreground"></div>
                 <div className="absolute w-full h-full overflow-hidden no-view-transition">
                   <div
                     className="w-36 h-20 transition-all inner-box"
