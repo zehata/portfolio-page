@@ -137,11 +137,11 @@ export const Sidebar = ({
                 }, 250);
               }}
               className={classNames(
-                "relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 focus:h-20 hover:h-20 focus:py-6 hover:py-6 flex items-center bg-gray-100 hover:bg-white duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
+                "relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 focus:h-20 hover:h-20 focus:py-6 hover:py-6 flex items-center bg-background hover:bg-(--focus-background) duration-250 ease-in-out sidebar-item shadow-center overflow-hidden",
                 {
                   ["-left-5 hover:-left-4 focus:-left-4 active:left-1"]:
                     item.id != clickedId,
-                  ["left-0 h-20 py-6 clicked bg-white z-2"]:
+                  ["left-0 h-20 py-6 clicked bg-(--focus-background) z-2"]:
                     item.id === clickedId,
                 },
               )}

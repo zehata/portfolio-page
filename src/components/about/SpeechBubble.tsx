@@ -68,7 +68,7 @@ const SpeechBubble = ({
           }}
         ></div>
         <div
-          className="absolute w-[200px] h-[200px] bg-white -z-1"
+          className="absolute w-[200px] h-[200px] bg-background -z-1"
           style={{
             transform: shouldExpand
               ? "matrix3d(0.98,0.0349,0,-0.0012,-0.0349,0.98,0,0.0004,0,0,1,0,2,0,0,1)"
