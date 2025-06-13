@@ -53,7 +53,7 @@ const menuItems = [
 
 export const MainMenu = () => {
   const globalContext = React.useContext(GlobalContext);
-  const viewportDimensions = globalContext?.state.viewportDimensions;
+  const viewportDimensions = globalContext?.viewportDimensions;
 
   const pathname = usePathname();
   const path = React.useMemo(() => pathname.split("/")[1], [pathname]);
