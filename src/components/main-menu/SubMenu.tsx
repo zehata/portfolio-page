@@ -2,6 +2,8 @@ import classNames from "classnames";
 import React, { CSSProperties } from "react";
 import { Menu, SquareArrowOutUpRight, X } from "lucide-react";
 import Link from "next/link";
+import ThemeSwitch, { Theme } from "../common/ThemeSwitch";
+import GlobalContext from "../context/GlobalContext";
 
 export const SubMenu = ({
   menuOpen,
@@ -37,6 +39,17 @@ export const SubMenu = ({
     },
     [handleSubmenuClick],
   );
+
+  const nextTheme = React.useCallback((theme: Theme) => {
+    if (theme === "auto") return "dark";
+    if (theme === "dark") return "light";
+    return "auto";
+  }, []);
+
+  const themeState = React.useContext(GlobalContext)?.themeState;
+  if (!themeState) return <></>;
+  const { theme, setTheme } = themeState;
+
   return (
     <div
       className={classNames(
@@ -164,6 +177,11 @@ export const SubMenu = ({
           })}
         />
       </div>
+      <ThemeSwitch
+        onClick={() => setTheme(nextTheme(theme))}
+        on={theme}
+        className="absolute w-24 bottom-4 right-10"
+      />
     </div>
   );
 };
