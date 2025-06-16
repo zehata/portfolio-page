@@ -181,6 +181,8 @@ export const SubMenu = ({
         onClick={() => setTheme(nextTheme(theme))}
         on={theme}
         className="absolute w-24 bottom-10 lg:bottom-4 right-10"
+        toggle={() => setTheme(nextTheme(theme))}
+        tabIndex={0}
       />
     </div>
   );
