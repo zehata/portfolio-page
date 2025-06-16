@@ -1,25 +1,42 @@
+import React from "react";
 import classNames from "classnames";
-import { HTMLAttributes } from "react";
+import Mousetrap from "mousetrap";
 
 export type Theme = "auto" | "light" | "dark";
 
 export const ThemeSwitch = ({
   className,
   on = "auto",
+  toggle,
   ...props
 }: {
   className?: string;
   on?: Theme;
-} & HTMLAttributes<HTMLDivElement>) => {
+  toggle?: () => void;
+} & React.HTMLAttributes<HTMLButtonElement>) => {
+  const switchElement = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    if (!switchElement.current) return;
+
+    const targetElement = switchElement.current;
+
+    if (toggle) {
+      Mousetrap(targetElement).bind("space", toggle);
+      Mousetrap(targetElement).bind("enter", toggle);
+    }
+
+    return () => {
+      Mousetrap(targetElement).unbind("space");
+      Mousetrap(targetElement).unbind("enter");
+    };
+  }, [switchElement, toggle]);
+
   return (
-    <div
+    <button
+      ref={switchElement}
       className={classNames(
         "aspect-[3] rounded-full duration-500 overflow-hidden inset-shadow-sm inset-shadow-black/50 cursor-pointer",
-        {
-          // ["bg-blue-400"]: on === "light",
-          // ["bg-slate-700"]: on === "auto",
-          // ["bg-slate-900"]: on === "dark",
-        },
         className,
       )}
       {...props}
@@ -129,7 +146,7 @@ export const ThemeSwitch = ({
           )}
         >{`AUTO`}</div>
       </div>
-    </div>
+    </button>
   );
 };
 
