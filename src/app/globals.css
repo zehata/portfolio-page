@@ -21,9 +21,24 @@
   }
 }
 
-body {
+.theme {
   background: var(--background);
   color: var(--foreground);
+}
+
+.theme.light {
+  --background: var(--color-neutral-200);
+  --foreground: var(--color-neutral-800);
+  --focus-background: var(--color-neutral-300);
+}
+
+.theme.dark {
+  --background: var(--color-neutral-800);
+  --foreground: var(--color-neutral-200);
+  --focus-background: var(--color-neutral-900);
+}
+
+body {
   font-family: Arial, Helvetica, sans-serif;
   --transition-animation-origin-x: -20;
   --transition-animation-origin-y: -20;
@@ -660,6 +675,11 @@ body {
           radial-gradient(ellipse 100% 20% at calc(750%/15) 52.5%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat,
           radial-gradient(ellipse 10% 30% at calc(749%/15) 52.9%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat;
     /* animation: 5s ease flickering infinite; */
+  }
+
+  .star {
+    aspect-ratio: 1;
+    clip-path: polygon(100% 50%,66.18% 61.76%,65.45% 97.55%,43.82% 69.02%,9.55% 79.39%,30% 50%,9.55% 20.61%,43.82% 30.98%,65.45% 2.45%,66.18% 38.24%);
   }
   
   .sidebar {

@@ -1,24 +1,43 @@
 "use client";
 
-import { debounce } from "lodash";
+import { debounce, isNull } from "lodash";
 import React, { createContext } from "react";
+import { Theme } from "../common/ThemeSwitch";
+import classNames from "classnames";
 
 interface GlobalState {
+  themeState: {
+    theme: Theme;
+    setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+  };
   viewportDimensions: {
     width: number;
     height: number;
   } | null;
 }
 
-export const GlobalContext = createContext<{
-  state: GlobalState;
-} | null>(null);
+export const GlobalContext = createContext<GlobalState | null>(null);
 
 export const GlobalContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
+  const [theme, setTheme] = React.useState<Theme>("auto");
+
+  React.useEffect(() => {
+    const localStorageDarkMode = localStorage.getItem("theme");
+    if (isNull(localStorageDarkMode)) {
+      setTheme("auto");
+      return;
+    }
+    setTheme(JSON.parse(localStorageDarkMode));
+  }, [setTheme]);
+
+  React.useEffect(() => {
+    localStorage.setItem("dark-mode", JSON.stringify(theme));
+  }, [theme]);
+
   const [viewportDimensions, setViewportDimensions] = React.useState<{
     width: number;
     height: number;
@@ -46,12 +65,14 @@ export const GlobalContextProvider = ({
   return (
     <GlobalContext.Provider
       value={{
-        state: {
-          viewportDimensions,
+        themeState: {
+          theme,
+          setTheme,
         },
+        viewportDimensions,
       }}
     >
-      {children}
+      <div className={classNames("theme", theme)}>{children}</div>
     </GlobalContext.Provider>
   );
 };

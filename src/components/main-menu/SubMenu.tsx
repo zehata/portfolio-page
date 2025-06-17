@@ -2,6 +2,8 @@ import classNames from "classnames";
 import React, { CSSProperties } from "react";
 import { Menu, SquareArrowOutUpRight, X } from "lucide-react";
 import Link from "next/link";
+import ThemeSwitch, { Theme } from "../common/ThemeSwitch";
+import GlobalContext from "../context/GlobalContext";
 
 export const SubMenu = ({
   menuOpen,
@@ -37,6 +39,17 @@ export const SubMenu = ({
     },
     [handleSubmenuClick],
   );
+
+  const nextTheme = React.useCallback((theme: Theme) => {
+    if (theme === "auto") return "dark";
+    if (theme === "dark") return "light";
+    return "auto";
+  }, []);
+
+  const themeState = React.useContext(GlobalContext)?.themeState;
+  if (!themeState) return <></>;
+  const { theme, setTheme } = themeState;
+
   return (
     <div
       className={classNames(
@@ -52,12 +65,12 @@ export const SubMenu = ({
       )}
       style={
         {
-          "--mobile-menu-height": `calc(10rem + 3.5rem * ${menuItems.length})`,
+          "--mobile-menu-height": `calc(16rem + 3.5rem * ${menuItems.length})`,
         } as CSSProperties
       }
     >
-      <div className="absolute left-1 xl:left-0 -top-5 xl:top-0 w-full h-full bg-background origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
-      <div className="absolute -left-5 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+2rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
+      <div className="absolute left-4 xl:left-0 -top-6 xl:top-0 w-full h-full bg-background origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
+      <div className="absolute -left-6 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+1rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
       <div className="absolute xl:w-[calc(80vw-10rem)] xl:h-14 flex justify-center">
         <div
           className={classNames(
@@ -141,7 +154,7 @@ export const SubMenu = ({
       </div>
       <div
         className={classNames(
-          "absolute right-1 w-24 h-24 z-2 flex justify-center items-center duration-250",
+          "absolute right-0 w-24 h-24 z-2 flex justify-center items-center duration-250 cursor-pointer",
           {
             ["top-0"]: mobileMenuOpen,
             ["-top-5"]: !mobileMenuOpen,
@@ -164,6 +177,13 @@ export const SubMenu = ({
           })}
         />
       </div>
+      <ThemeSwitch
+        onClick={() => setTheme(nextTheme(theme))}
+        on={theme}
+        className="absolute w-24 bottom-10 lg:bottom-4 right-10"
+        toggle={() => setTheme(nextTheme(theme))}
+        tabIndex={0}
+      />
     </div>
   );
 };
