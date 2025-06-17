@@ -2,7 +2,7 @@
 
 import { article } from "@/zod-objects/article";
 import { DatabasePool, sql } from "slonik";
-import { ArticleType, tables } from "@/lib/ArticleTypes";
+import { ArticleType, tables } from "@/lib/types";
 
 export const queryArticle = (
   pool: DatabasePool,

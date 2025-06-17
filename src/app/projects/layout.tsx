@@ -1,7 +1,7 @@
 "use client";
 import Sidebar from "@/components/sidebar/sidebar";
 import getAllArticles from "@/lib/getAllArticles";
-import { ArticleType } from "@/lib/ArticleTypes";
+import { ArticleType } from "@/lib/types";
 import { usePathname } from "next/navigation";
 import React from "react";
 import isDatabaseActive from "@/lib/isDatabaseActive";
