@@ -1,9 +1,11 @@
 import Papers from "@/components/article/Papers";
 import getArticle from "@/lib/getArticle";
-import { ArticleType } from "@/lib/ArticleTypes";
+import { ArticleType } from "@/lib/types";
 import getAllArticles from "@/lib/getAllArticles";
 import React from "react";
 import ArticlePage from "@/components/article/ArticlePage";
+import { isValidUuid } from "@/lib/isValidUuid";
+import getArticleBySlug from "@/lib/getArticleBySlug";
 
 export const generateStaticParams = async () => {
   return (await getAllArticles(ArticleType.Blog)).map((blog) => {
@@ -18,7 +20,9 @@ const BlogPage = async ({
     id: string;
   }>;
 }) => {
-  const articleRequest = getArticle(ArticleType.Blog, (await params).id);
+  const articleRequest = isValidUuid((await params).id)
+    ? getArticle(ArticleType.Blog, (await params).id)
+    : getArticleBySlug(ArticleType.Blog, (await params).id);
 
   return (
     <div className="absolute lg:relative lg:pl-8 flex-shrink-0 w-full h-full lg:w-2/3 blogid z-3">

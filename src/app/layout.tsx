@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
+        <body className="fixed w-screen h-screen">
           <GlobalContextProvider>
             <Link
               className="fixed top-0 left-0 z-3 p-4 m-4 bg-background rounded-full font-bold border-4 text-2xl opacity-0 focus-within:opacity-100"

@@ -18,7 +18,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
   }, [id]);
 
   const globalContext = React.useContext(GlobalContext);
-  const windowWidth = globalContext?.state.viewportDimensions?.width ?? null;
+  const windowWidth = globalContext?.viewportDimensions?.width ?? null;
 
   const [showResponses, setShowResponses] = React.useState<boolean>(false);
   const [currentQuestion, setCurrentQuestion] = React.useState<Dialog | null>(

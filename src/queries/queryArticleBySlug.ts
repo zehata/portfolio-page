@@ -4,15 +4,15 @@ import { article } from "@/zod-objects/article";
 import { DatabasePool, sql } from "slonik";
 import { ArticleType, tables } from "@/lib/types";
 
-export const queryArticle = (
+export const queryArticleBySlug = (
   pool: DatabasePool,
   articleType: ArticleType,
-  id: string,
+  slug: string,
 ) =>
   pool.one(sql.type(article)`
-    SELECT title, created, modified, content
+    SELECT id, title, created, modified, content
     FROM ${sql.identifier([tables[articleType]])}
-    WHERE id=${sql.uuid(id)};
+    WHERE slug=${slug};
   `);
 
-export default queryArticle;
+export default queryArticleBySlug;
