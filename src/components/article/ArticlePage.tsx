@@ -12,8 +12,11 @@ import {
   FastForward,
   Lightbulb,
   Pause,
+  PawPrint,
   Rocket,
+  Share2,
 } from "lucide-react";
+import SimpleButton from "../common/Button";
 
 const getIcon = (icon?: StampIcon) => {
   switch (icon) {
@@ -33,6 +36,8 @@ const getIcon = (icon?: StampIcon) => {
       return Pause;
     case "Rocket":
       return Rocket;
+    case "PawPrint":
+      return PawPrint;
   }
   return;
 };
@@ -46,6 +51,11 @@ export const ArticlePage = ({
   React.useEffect(() => {
     articleRequest.then(setArticle);
   }, [articleRequest]);
+
+  const shareURL = React.useMemo(() => {
+    const urlWithoutId = window.location.href.split("/").slice(0, -1).join("/");
+    return `${urlWithoutId}/${article?.id}`;
+  }, [article]);
 
   return (
     <div
@@ -106,6 +116,21 @@ export const ArticlePage = ({
         </div>
       ) : (
         <div className="mb-4 w-1/4 h-4 rounded-full skeleton" />
+      )}
+      {article ? (
+        <SimpleButton
+          onClick={() =>
+            navigator.share({
+              title: article.title,
+              text: `${article.content.substring(0, 140)}...`,
+              url: shareURL,
+            })
+          }
+        >
+          <Share2 />
+        </SimpleButton>
+      ) : (
+        <></>
       )}
       {article ? (
         <Markdown>{article.content}</Markdown>
