@@ -2,40 +2,8 @@
 
 import Markdown from "react-markdown";
 import React from "react";
-import { Article, StampIcon } from "@/lib/types";
+import { Article } from "@/lib/types";
 import getFriendlyDatetime from "@/lib/getFriendlyDatetime";
-import {
-  BugPlay,
-  Check,
-  Construction,
-  DraftingCompass,
-  FastForward,
-  Lightbulb,
-  Pause,
-  Rocket,
-} from "lucide-react";
-
-const getIcon = (icon?: StampIcon) => {
-  switch (icon) {
-    case "BugPlay":
-      return BugPlay;
-    case "Check":
-      return Check;
-    case "Construction":
-      return Construction;
-    case "DraftingCompass":
-      return DraftingCompass;
-    case "FastForward":
-      return FastForward;
-    case "Lightbulb":
-      return Lightbulb;
-    case "Pause":
-      return Pause;
-    case "Rocket":
-      return Rocket;
-  }
-  return;
-};
 
 export const ArticlePage = ({
   articleRequest,
@@ -52,42 +20,6 @@ export const ArticlePage = ({
       id="main-content"
       className="relative w-full h-full mt-10 p-10 pt-5 article-content overflow-auto"
     >
-      <div className="absolute flex gap-4 right-20">
-        {article ? (
-          Object.entries(article.stamps).map(([id, stamp]) => {
-            const arbitraryAngle = (id.charCodeAt(1) % 4) - 2;
-            const stampAngle = (arbitraryAngle ? arbitraryAngle : 2) * 2;
-
-            const Icon = getIcon(stamp.icon);
-
-            return (
-              <div
-                key={id}
-                className="relative flex origin-[0%_100%] text-xl font-[Impact] "
-                style={{
-                  color: stamp.color,
-                  borderColor: stamp.color,
-                  rotate: `${stampAngle}deg`,
-                }}
-              >
-                <div className="flex flex-col w-fit p-1 gap-1 border-inherit border-4 text-[30px] leading-[24px] uppercase">
-                  <div>{stamp.label}</div>
-                  <div>{stamp.value}</div>
-                </div>
-                {Icon ? (
-                  <div className="flex items-center p-1 border-inherit border-4 border-l-0">
-                    <Icon strokeWidth="4px" className="text-inherit" />
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </div>
       {article ? (
         <h1 className="mb-2 text-xl">{article.title}</h1>
       ) : (

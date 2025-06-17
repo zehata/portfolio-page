@@ -1,6 +1,6 @@
 import Papers from "@/components/article/Papers";
 import getArticle from "@/lib/getArticle";
-import { ArticleType } from "@/lib/types";
+import { ArticleType } from "@/lib/ArticleTypes";
 import getAllArticles from "@/lib/getAllArticles";
 import React from "react";
 import ArticlePage from "@/components/article/ArticlePage";
