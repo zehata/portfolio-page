@@ -1,0 +1,19 @@
+name: Master Branch Merging Protection
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  run-linters:
+    name: Check that branch is dev
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        if: github.head_ref != 'dev'
+        run: |
+          echo "Only merging from dev is allowed."
+          exit 1
