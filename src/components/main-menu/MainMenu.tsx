@@ -193,6 +193,13 @@ export const MainMenu = () => {
     [],
   );
 
+  const closeMenuOnBackNavigation = React.useCallback(() => {
+    window.addEventListener("pageshow", () => {
+      setMenuClosing(false);
+      closeTransitionAnimation(true);
+    });
+  }, [closeTransitionAnimation]);
+
   const handleClick = React.useCallback(
     (event: React.MouseEvent, index: number) => {
       event.preventDefault();
@@ -204,6 +211,7 @@ export const MainMenu = () => {
         closeTransitionAnimation(false);
       });
       setTimeout(() => {
+        if (!menuItems[index].path) closeMenuOnBackNavigation();
         router.push(menuItems[index].link);
       }, 500);
     },
@@ -212,6 +220,7 @@ export const MainMenu = () => {
       router,
       setTransitionAnimationOrigin,
       setSubmenuTransitionAnimationOrigin,
+      closeMenuOnBackNavigation,
     ],
   );
 
