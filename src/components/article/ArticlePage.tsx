@@ -52,7 +52,7 @@ export const ArticlePage = ({
     articleRequest.then(setArticle);
   }, [articleRequest]);
 
-  const shareURL = React.useMemo(() => {
+  const shareURL = React.useCallback(() => {
     const urlWithoutId = window.location.href.split("/").slice(0, -1).join("/");
     return `${urlWithoutId}/${article?.id}`;
   }, [article]);
@@ -123,7 +123,7 @@ export const ArticlePage = ({
             navigator.share({
               title: article.title,
               text: `${article.content.substring(0, 140)}...`,
-              url: shareURL,
+              url: shareURL(),
             })
           }
         >
