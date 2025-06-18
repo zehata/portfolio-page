@@ -29,7 +29,7 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
   const [serverStarting, setServerStarting] = React.useState<boolean>(false);
 
   return (
-    <>
+    <div className="bg-black">
       <DynamicBackground name="projects" />
       <div className="absolute top-50 w-full h-[calc(100vh-12.5rem)] z-1 flex flex-row">
         <Sidebar
@@ -40,7 +40,7 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
         />
         {children}
       </div>
-    </>
+    </div>
   );
 };
 
