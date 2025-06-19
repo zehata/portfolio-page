@@ -35,7 +35,7 @@ export const GlobalContextProvider = ({
   }, [setTheme]);
 
   React.useEffect(() => {
-    localStorage.setItem("dark-mode", JSON.stringify(theme));
+    localStorage.setItem("theme", JSON.stringify(theme));
   }, [theme]);
 
   const [viewportDimensions, setViewportDimensions] = React.useState<{
