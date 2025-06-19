@@ -76,24 +76,15 @@ export const Sidebar = ({
     <div className="relative w-full h-full overflow-auto sidebar">
       <div
         className={classNames(
-          "absolute top-0 left-0 pr-5 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250",
+          "absolute top-0 left-0 pl-5 pr-5 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250",
           {
             ["opacity-0"]: items,
             ["animate-[250ms_ease_fade-in]"]: !items,
           },
         )}
       >
-        {serverStarting ? (
-          <>
-            <LoadingAnimation />
-            {`Starting Database`}
-          </>
-        ) : (
-          <>
-            <LoadingAnimation />
-            {`Loading`}
-          </>
-        )}
+        <LoadingAnimation />
+        {serverStarting ? `Starting Database` : `Loading`}
       </div>
       <div
         className={classNames(
