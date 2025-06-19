@@ -298,7 +298,7 @@ export const MainMenu = () => {
               onPointerEnter={() => handlePointerEnter(index)}
               onPointerLeave={() => handlePointerLeave()}
               className={classNames(
-                "relative border-2 border-transparent hover:border-foreground no-view-transition",
+                "relative hover:border-foreground active:duration-250 active:scale-90 no-view-transition",
                 {
                   [`selector-prev`]: hoveredMenuItem === index + 1,
                   [`selector-current text-white`]: hoveredMenuItem === index,
@@ -327,15 +327,24 @@ export const MainMenu = () => {
                 tabIndex={menuOpen ? 0 : -1}
               >
                 <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black border border-foreground"></div>
-                <div className="absolute w-full h-full overflow-hidden no-view-transition">
-                  <div
-                    className="w-36 h-20 transition-all inner-box"
-                    style={{
-                      backgroundImage: menuItem.image
-                        ? `url('${menuItem.image}')`
-                        : "",
-                    }}
-                  />
+                <div
+                  className={classNames(
+                    "absolute w-full h-full overflow-hidden transition-all duration-250 no-view-transition",
+                    {
+                      ["border"]: index === hoveredMenuItem,
+                    },
+                  )}
+                >
+                  <div className="w-36 h-20 transition-all border inner-box">
+                    <div
+                      className="w-full h-full brightness-50"
+                      style={{
+                        backgroundImage: menuItem.image
+                          ? `url('${menuItem.image}')`
+                          : "",
+                      }}
+                    ></div>
+                  </div>
                 </div>
                 <div className="relative w-full h-full flex justify-center items-center gap-2 z-2">
                   {menuItem.text}

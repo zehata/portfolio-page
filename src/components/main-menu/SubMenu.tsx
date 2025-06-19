@@ -23,8 +23,11 @@ export const SubMenu = ({
   submenuRefs: React.RefObject<HTMLDivElement[]>;
   handleSubmenuClick: (index: number) => void;
 }) => {
+  const [pointerHovering, setPointerHovering] = React.useState<boolean>(false);
+
   const [clickedIndex, setClickedIndex] = React.useState<number>(-1);
   React.useEffect(() => setClickedIndex(activeMenuIndex), [activeMenuIndex]);
+
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState<boolean>(false);
   React.useEffect(() => {
     if (!menuOpen) return;
@@ -84,9 +87,12 @@ export const SubMenu = ({
                 if (!element) return;
                 submenuRefs.current[index] = element;
               }}
+              onPointerEnter={() => setPointerHovering(true)}
+              onPointerLeave={() => setPointerHovering(false)}
               className={classNames(
-                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 focus-within:mx-6 submenu-item",
+                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 submenu-item active:scale-90",
                 {
+                  ["focus-within:mx-6 keyboard-focus"]: !pointerHovering,
                   ["mx-6 active-submenu"]: clickedIndex === index,
                   ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
                 },
@@ -98,31 +104,6 @@ export const SubMenu = ({
                 tabIndex={menuOpen ? -1 : 0}
               >
                 <div className="absolute w-full h-full bg-black duration-250 submenu-outline" />
-                {activeMenuIndex === index ? (
-                  <div className="absolute w-full h-full submenu-indicator z-2">
-                    <div
-                      className={classNames(
-                        "absolute w-full h-full flex justify-center items-center ease-in-out duration-250 text-white border-2 border-foreground",
-                        {
-                          ["transform-[matrix3d(1.29,-0.045,0,-0.001,0.045,1.29,0,-0.001,0,0,1,0,-5,0,0,1)]"]:
-                            clickedIndex === index,
-                        },
-                      )}
-                    >
-                      <div
-                        className="absolute w-full h-full -z-1 brightness-50"
-                        style={{
-                          backgroundImage: menuItem.image
-                            ? `url('${menuItem.image}')`
-                            : "",
-                        }}
-                      />
-                      {menuItem.text}
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
                 <div
                   className={classNames(
                     "relative w-full h-full flex justify-center items-center gap-1 border-foreground bg-background border-2 origin-center duration-250 submenu-button",
