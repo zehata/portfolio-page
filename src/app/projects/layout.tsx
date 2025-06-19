@@ -31,7 +31,7 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="bg-black">
       <DynamicBackground name="projects" />
-      <div className="absolute top-50 w-full h-[calc(100vh-12.5rem)] z-1 flex flex-row">
+      <div className="absolute top-30 w-full h-[calc(100vh-7.5rem)] z-1 flex flex-row">
         <Sidebar
           articleType={ArticleType.Project}
           items={projectItems}
