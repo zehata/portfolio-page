@@ -7,6 +7,7 @@ import getFriendlyDatetime from "@/lib/getFriendlyDatetime";
 import {
   BugPlay,
   Check,
+  Combine,
   Construction,
   DraftingCompass,
   FastForward,
@@ -38,6 +39,8 @@ const getIcon = (icon?: StampIcon) => {
       return Rocket;
     case "PawPrint":
       return PawPrint;
+    case "Combine":
+      return Combine;
   }
   return;
 };
@@ -133,18 +136,20 @@ export const ArticlePage = ({
         ) : (
           <></>
         )}
-        {article ? (
-          <Markdown>{article.content}</Markdown>
-        ) : (
-          <>
-            <div className="mb-4 w-3/4 h-60 rounded-lg skeleton" />
-            <div className="space-y-4 *:w-3/4 *:h-6 *:rounded-full *:skeleton">
-              <div />
-              <div />
-              <div />
-            </div>
-          </>
-        )}
+        <div className="mt-4">
+          {article ? (
+            <Markdown>{article.content}</Markdown>
+          ) : (
+            <>
+              <div className="mb-4 w-3/4 h-60 rounded-lg skeleton" />
+              <div className="space-y-4 *:w-3/4 *:h-6 *:rounded-full *:skeleton">
+                <div />
+                <div />
+                <div />
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
