@@ -211,9 +211,11 @@ export const MainMenu = () => {
       if (menuItems[index].path === "contact") return;
       setMenuClosing(true);
       closeTransitionAnimation(false);
+      if (!menuItems[index].path) closeMenuOnBackNavigation();
       setTimeout(() => {
-        if (!menuItems[index].path) closeMenuOnBackNavigation();
         router.push(menuItems[index].link);
+        setMenuClosing(false);
+        closeTransitionAnimation(true);
       }, 500);
     },
     [
