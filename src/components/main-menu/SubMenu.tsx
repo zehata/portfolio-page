@@ -74,6 +74,32 @@ export const SubMenu = ({
     >
       <div className="absolute left-4 xl:left-0 -top-6 xl:top-0 w-full h-full bg-background origin-bottom-right -rotate-2 -z-1 shadow-center"></div>
       <div className="absolute -left-6 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+1rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
+      <button
+        className={classNames(
+          "absolute right-0 w-24 h-24 z-2 flex justify-center items-center duration-250 lg:hidden cursor-pointer",
+          {
+            ["top-0"]: mobileMenuOpen,
+            ["-top-5"]: !mobileMenuOpen,
+          },
+        )}
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        tabIndex={0}
+      >
+        <Menu
+          width={48}
+          height={48}
+          className={classNames("absolute duration-250", {
+            ["opacity-0"]: mobileMenuOpen,
+          })}
+        />
+        <X
+          width={48}
+          height={48}
+          className={classNames("absolute duration-250", {
+            ["opacity-0"]: !mobileMenuOpen,
+          })}
+        />
+      </button>
       <div className="absolute xl:w-[calc(80vw-10rem)] xl:h-14 flex justify-center">
         <div
           className={classNames(
@@ -133,35 +159,15 @@ export const SubMenu = ({
           ))}
         </div>
       </div>
-      <div
-        className={classNames(
-          "absolute right-0 w-24 h-24 z-2 flex justify-center items-center duration-250 cursor-pointer",
-          {
-            ["top-0"]: mobileMenuOpen,
-            ["-top-5"]: !mobileMenuOpen,
-          },
-        )}
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      >
-        <Menu
-          width={48}
-          height={48}
-          className={classNames("absolute duration-250", {
-            ["opacity-0"]: mobileMenuOpen,
-          })}
-        />
-        <X
-          width={48}
-          height={48}
-          className={classNames("absolute duration-250", {
-            ["opacity-0"]: !mobileMenuOpen,
-          })}
-        />
-      </div>
       <ThemeSwitch
         onClick={() => setTheme(nextTheme(theme))}
         on={theme}
-        className="absolute w-24 bottom-10 lg:bottom-4 right-10"
+        className={classNames(
+          "absolute w-24 bottom-10 lg:bottom-4 right-10 lg:block",
+          {
+            ["hidden"]: !mobileMenuOpen,
+          },
+        )}
         toggle={() => setTheme(nextTheme(theme))}
         tabIndex={0}
       />
