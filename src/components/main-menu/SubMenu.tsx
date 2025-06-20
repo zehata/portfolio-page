@@ -37,6 +37,7 @@ export const SubMenu = ({
   const handleClick = React.useCallback(
     (event: React.MouseEvent, index: number) => {
       event.preventDefault();
+      setMobileMenuOpen(false);
       setClickedIndex(index);
       handleSubmenuClick(index);
     },
