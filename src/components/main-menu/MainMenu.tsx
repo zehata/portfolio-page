@@ -165,6 +165,7 @@ export const MainMenu = () => {
   const [lastHoveredMenuItem, setLastHoveredMenuItem] = React.useState<
     number | null
   >();
+  const [pointerHovering, setPointerHovering] = React.useState<boolean>(false);
   const [hoveredMenuItem, hoverMenuItem] = React.useState<number | null>();
   const transitionAnimation = React.useRef<HTMLDivElement | null>(null);
 
@@ -176,7 +177,7 @@ export const MainMenu = () => {
     Array.from({ length: menuItems.length }),
   );
 
-  const handlePointerEnter = React.useMemo(
+  const handleFocusMenuItem = React.useMemo(
     () =>
       debounce((index: number) => {
         hoverMenuItem(index);
@@ -201,15 +202,15 @@ export const MainMenu = () => {
   }, [closeTransitionAnimation]);
 
   const handleClick = React.useCallback(
-    (event: React.MouseEvent, index: number) => {
+    (event: React.MouseEvent<HTMLAnchorElement>, index: number) => {
       event.preventDefault();
-      React.startTransition(() => {
-        setTransitionAnimationOrigin(index);
-        setSubmenuTransitionAnimationOrigin(index);
-        if (menuItems[index].path === "contact") return;
-        setMenuClosing(true);
-        closeTransitionAnimation(false);
-      });
+      event.currentTarget.blur();
+      handlePointerLeave();
+      setTransitionAnimationOrigin(index);
+      setSubmenuTransitionAnimationOrigin(index);
+      if (menuItems[index].path === "contact") return;
+      setMenuClosing(true);
+      closeTransitionAnimation(false);
       setTimeout(() => {
         if (!menuItems[index].path) closeMenuOnBackNavigation();
         router.push(menuItems[index].link);
@@ -221,6 +222,7 @@ export const MainMenu = () => {
       setTransitionAnimationOrigin,
       setSubmenuTransitionAnimationOrigin,
       closeMenuOnBackNavigation,
+      handlePointerLeave,
     ],
   );
 
@@ -295,10 +297,16 @@ export const MainMenu = () => {
                 if (!element) return;
                 menuRefs.current[index] = element;
               }}
-              onPointerEnter={() => handlePointerEnter(index)}
-              onPointerLeave={() => handlePointerLeave()}
+              onPointerEnter={() => {
+                setPointerHovering(true);
+                handleFocusMenuItem(index);
+              }}
+              onPointerLeave={() => {
+                setPointerHovering(false);
+                handlePointerLeave();
+              }}
               className={classNames(
-                "relative hover:border-foreground active:duration-250 active:scale-90 no-view-transition",
+                "relative active:duration-500 active:scale-90 no-view-transition",
                 {
                   [`selector-prev`]: hoveredMenuItem === index + 1,
                   [`selector-current text-white`]: hoveredMenuItem === index,
@@ -307,7 +315,7 @@ export const MainMenu = () => {
                     lastHoveredMenuItem === index - 1 ||
                     lastHoveredMenuItem === index + 1,
                   [`z-2`]: lastHoveredMenuItem === index,
-                  ["duration-250 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"]:
+                  ["duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"]:
                     menuOpen,
                   ["opacity-0"]: menuClosing || !menuOpen,
                   ["animate-[500ms_ease-in-out_main-menu-items-slide-out]"]:
@@ -323,19 +331,37 @@ export const MainMenu = () => {
               <Link
                 href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
-                onFocus={() => handlePointerEnter(index)}
+                onFocus={() => {
+                  if (pointerHovering) return;
+                  handleFocusMenuItem(index);
+                }}
+                onBlur={() => handlePointerLeave()}
                 tabIndex={menuOpen ? 0 : -1}
               >
-                <div className="absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black border border-foreground"></div>
                 <div
                   className={classNames(
-                    "absolute w-full h-full overflow-hidden transition-all duration-250 no-view-transition",
+                    "absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent",
                     {
-                      ["border"]: index === hoveredMenuItem,
+                      ["outline-white"]: index === hoveredMenuItem,
+                    },
+                  )}
+                ></div>
+                <div
+                  className={classNames(
+                    "absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent",
+                    {
+                      ["outline-white"]: index === hoveredMenuItem,
                     },
                   )}
                 >
-                  <div className="w-36 h-20 transition-all border inner-box">
+                  <div
+                    className={classNames(
+                      "absolute w-36 h-20 transition-all outline-2 inner-box outline-transparent",
+                      {
+                        ["outline-white"]: index === hoveredMenuItem,
+                      },
+                    )}
+                  >
                     <div
                       className="w-full h-full brightness-50"
                       style={{
