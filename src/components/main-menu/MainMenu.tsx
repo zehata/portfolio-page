@@ -208,12 +208,16 @@ export const MainMenu = () => {
       handlePointerLeave();
       setTransitionAnimationOrigin(index);
       setSubmenuTransitionAnimationOrigin(index);
-      if (menuItems[index].path === "contact") return;
-      setMenuClosing(true);
-      closeTransitionAnimation(false);
+
+      if (menuItems[index].path != "contact") {
+        setMenuClosing(true);
+        closeTransitionAnimation(false);
+      }
+      
       if (!menuItems[index].path) closeMenuOnBackNavigation();
       setTimeout(() => {
         router.push(menuItems[index].link);
+        if (menuItems[index].path) return
         setMenuClosing(false);
         closeTransitionAnimation(true);
       }, 500);
@@ -290,7 +294,9 @@ export const MainMenu = () => {
         submenuRefs={submenuRefs}
         handleSubmenuClick={handleSubmenuClick}
       />
-      <div className="fixed ml-[10vw] h-screen flex flex-col justify-center -z-1">
+      <div className={classNames("absolute ml-[10vw] h-[100dvh] flex flex-col justify-center -z-1",
+        { ["left-[calc(-10vw-15rem)]"]: menuClosing || !menuOpen },
+      )}>
         <div className="*:w-36 *:h-20 *:text-2xl *:relative *:transition-all *:duration-500">
           {menuItems.map((menuItem, index) => (
             <div
