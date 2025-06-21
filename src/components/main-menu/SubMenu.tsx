@@ -170,7 +170,7 @@ export const SubMenu = ({
           },
         )}
         toggle={() => setTheme(nextTheme(theme))}
-        tabIndex={0}
+        tabIndex={menuOpen ? -1 : 0}
       />
     </div>
   );
