@@ -69,7 +69,7 @@ export const SubMenu = ({
       )}
       style={
         {
-          "--mobile-menu-height": `calc(16rem + 3.5rem * ${menuItems.length})`,
+          "--mobile-menu-height": `min(100dvh, calc(min(25dvh,14rem) + 3.5rem * ${menuItems.length}))`,
         } as CSSProperties
       }
     >
@@ -77,7 +77,7 @@ export const SubMenu = ({
       <div className="absolute -left-6 xl:left-0 -top-5 xl:top-0 w-full h-[calc(100%+1rem)] bg-black origin-bottom-right rotate-3 -z-2 shadow-center"></div>
       <button
         className={classNames(
-          "absolute right-0 w-24 h-24 z-2 flex justify-center items-center duration-250 lg:hidden cursor-pointer",
+          "absolute right-0 w-24 h-24 z-2 flex justify-center items-center duration-250 xl:hidden cursor-pointer",
           {
             ["top-0"]: mobileMenuOpen,
             ["-top-5"]: !mobileMenuOpen,
@@ -117,10 +117,10 @@ export const SubMenu = ({
               onPointerEnter={() => setPointerHovering(true)}
               onPointerLeave={() => setPointerHovering(false)}
               className={classNames(
-                "relative w-40 xl:w-30 h-14 xl:h-10 ease-in-out duration-250 mx-4 hover:mx-6 submenu-item active:scale-90",
+                "relative w-40 xl:w-[min(8vw,7.5rem)] h-[min(10dvh,3.5rem)] xl:h-10 ease-in-out duration-250 mx-2 hover:mx-4 submenu-item active:scale-90",
                 {
-                  ["focus-within:mx-6 keyboard-focus"]: !pointerHovering,
-                  ["mx-6 active-submenu"]: clickedIndex === index,
+                  ["focus-within:mx-4 keyboard-focus"]: !pointerHovering,
+                  ["mx-4 active-submenu"]: clickedIndex === index,
                   ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
                 },
               )}
@@ -164,7 +164,7 @@ export const SubMenu = ({
         onClick={() => setTheme(nextTheme(theme))}
         on={theme}
         className={classNames(
-          "absolute w-24 bottom-10 lg:bottom-4 right-10 lg:block",
+          "absolute h-10 bottom-10 xl:bottom-2 right-8 xl:block",
           {
             ["hidden"]: !mobileMenuOpen,
           },

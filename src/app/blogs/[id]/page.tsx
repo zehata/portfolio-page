@@ -25,8 +25,8 @@ const BlogPage = async ({
     : getArticleBySlug(ArticleType.Blog, (await params).id);
 
   return (
-    <div className="absolute lg:relative lg:pl-8 flex-shrink-0 w-full h-full lg:w-2/3 blogid z-3">
-      <div className="absolute w-full h-full -left-1 lg:left-8 top-2 paper">
+    <div className="absolute xl:relative xl:pl-8 flex-shrink-0 w-full h-full xl:w-2/3 blogid z-3">
+      <div className="absolute w-full h-full -left-1 xl:left-8 top-2 paper">
         <Papers />
       </div>
       <ArticlePage articleRequest={articleRequest} />
