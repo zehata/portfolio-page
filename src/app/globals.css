@@ -680,7 +680,7 @@ body {
   }
 
   .slant {
-    mask: conic-gradient(from 269deg at 100% 0%, #000, #0000 0deg 180deg, #000 180deg) 50% 1% / 100% 100% no-repeat;
+    mask: conic-gradient(from 89deg at 50% 1%, #0000, #000 0deg 180deg, #0000 180deg) 100% 100% / 100% 100% no-repeat;
   }
   
   .sidebar {
