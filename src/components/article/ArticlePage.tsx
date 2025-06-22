@@ -66,7 +66,26 @@ export const ArticlePage = ({
         id="main-content"
         className="relative w-full h-full p-10 pt-16 article-content overflow-auto"
       >
-        <div className="absolute flex gap-4 right-20">
+        {article ? (
+          <h1 className="mb-2 text-xl">{article.title}</h1>
+        ) : (
+          <>
+            <div className="mb-2 w-3/4 h-8 rounded-full skeleton" />
+          </>
+        )}
+        {article ? (
+          <div className="mb-4">
+            {`${new Date(article?.modified).toLocaleDateString(undefined, {
+              weekday: "short",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })} ${getFriendlyDatetime(Number(article.modified))}`}
+          </div>
+        ) : (
+          <div className="mb-4 w-1/4 h-4 rounded-full skeleton" />
+        )}
+        <div className="relative mb-2 xl:absolute xl:top-18 flex gap-4 xl:right-20">
           {article ? (
             Object.entries(article.stamps).map(([id, stamp]) => {
               const arbitraryAngle = (id.charCodeAt(1) % 4) - 2;
@@ -102,25 +121,6 @@ export const ArticlePage = ({
             <></>
           )}
         </div>
-        {article ? (
-          <h1 className="mb-2 text-xl">{article.title}</h1>
-        ) : (
-          <>
-            <div className="mb-2 w-3/4 h-8 rounded-full skeleton" />
-          </>
-        )}
-        {article ? (
-          <div className="mb-4">
-            {`${new Date(article?.modified).toLocaleDateString(undefined, {
-              weekday: "short",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })} ${getFriendlyDatetime(Number(article.modified))}`}
-          </div>
-        ) : (
-          <div className="mb-4 w-1/4 h-4 rounded-full skeleton" />
-        )}
         {article ? (
           <SimpleButton
             onClick={() =>

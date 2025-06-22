@@ -217,10 +217,13 @@ export const MainMenu = () => {
       if (!menuItems[index].path) closeMenuOnBackNavigation();
       setTimeout(() => {
         router.push(menuItems[index].link);
+      }, 500);
+
+      setTimeout(() => {
         if (menuItems[index].path) return;
         setMenuClosing(false);
         closeTransitionAnimation(true);
-      }, 500);
+      }, 600);
     },
     [
       closeTransitionAnimation,
