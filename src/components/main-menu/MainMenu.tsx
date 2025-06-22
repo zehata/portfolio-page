@@ -297,7 +297,7 @@ export const MainMenu = () => {
       <div
         className={classNames(
           "absolute ml-[10vw] h-[100dvh] flex flex-col justify-center -z-1",
-          { ["left-[calc(-10vw-15rem)]"]: menuClosing || !menuOpen },
+          { ["-z-2"]: menuClosing || !menuOpen },
         )}
       >
         <div className="*:w-36 *:h-20 *:text-2xl *:relative *:transition-all *:duration-500">
