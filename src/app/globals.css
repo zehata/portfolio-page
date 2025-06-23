@@ -557,6 +557,40 @@ body {
   }
 }
 
+@keyframes base-background-shift-right {
+  0% {
+    right: min(-200vw/3,-3200dvh/27);
+  }
+  
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes base-background-shift-left {
+  0% {
+    right: 0;
+  }
+  
+  100% {
+    right: min(-200vw/3,-3200dvh/27);
+  }
+}
+
+@keyframes delayed-hidden-link {
+  0% {
+    display: inline;
+  }
+
+  99% {
+    display: inline;
+  }
+  
+  100% {
+    display: none;
+  }
+}
+
 @utility skeleton {
   @apply bg-gray-200 animate-pulse;
 }
