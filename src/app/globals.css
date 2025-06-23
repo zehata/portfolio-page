@@ -294,16 +294,16 @@ body {
     position: absolute;
     left: max(200vw / 3, 3200dvh / 27);
     transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
-    width: min(60vw, 24rem);
-    height: 30rem;
+    width: min(40vw, 24rem);
+    height: min(100dvh,30rem);
   }
 
   100% {
     position: absolute;
     left: 0;
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
-    width: min(60vw, 24rem);
-    height: 30rem;
+    width: min(40vw, 24rem);
+    height: min(100dvh,30rem);
   }
 }
 
@@ -312,7 +312,7 @@ body {
     position: absolute;
     left: max(200vw / 3, 3200dvh / 27);
     width: 4px;
-    height: calc(50vh - 15rem - max(6.1875vw, 11dvh));
+    height: calc(max(21.375vw, 38dvh) - min(100dvh, 15rem) + 2.5rem);
     mask: linear-gradient(#000) 100% 100% / 100% 0 no-repeat;
   }
 
@@ -324,7 +324,7 @@ body {
     position: absolute;
     left: 0;
     width: 4px;
-    height: calc(50dvh - 15rem - max(6.1875vw, 11dvh));
+    height: calc(max(21.375vw, 38dvh) - min(100dvh, 15rem) + 2.5rem);
     mask: linear-gradient(#000) 100% 100% / 100% 100% no-repeat;
   }
 }
@@ -344,7 +344,7 @@ body {
     position: absolute;
     left: 0;
     width: 4px;
-    height: calc(50dvh - 15rem - max(6.1875vw, 11dvh));
+    height: calc(max(21.375vw, 38dvh) - min(100dvh, 15rem) + 2.5rem);
     mask: linear-gradient(#000) 100% 100% / 100% 100% no-repeat;
   }
 
@@ -352,7 +352,7 @@ body {
     position: absolute;
     left: max(200vw / 3, 3200dvh / 27);
     width: 4px;
-    height: calc(50vh - 15rem - max(6.1875vw, 11dvh));
+    height: calc(max(21.375vw, 38dvh) - min(100dvh, 15rem) + 2.5rem);
     mask: linear-gradient(#000) 100% 100% / 100% 0 no-repeat;
   }
 }
@@ -363,7 +363,7 @@ body {
     left: 0;
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
     width: min(60vw, 24rem);
-    height: 30rem;
+    height: min(100dvh,30rem);
   }
 
   100% {
@@ -371,7 +371,7 @@ body {
     left: max(200vw / 3, 3200dvh / 27);
     transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
     width: min(60vw, 24rem);
-    height: 30rem;
+    height: min(100dvh,30rem);
   }
 }
 
@@ -871,23 +871,19 @@ body {
   }
 
   ::view-transition-new(contact):only-child {
-    animation: 1s swing-in;
-    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+    animation: 1s ease-in-out swing-in;
   }
 
   ::view-transition-old(contact):only-child {
-    animation: 1s swing-out;
-    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+    animation: 1s ease-in-out swing-out;
   }
 
   ::view-transition-new(contact-indicator):only-child {
-    animation: 1s indicator-swing-in;
-    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+    animation: 1s ease-in-out indicator-swing-in;
   }
 
   ::view-transition-old(contact-indicator):only-child {
-    animation: 1s indicator-swing-out;
-    animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+    animation: 1s ease-in-out indicator-swing-out;
   }
 
   ::view-transition-new(sidebar):only-child {
