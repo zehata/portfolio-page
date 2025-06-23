@@ -84,7 +84,7 @@ export const SubMenu = ({
           },
         )}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        tabIndex={0}
+        tabIndex={menuOpen ? -1 : 0}
       >
         <Menu
           width={48}
@@ -101,7 +101,7 @@ export const SubMenu = ({
           })}
         />
       </button>
-      <div className="absolute xl:w-[calc(80vw-10rem)] xl:h-14 flex justify-center">
+      <div className="absolute xl:w-[calc(75vw-10rem)] xl:h-14 flex justify-center">
         <div
           className={classNames(
             "w-fit h-full flex flex-col gap-4 xl:gap-0 xl:flex-row items-center ease-in-out duration-250",
@@ -117,15 +117,20 @@ export const SubMenu = ({
               onPointerEnter={() => setPointerHovering(true)}
               onPointerLeave={() => setPointerHovering(false)}
               className={classNames(
-                "relative w-40 xl:w-[min(8vw,7.5rem)] h-[min(10dvh,3.5rem)] xl:h-10 ease-in-out duration-250 mx-2 hover:mx-4 submenu-item active:scale-90",
+                "relative w-40 xl:w-[min(8vw,7.5rem)] h-[min(10dvh,3.5rem)] xl:h-10 ease-in-out duration-250 mx-[0.5vw] hover:mx-[1.5vw] submenu-item active:scale-90",
                 {
-                  ["focus-within:mx-4 keyboard-focus"]: !pointerHovering,
-                  ["mx-4 active-submenu"]: clickedIndex === index,
+                  ["focus-within:mx-[1.5vw] keyboard-focus"]: !pointerHovering,
+                  ["mx-[1.5vw] active-submenu"]: clickedIndex === index,
                   ["hover:my-2 xl:hover:my-0"]: activeMenuIndex != index,
                 },
               )}
             >
               <Link
+                className={classNames("xl:inline", {
+                  ["inline"]: mobileMenuOpen,
+                  ["hidden animate-[250ms_ease_delayed-hidden-link]"]:
+                    !mobileMenuOpen,
+                })}
                 href={menuItem.link}
                 onClick={(event) => handleClick(event, index)}
                 tabIndex={menuOpen ? -1 : 0}

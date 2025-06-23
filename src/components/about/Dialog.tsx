@@ -69,12 +69,12 @@ export const DialogComponent = ({ id }: { id: string }) => {
             onClick={() => setChangingQuestion(true)}
             key={index}
             className={classNames(
-              `relative bg-background -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-250 left-0 hover:-left-6`,
+              `relative bg-background -mb-36 h-56 z-1 shadow-center p-4 origin-[150%_100%] ease-in-out duration-250 left-0 hover:-left-6 focus-within:-left-6 text-sm md:text-base`,
             )}
             style={
               {
-                width: `calc(${23 - (responses.length - index) * 1}vw + 10rem)`,
-                marginRight: `${index * 0.25}rem`,
+                width: `calc(${16 - (responses.length - index) * 1}vw + 10rem)`,
+                marginRight: `calc(${index * 0.25}rem + 2rem)`,
                 "--rotate-angle": `${-4 + (responses.length - index) * 2}deg`,
                 animation: showResponses
                   ? `250ms ease-out rotate-responses`

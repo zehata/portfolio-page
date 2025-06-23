@@ -88,7 +88,16 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "skills-1": {
-    text: "I have been programming for about 10 years, in several languages. I am most comfortable with TypeScript and Python, since these are the languages used by the companies I have worked in. Most of my work were frontend, and I am familiar with are React and Vue. For backend I am experienced in Node.js. Database solutions I am familiar with are PostgreSQL and Firebase. I have competitive programming experience in C++ and Java as well.",
+    text: "I have been programming for about 10 years, in several languages. I am most comfortable with TypeScript and Python, since these are the languages used by the companies I have worked in. Most of my work were frontend, and I am familiar with are React and Vue.",
+    responses: [
+      {
+        text: "Mhmm",
+        link: "skills-1-2",
+      },
+    ],
+  },
+  "skills-1-2": {
+    text: "For backend I am experienced in Node.js. Database solutions I am familiar with are PostgreSQL and Firebase. I have competitive programming experience in C++ and Java as well.",
     responses: [
       {
         text: "That's it? Anything else?",
@@ -105,7 +114,16 @@ export const dialogs: Record<string, Dialog> = {
     ],
   },
   "skills-2": {
-    text: "I have also written a number of scripts for both school projects and for fun. I used Python with the Mediapipe library to do gait analysis for a school project, C++ for several school projects involving Arduino. I also used PyTorch to demonstrate Monte Carlo photon diffusion simulation to my professor and classmates. I have also used VBA for various tasks during my internship at SingHealth.",
+    text: "I also used PyTorch to demonstrate Monte Carlo photon diffusion simulation to my professor and classmates. I have also used VBA for various tasks during my internship at SingHealth.",
+    responses: [
+      {
+        text: "Ok",
+        link: "skills-2-2",
+      },
+    ],
+  },
+  "skills-2-2": {
+    text: "I also used PyTorch to demonstrate Monte Carlo photon diffusion simulation to my professor and classmates. I have also used VBA for various tasks during my internship at SingHealth.",
     responses: [
       {
         text: "Hmm",
