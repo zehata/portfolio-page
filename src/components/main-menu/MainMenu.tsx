@@ -303,7 +303,7 @@ export const MainMenu = () => {
           { ["-z-2"]: menuClosing || !menuOpen },
         )}
       >
-        <div className="*:w-36 *:h-20 *:text-2xl *:relative *:transition-all *:duration-500">
+        <div>
           {menuItems.map((menuItem, index) => (
             <div
               key={index}
@@ -320,7 +320,7 @@ export const MainMenu = () => {
                 handlePointerLeave();
               }}
               className={classNames(
-                "relative active:duration-500 active:scale-90 no-view-transition",
+                "w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector",
                 {
                   [`selector-prev`]: hoveredMenuItem === index + 1,
                   [`selector-current text-white`]: hoveredMenuItem === index,
@@ -354,7 +354,7 @@ export const MainMenu = () => {
               >
                 <div
                   className={classNames(
-                    "absolute w-36 h-20 transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent",
+                    "absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent",
                     {
                       ["outline-white"]: index === hoveredMenuItem,
                     },
@@ -370,7 +370,7 @@ export const MainMenu = () => {
                 >
                   <div
                     className={classNames(
-                      "absolute w-36 h-20 transition-all outline-2 inner-box outline-transparent",
+                      "absolute w-36 h-full transition-all outline-2 inner-box outline-transparent",
                       {
                         ["outline-white"]: index === hoveredMenuItem,
                       },

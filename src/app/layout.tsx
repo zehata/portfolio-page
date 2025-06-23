@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className="fixed w-screen h-[100dvh] bg-black">
           <GlobalContextProvider>
             <Link
-              className="fixed top-0 left-0 z-3 p-4 m-4 bg-background rounded-full font-bold border-4 text-2xl opacity-0 focus-within:opacity-100"
+              className="fixed top-0 left-0 p-4 m-4 bg-background rounded-full font-bold border-4 text-2xl opacity-0 -z-10 focus-within:z-10 focus-within:opacity-100"
               href="#main-content"
             >
               Skip to main content

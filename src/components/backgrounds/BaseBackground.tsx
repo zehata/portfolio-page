@@ -6,18 +6,35 @@ import React from "react";
 
 const BaseBackground = () => {
   const pathname = usePathname();
-  const shiftRight = React.useMemo(
-    () => pathname.split("/")[1] === "contact",
-    [pathname],
-  );
+
+  const [shiftRight, setShiftRight] = React.useState<{
+    prev: boolean | null;
+    current: boolean | null;
+  }>({
+    prev: null,
+    current: null,
+  });
+
+  React.useEffect(() => {
+    setShiftRight((shiftRight) => {
+      return {
+        prev: shiftRight.current,
+        current: pathname.split("/")[1] === "contact",
+      };
+    });
+  }, [pathname]);
 
   return (
     <div
       className={classNames(
-        "absolute flex justify-end ease-in-out -z-2 duration-1000 no-view-transition",
+        "absolute flex justify-end -z-2 no-view-transition",
         {
-          ["right-[min(-200vw/3,-3200dvh/27)]"]: !shiftRight,
-          ["right-0"]: shiftRight,
+          ["right-[min(-200vw/3,-3200dvh/27)]"]: !shiftRight.current,
+          ["right-0"]: shiftRight.current,
+          ["animate-[1s_ease-in-out_base-background-shift-left]"]:
+            !shiftRight.current && shiftRight.prev,
+          ["animate-[1s_ease-in-out_base-background-shift-right]"]:
+            shiftRight.current && shiftRight.prev === false,
         },
       )}
     >
