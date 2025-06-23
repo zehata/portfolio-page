@@ -586,6 +586,10 @@ body {
           conic-gradient(from 0deg at center, #0000 180deg, #000 180deg calc(180deg + var(--progress)), #0000 calc(180deg + var(--progress))) 50% 50% / 100% 100% no-repeat;
     animation: 1.5s ease-in-out spiral;
   }
+
+  .selector {
+    margin: 10px 0;
+  }
   
   .selector-prev {
     transform: matrix3d(1.3,-0.06,-0.342,-0.002,-0.06,1.3,-0.342,0,0.342,0.342,0.94,0,0,0,0,1);
