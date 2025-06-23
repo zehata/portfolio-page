@@ -79,7 +79,7 @@ const SpeechBubble = ({
       </div>
       <div
         className={classNames(
-          "absolute left-[calc(21vw-0rem)] bottom-[7rem] w-[calc(50vw-1rem)] h-[11.5rem] dialog-text",
+          "absolute left-[calc(21vw-0rem)] bottom-[7rem] w-[calc(50vw-3rem)] h-[11.5rem] dialog-text overflow-x-clip overflow-y-auto text-sm md:text-base",
           {
             ["opacity-0"]: !shouldExpand,
           },
