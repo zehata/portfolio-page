@@ -362,7 +362,7 @@ body {
     position: absolute;
     left: 0;
     transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
-    width: min(60vw, 24rem);
+    width: min(40vw, 24rem);
     height: min(100dvh,30rem);
   }
 
@@ -370,7 +370,7 @@ body {
     position: absolute;
     left: max(200vw / 3, 3200dvh / 27);
     transform: matrix3d(1,0,0,-0.0002,0,1,0,0,0,0,1,0,0,0,0,1);
-    width: min(60vw, 24rem);
+    width: min(40vw, 24rem);
     height: min(100dvh,30rem);
   }
 }
