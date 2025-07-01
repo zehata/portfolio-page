@@ -74,7 +74,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
             style={
               {
                 width: `calc(${16 - (responses.length - index) * 1}vw + 10rem)`,
-                marginRight: `calc(${index * 0.25}rem + 2rem)`,
+                marginRight: `calc(${index * 0.25}rem + 4rem)`,
                 "--rotate-angle": `${-4 + (responses.length - index) * 2}deg`,
                 animation: showResponses
                   ? `250ms ease-out rotate-responses`
