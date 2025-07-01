@@ -107,10 +107,6 @@ export const dialogs: Record<string, Dialog> = {
         text: "Sounds like a lot",
         link: "skills-2",
       },
-      {
-        text: "I thought you were a biomedical engineer?",
-        link: "surprise-pikachu",
-      },
     ],
   },
   "skills-2": {
