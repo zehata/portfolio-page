@@ -335,6 +335,11 @@
   resolved "https://registry.yarnpkg.com/@nolyfill/is-core-module/-/is-core-module-1.0.39.tgz#3dc35ba0f1e66b403c00b39344f870298ebb1c8e"
   integrity sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==
 
+"@opentelemetry/api@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/api/-/api-1.9.0.tgz#d03eba68273dc0f7509e2a3d5cba21eae10379fe"
+  integrity sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==
+
 "@pkgr/core@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.2.0.tgz#8dff61038cb5884789d8b323d9869e5363b976f7"
@@ -350,62 +355,68 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.11.0.tgz#75dce8e972f90bba488e2b0cc677fb233aa357ab"
   integrity sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==
 
-"@slonik/driver@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/driver/-/driver-46.4.0.tgz#922b3cf9d32cf5fa32d9f843d23d6f9e1073d86c"
-  integrity sha512-av8JnxmWzzAauvS6/2NxrYfrVxzopT/a8Iah1vS9OkNI55FaQxal+0QoSixOUqFN0/TLCv6UFZAI7xcUh8Cmzw==
+"@slonik/driver@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/driver/-/driver-48.1.2.tgz#8cd23a54e353a2d007d709a2d5ff1a33ac4f662e"
+  integrity sha512-EfMiutREmD2OV8d4ckVlXdMjHJKrE9YIByMTFxyO6U52hMR4H3nvuo9cW20P6EbOnzLCY4RAQQ1UVZhsh6T4zg==
   dependencies:
-    "@slonik/types" "^46.4.0"
-    "@slonik/utilities" "^46.4.0"
+    "@slonik/types" "^48.1.2"
+    "@slonik/utilities" "^48.1.2"
     roarr "^7.21.1"
-    serialize-error "^8.0.0"
+    serialize-error "^12.0.0"
     strict-event-emitter-types "^2.0.0"
 
-"@slonik/errors@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/errors/-/errors-46.4.0.tgz#7afa0a3b794fddf41f4325f816029af6d80b464f"
-  integrity sha512-jwNJCGyOzOQtLsqH0jHw2vrtdsmNBK1rTRoofBLBCCDWZ1JfUvxSblr7FCiA5xtYMdNSd5FIMEUR/tHppu34IQ==
+"@slonik/errors@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/errors/-/errors-48.1.2.tgz#cfa41c00abcd926f94a1c4b007918b8826b8bfb2"
+  integrity sha512-rpZfiGZvVELFOvwmAYsgf2KodRSbLEH3f8i3oFry/AGJQl2ZM7FUbuI0Tw+3oN331R0g23MldrW934XL2l5qBg==
   dependencies:
-    "@slonik/types" "^46.4.0"
+    "@slonik/types" "^48.1.2"
 
-"@slonik/pg-driver@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/pg-driver/-/pg-driver-46.4.0.tgz#9de1fbf21af19d2b2bec0cbc5704ced2be499f2b"
-  integrity sha512-jamxmj7CIS22q0Ptr/U6XUV/W/x6jig2TwyqHYGmnmO22UQtD9oPzjDoJ/QgibvSBGdNgoXGLS2+QH0cL8c07A==
+"@slonik/pg-driver@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/pg-driver/-/pg-driver-48.1.2.tgz#505c35eed439afdc64499ad758bcf4d336e04954"
+  integrity sha512-BHcizIDkKLuiQ4PL8S7+lBVNrGeFJEdarvT5yA4hUfr3Nyh4nzjgrqmT3BU7vihcHWDxni5YJPjncM+ildCm5g==
   dependencies:
-    "@slonik/driver" "^46.4.0"
-    "@slonik/errors" "^46.4.0"
-    "@slonik/sql-tag" "^46.4.0"
-    "@slonik/types" "^46.4.0"
-    "@slonik/utilities" "^46.4.0"
+    "@slonik/driver" "^48.1.2"
+    "@slonik/errors" "^48.1.2"
+    "@slonik/sql-tag" "^48.1.2"
+    "@slonik/types" "^48.1.2"
+    "@slonik/utilities" "^48.1.2"
     pg "^8.13.1"
-    pg-query-stream "^4.7.1"
+    pg-query-stream "^4.9.6"
     pg-types "^4.0.2"
-    postgres-array "^3.0.2"
+    postgres-array "^3.0.4"
 
-"@slonik/sql-tag@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/sql-tag/-/sql-tag-46.4.0.tgz#6d98896006ca510002e046d5aeb8093f170fb877"
-  integrity sha512-PINbDdPplmdBhTTPQDDrUCUEtiT4b4H/889WKy1cL8yz81Xd4RKGrejYZIGMCAYYFpgiDAQq4TxfkIGOTRjUUQ==
+"@slonik/sql-tag@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/sql-tag/-/sql-tag-48.1.2.tgz#05b921eeae50306fd6f12f6022f301926cd8027c"
+  integrity sha512-q38A6HcUQT9ifnURRc2MnrWmU3i1CICX+RgDDUyfv8X/jRWUoVaN6xVJn7QAMt5ZmfN7VcCSfxzraMltoERA4A==
   dependencies:
-    "@slonik/errors" "^46.4.0"
-    "@slonik/types" "^46.4.0"
+    "@slonik/errors" "^48.1.2"
+    "@slonik/types" "^48.1.2"
     roarr "^7.21.1"
-    safe-stable-stringify "^2.4.3"
-    serialize-error "^8.0.0"
+    safe-stable-stringify "^2.5.0"
+    serialize-error "^12.0.0"
+    zod "^3.25.46"
 
-"@slonik/types@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/types/-/types-46.4.0.tgz#1ffb56abefe3524cbec42009685fb22c6fa12f63"
-  integrity sha512-/7N4s0bgsWahl670Ej0n/TZtguAdAJxVziBO/XoVek0cn7Ovi9LzD9YJgmeUIqY/cc/WL0JKTOZf9QL24TQQFQ==
+"@slonik/types@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/types/-/types-48.1.2.tgz#4d3bb4f52196551b0df60eee4ed9c739f1434b1b"
+  integrity sha512-vRVTj8Bb6ag9B23oa0MS5WhHxBbQWzLu35ymF0FGEZfuma0INeqZFEATGa11V53lFQ8ysrwR1ym3p8D1edPbdA==
 
-"@slonik/utilities@^46.4.0":
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/@slonik/utilities/-/utilities-46.4.0.tgz#97852256a894be2126195d8c14e7f5aca3af4dfc"
-  integrity sha512-ZPLM5tR1brZBbznrftm+dugL5udtpwtx1bBvOyhyP1rsZywpSOAa4T35fG8grMkHc4XX3MAB2qtyqpO+iZ+qyA==
+"@slonik/utilities@^48.1.2":
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/@slonik/utilities/-/utilities-48.1.2.tgz#664dcd0bdebdbdf72eedbda32c2184327c696b36"
+  integrity sha512-u1NK19CfhqSjGEtJyrsiYt14oYuitFkp8i1GDKldXJQAL88R/Y6v2CW4IoTBOsimCS4mtu8jML3DuSX2qwwWpQ==
   dependencies:
-    "@slonik/errors" "^46.4.0"
-    "@slonik/types" "^46.4.0"
+    "@slonik/errors" "^48.1.2"
+    "@slonik/types" "^48.1.2"
+
+"@standard-schema/spec@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@standard-schema/spec/-/spec-1.0.0.tgz#f193b73dc316c4170f2e82a881da0f550d551b9c"
+  integrity sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==
 
 "@swc/counter@0.1.3":
   version "0.1.3"
@@ -2103,10 +2114,10 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
-iso8601-duration@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/iso8601-duration/-/iso8601-duration-1.3.0.tgz#29d7b69e0574e4acdee50c5e5e09adab4137ba5a"
-  integrity sha512-K4CiUBzo3YeWk76FuET/dQPH03WE04R94feo5TSKQCXpoXQt9E4yx2CnY737QZnSAI3PI4WlKo/zfqizGx52QQ==
+iso8601-duration@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/iso8601-duration/-/iso8601-duration-2.1.2.tgz#b13f14068fe5890c91b91e1f74e474a49f355028"
+  integrity sha512-yXteYUiKv6x8seaDzyBwnZtPpmx766KfvQuaVNyPifYOjmPdOo3ajd4phDNa7Y5mTQGnXsNEcXFtVun1FjYXxQ==
 
 iterator.prototype@^1.1.4:
   version "1.1.5"
@@ -2781,6 +2792,13 @@ p-limit@^3.0.2:
   dependencies:
     yocto-queue "^0.1.0"
 
+p-limit@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-6.2.0.tgz#c254d22ba6aeef441a3564c5e6c2f2da59268a0f"
+  integrity sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==
+  dependencies:
+    yocto-queue "^1.1.1"
+
 p-locate@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-5.0.0.tgz#83c8315c6785005e3bd021839411c9e110e6d834"
@@ -2833,10 +2851,10 @@ pg-connection-string@^2.7.0:
   resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.7.0.tgz#f1d3489e427c62ece022dba98d5262efcb168b37"
   integrity sha512-PI2W9mv53rXJQEOb8xNR8lH7Hr+EKa6oJa38zsK0S/ky2er16ios1wLKhZyxzD7jUReiWokc9WK5nxSnC7W1TA==
 
-pg-cursor@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/pg-cursor/-/pg-cursor-2.13.1.tgz#76b621a2737a8a3644f1091888ddf986c37377fa"
-  integrity sha512-t7niROd7/BVlRn2juI0S0MP/Ps87lNMpmnxMRQMOH0fboL0n7gH/MxpymSdR4rZRcPfoR3Sx47JG1u5JOJf6Gg==
+pg-cursor@^2.15.3:
+  version "2.15.3"
+  resolved "https://registry.yarnpkg.com/pg-cursor/-/pg-cursor-2.15.3.tgz#19f05739ff95366eed28e80191a6321d0e036395"
+  integrity sha512-eHw63TsiGtFEfAd7tOTZ+TLy+i/2ePKS20H84qCQ+aQ60pve05Okon9tKMC+YN3j6XyeFoHnaim7Lt9WVafQsA==
 
 pg-int8@1.0.1:
   version "1.0.1"
@@ -2858,12 +2876,12 @@ pg-protocol@^1.8.0:
   resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.8.0.tgz#c707101dd07813868035a44571488e4b98639d48"
   integrity sha512-jvuYlEkL03NRvOoyoRktBK7+qU5kOvlAwvmrH8sr3wbLrOdVWsRxQfz8mMy9sZFsqJ1hEWNfdWKI4SAmoL+j7g==
 
-pg-query-stream@^4.7.1:
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/pg-query-stream/-/pg-query-stream-4.8.1.tgz#1b52ccaa08284d443b4b355ee11b017b77d563dd"
-  integrity sha512-kZo6C6HSzYFF6mlwl+etDk5QZD9CMdlHUXpof6PkK9+CHHaBLvOd2lZMwErOOpC/ldg4thrAojS8sG1B8PZ9Yw==
+pg-query-stream@^4.9.6:
+  version "4.10.3"
+  resolved "https://registry.yarnpkg.com/pg-query-stream/-/pg-query-stream-4.10.3.tgz#ed4461c76a1115a36581614ed1897ef4ecee375a"
+  integrity sha512-h2utrzpOIzeT9JfaqfvBbVuvCfBjH86jNfVrGGTbyepKAIOyTfDew0lAt8bbJjs9n/I5bGDl7S2sx6h5hPyJxw==
   dependencies:
-    pg-cursor "^2.13.1"
+    pg-cursor "^2.15.3"
 
 pg-types@^2.1.0:
   version "2.2.0"
@@ -2947,7 +2965,7 @@ postcss@^8.4.41:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-postgres-array@^3.0.2, postgres-array@~3.0.1:
+postgres-array@^3.0.4, postgres-array@~3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-3.0.4.tgz#4efcaf4d2c688d8bcaa8620ed13f35f299f7528c"
   integrity sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ==
@@ -3217,7 +3235,7 @@ safe-regex-test@^1.0.3, safe-regex-test@^1.1.0:
     es-errors "^1.3.0"
     is-regex "^1.2.1"
 
-safe-stable-stringify@^2.4.3:
+safe-stable-stringify@^2.4.3, safe-stable-stringify@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/safe-stable-stringify/-/safe-stable-stringify-2.5.0.tgz#4ca2f8e385f2831c432a719b108a3bf7af42a1dd"
   integrity sha512-b3rppTKm9T+PsVCBEOUR46GWI7fdOs00VKZ1+9c1EWDaDMvjQc6tUwuFyIprgGgTcWoVHSKrU8H31ZHA2e0RHA==
@@ -3242,12 +3260,12 @@ semver@^7.6.0, semver@^7.6.3, semver@^7.7.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.1.tgz#abd5098d82b18c6c81f6074ff2647fd3e7220c9f"
   integrity sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==
 
-serialize-error@^8.0.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-8.1.0.tgz#3a069970c712f78634942ddd50fbbc0eaebe2f67"
-  integrity sha512-3NnuWfM6vBYoy5gZFvHiYsVbafvI9vZv/+jlIigFn4oP4zjNPK3LhcY0xSCgeb1a5L8jO71Mit9LlNoi2UfDDQ==
+serialize-error@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-12.0.0.tgz#aed3d5abff192c855707513929bf8bf48d712194"
+  integrity sha512-ZYkZLAvKTKQXWuh5XpBw7CdbSzagarX39WyZ2H07CDLC5/KfsRGlIXV8d4+tfqX1M7916mRqR1QfNHSij+c9Pw==
   dependencies:
-    type-fest "^0.20.2"
+    type-fest "^4.31.0"
 
 set-function-length@^1.2.2:
   version "1.2.2"
@@ -3369,22 +3387,26 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-slonik@^46.4.0:
-  version "46.4.0"
-  resolved "https://registry.yarnpkg.com/slonik/-/slonik-46.4.0.tgz#463e6a95a473e4765cfd32436134b00e8423efde"
-  integrity sha512-2CGTUww8iaxaQ/73sgC+2pQUDLAprAp278i50sY2QDvKLmwzdyIfFEkQIBVYI6WXhBZiuIShuaarTgjP1UxqzQ==
+slonik@^48.1.2:
+  version "48.1.2"
+  resolved "https://registry.yarnpkg.com/slonik/-/slonik-48.1.2.tgz#e77d8095ad520d17981786ec8b698a7611ef590f"
+  integrity sha512-V6h3fUhDpYyItspoliCSnp8QDMNCObDsy2ugps1J7P79KTWMYs+O50WJTCehbN/wllM4SYk8UyhKMev9epwHUQ==
   dependencies:
-    "@slonik/driver" "^46.4.0"
-    "@slonik/errors" "^46.4.0"
-    "@slonik/pg-driver" "^46.4.0"
-    "@slonik/sql-tag" "^46.4.0"
-    "@slonik/utilities" "^46.4.0"
+    "@opentelemetry/api" "^1.9.0"
+    "@slonik/driver" "^48.1.2"
+    "@slonik/errors" "^48.1.2"
+    "@slonik/pg-driver" "^48.1.2"
+    "@slonik/sql-tag" "^48.1.2"
+    "@slonik/utilities" "^48.1.2"
+    "@standard-schema/spec" "^1.0.0"
     get-stack-trace "^3.1.1"
-    iso8601-duration "^1.3.0"
+    iso8601-duration "^2.1.2"
+    p-limit "^6.2.0"
     postgres-interval "^4.0.2"
     roarr "^7.21.1"
-    serialize-error "^8.0.0"
+    serialize-error "^12.0.0"
     strict-event-emitter-types "^2.0.0"
+    zod "^3.25.46"
 
 source-map-js@^1.0.2, source-map-js@^1.2.1:
   version "1.2.1"
@@ -3612,15 +3634,15 @@ type-check@^0.4.0, type-check@~0.4.0:
   dependencies:
     prelude-ls "^1.2.1"
 
-type-fest@^0.20.2:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
-  integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
-
 type-fest@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.7.1.tgz#8dda65feaf03ed78f0a3f9678f1869147f7c5c48"
   integrity sha512-Ne2YiiGN8bmrmJJEuTWTLJR32nh/JdL1+PSicowtNb0WFpn59GK8/lfD61bVtzguz7b3PBt74nxpv/Pw5po5Rg==
+
+type-fest@^4.31.0:
+  version "4.41.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.41.0.tgz#6ae1c8e5731273c2bf1f58ad39cbae2c91a46c58"
+  integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
 typed-array-buffer@^1.0.3:
   version "1.0.3"
@@ -3836,10 +3858,20 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
+yocto-queue@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.2.1.tgz#36d7c4739f775b3cbc28e6136e21aa057adec418"
+  integrity sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==
+
 zod@^3.24.2:
   version "3.24.2"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.24.2.tgz#8efa74126287c675e92f46871cfc8d15c34372b3"
   integrity sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==
+
+zod@^3.25.46:
+  version "3.25.67"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.25.67.tgz#62987e4078e2ab0f63b491ef0c4f33df24236da8"
+  integrity sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==
 
 zwitch@^2.0.0:
   version "2.0.4"
