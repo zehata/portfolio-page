@@ -80,7 +80,7 @@ export const ArticlePage = ({
               year: "numeric",
               month: "short",
               day: "numeric",
-            })} ${getFriendlyDatetime(Number(article.modified))}`}
+            })} ${getFriendlyDatetime(Number(article.modified), new Date())}`}
           </div>
         ) : (
           <div className="mb-4 w-1/4 h-4 rounded-full skeleton" />
