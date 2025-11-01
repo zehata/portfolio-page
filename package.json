@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest --coverage --select-projects NODE DOM",
+    "test:db": "jest --coverage --select-projects DB",
+    "test:all": "jest --coverage"
   },
   "dependencies": {
     "@types/lodash": "^4.17.16",
