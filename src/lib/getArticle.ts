@@ -4,7 +4,7 @@ import queryArticle from "@/queries/queryArticle";
 import Connection from "./Connection";
 import { ArticleType, tables } from "@/lib/types";
 import { unstable_cache } from "next/cache";
-import queryArticleStamps from "@/queries/selectArticleStampsQuery";
+import queryArticleStamps from "@/queries/queryArticleStamps";
 import { keyBy } from "lodash";
 
 export const getArticle = async (articleType: ArticleType, id: string) =>

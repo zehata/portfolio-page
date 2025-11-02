@@ -9,6 +9,6 @@ describe(queryArticle, () => {
 
   test("querying blog", async () => {
     const pool = await poolPromise;
-    const data = queryArticle(pool, ArticleType.Blog, QUERY_TEST_BLOG_ID);
+    const article = queryArticle(pool, ArticleType.Blog, QUERY_TEST_BLOG_ID);
   });
 });

@@ -7,6 +7,6 @@ describe(queryAllArticles, () => {
 
   test("querying all blogs", async () => {
     const pool = await poolPromise;
-    const data = queryAllArticles(pool, ArticleType.Blog);
+    const article = queryAllArticles(pool, ArticleType.Blog);
   });
 });
