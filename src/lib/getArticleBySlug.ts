@@ -3,7 +3,7 @@
 import Connection from "./Connection";
 import { ArticleType, tables } from "@/lib/types";
 import { unstable_cache } from "next/cache";
-import queryArticleStamps from "@/queries/selectArticleStampsQuery";
+import queryArticleStamps from "@/queries/queryArticleStamps";
 import { keyBy } from "lodash";
 import queryArticleBySlug from "@/queries/queryArticleBySlug";
 
