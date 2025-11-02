@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SidebarItem Loading animation snapshot 1`] = `
+{
+  "$$typeof": Symbol(react.transitional.element),
+  "_owner": null,
+  "_store": {},
+  "key": null,
+  "props": {
+    "children": [
+      {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {
+          "className": "absolute right-[1rem] bg-blue-500 w-[2rem] h-[100%] duration-250 bookmark bottom-[110%]",
+          "style": {
+            "animation": "none",
+          },
+        },
+        "type": "div",
+      },
+      {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {
+          "children": "Item 0",
+          "className": "truncate text-ellipsis",
+        },
+        "type": "span",
+      },
+    ],
+  },
+  "type": Symbol(react.fragment),
+}
+`;
