@@ -15,7 +15,6 @@ describe(Sidebar, () => {
       <Sidebar
         articleType={ArticleType.Blog}
         items={[]}
-        serverStarting={false}
       ></Sidebar>,
     );
     expect(component).toMatchSnapshot();

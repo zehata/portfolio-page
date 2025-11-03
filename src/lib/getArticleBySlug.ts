@@ -1,11 +1,11 @@
 "use server";
 
-import Connection from "./Connection";
 import { ArticleType, tables } from "@/lib/types";
 import { unstable_cache } from "next/cache";
 import queryArticleStamps from "@/queries/queryArticleStamps";
 import { keyBy } from "lodash";
 import queryArticleBySlug from "@/queries/queryArticleBySlug";
+import { requestConnectionPool, requestConnectionPoolEnd } from "./connection";
 
 export const getArticleBySlug = async (
   articleType: ArticleType,
@@ -13,12 +13,12 @@ export const getArticleBySlug = async (
 ) =>
   unstable_cache(
     async (articleType: ArticleType, slug: string) => {
-      const pool = await Connection.requestConnectionPool();
+      const pool = await requestConnectionPool();
 
       const data = await queryArticleBySlug(pool, articleType, slug);
       const stampsData = await queryArticleStamps(pool, articleType, data.id);
 
-      await Connection.requestConnectionPoolEnd();
+      requestConnectionPoolEnd();
 
       return {
         id: data.id,

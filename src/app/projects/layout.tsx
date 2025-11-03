@@ -4,7 +4,6 @@ import getAllArticles from "@/lib/getAllArticles";
 import { ArticleType } from "@/lib/types";
 import { usePathname } from "next/navigation";
 import React from "react";
-import isDatabaseActive from "@/lib/isDatabaseActive";
 import DynamicBackground from "@/components/backgrounds/DynamicBackground";
 
 const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
@@ -20,13 +19,8 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     setProjectItems(null);
-    isDatabaseActive().then((databaseActive) =>
-      setServerStarting(!databaseActive),
-    );
     getAllArticles(ArticleType.Project).then(setProjectItems);
   }, []);
-
-  const [serverStarting, setServerStarting] = React.useState<boolean>(false);
 
   return (
     <div className="bg-black">
@@ -36,7 +30,6 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
           articleType={ArticleType.Project}
           items={projectItems}
           id={projectId}
-          serverStarting={serverStarting && !projectItems}
         />
         {children}
       </div>

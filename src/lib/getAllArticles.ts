@@ -2,17 +2,17 @@
 
 import queryAllArticles from "@/queries/queryAllArticles";
 import { ArticleType, tables } from "@/lib/types";
-import Connection from "./Connection";
 import { unstable_cache } from "next/cache";
+import { requestConnectionPool, requestConnectionPoolEnd } from "@/lib/connection";
 
 export const getAllArticles = async (articleType: ArticleType) =>
   unstable_cache(
     async (articleType: ArticleType) => {
-      const pool = await Connection.requestConnectionPool();
+      const pool = await requestConnectionPool();
 
       const data = await queryAllArticles(pool, articleType);
 
-      await Connection.requestConnectionPoolEnd();
+      requestConnectionPoolEnd();
 
       return data.map((data) => {
         return {

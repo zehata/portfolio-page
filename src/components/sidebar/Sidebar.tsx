@@ -13,12 +13,10 @@ export const Sidebar = ({
   articleType,
   id,
   items,
-  serverStarting,
 }: {
   articleType: ArticleType;
   id?: string;
   items: { id: string; title: string }[] | null;
-  serverStarting: boolean;
 }) => {
   React.useEffect(() => setClickedId(id ?? null), [id]);
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
@@ -87,7 +85,7 @@ export const Sidebar = ({
         )}
       >
         <LoadingAnimation />
-        {serverStarting ? `Starting Database` : `Loading`}
+        {`Loading`}
       </div>
       <div
         className={classNames(

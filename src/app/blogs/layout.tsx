@@ -4,7 +4,6 @@ import getAllArticles from "@/lib/getAllArticles";
 import { ArticleType } from "@/lib/types";
 import { usePathname } from "next/navigation";
 import React from "react";
-import isDatabaseActive from "@/lib/isDatabaseActive";
 import DynamicBackground from "@/components/backgrounds/DynamicBackground";
 
 const BlogLayout = ({ children }: { children: React.ReactNode }) => {
@@ -20,13 +19,8 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     setBlogItems(null);
-    isDatabaseActive().then((databaseActive) =>
-      setServerStarting(!databaseActive),
-    );
     getAllArticles(ArticleType.Blog).then(setBlogItems);
   }, []);
-
-  const [serverStarting, setServerStarting] = React.useState<boolean>(false);
 
   return (
     <div className="bg-black">
@@ -36,7 +30,6 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
           articleType={ArticleType.Blog}
           items={blogItems}
           id={blogId}
-          serverStarting={serverStarting && !blogItems}
         />
         {children}
       </div>
