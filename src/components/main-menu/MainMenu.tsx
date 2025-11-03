@@ -137,15 +137,12 @@ export const MainMenu = () => {
       current: menuOpen || path === "contact",
     });
 
-  const closeTransitionAnimation = React.useCallback(
-    (close: boolean) => {
-      setTransitionAnimationClosed({
-        prev: transitionAnimationClosed.current,
-        current: close,
-      });
-    },
-    [transitionAnimationClosed],
-  );
+  const closeTransitionAnimation = (close: boolean) => {
+    setTransitionAnimationClosed({
+      prev: transitionAnimationClosed.current,
+      current: close,
+    });
+  }
 
   React.useEffect(() => {
     setTransitionAnimationClosed((transitionAnimationClosed) => {

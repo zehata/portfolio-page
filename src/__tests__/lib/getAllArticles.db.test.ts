@@ -1,6 +1,9 @@
 import { ArticleType } from "@/lib/types";
 import queryAllArticles from "@/queries/queryAllArticles";
-import { requestConnectionPool, requestConnectionPoolEnd } from "@/lib/connection";
+import {
+  requestConnectionPool,
+  requestConnectionPoolEnd,
+} from "@/lib/connection";
 
 describe(queryAllArticles, () => {
   const poolPromise = requestConnectionPool();

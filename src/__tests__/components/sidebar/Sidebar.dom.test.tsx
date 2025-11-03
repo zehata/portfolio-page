@@ -12,10 +12,7 @@ jest.mock("next/navigation", () => ({
 describe(Sidebar, () => {
   test("Loading animation snapshot", () => {
     const component = render(
-      <Sidebar
-        articleType={ArticleType.Blog}
-        items={[]}
-      ></Sidebar>,
+      <Sidebar articleType={ArticleType.Blog} items={[]}></Sidebar>,
     );
     expect(component).toMatchSnapshot();
   });

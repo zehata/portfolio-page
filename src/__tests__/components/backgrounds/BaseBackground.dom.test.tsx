@@ -9,10 +9,7 @@ jest.mock("next/navigation", () => ({
 
 describe(BaseBackground, () => {
   test("base background should match snapshot", () => {
-    const component = render(
-      <BaseBackground>
-      </BaseBackground>
-    )
+    const component = render(<BaseBackground></BaseBackground>);
     expect(component).toMatchSnapshot();
-  })
-})
+  });
+});

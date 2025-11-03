@@ -1,7 +1,6 @@
 "server-only";
 import { createPool, DatabasePool } from "slonik";
 import { createPgDriverFactory } from "@slonik/pg-driver";
-import { attachDatabasePool } from "@vercel/functions";
 
 const createDatabaseConnectionPool = async () => {
   const pool = await createPool(
@@ -19,18 +18,18 @@ const createDatabaseConnectionPool = async () => {
 let pool: DatabasePool | null = null;
 
 export const requestConnectionPool = async () => {
-  if (pool) {
-    return pool
+  if (pool && pool.state().state === "ACTIVE") {
+    return pool;
   }
 
   pool = await createDatabaseConnectionPool();
   return pool;
-}
+};
 
 export const requestConnectionPoolEnd = () => {
-  if (!pool) return
+  if (!pool) return;
 
   if (pool.state().pendingConnections) return;
 
   pool.end();
-}
+};

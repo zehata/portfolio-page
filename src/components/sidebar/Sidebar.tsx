@@ -18,8 +18,8 @@ export const Sidebar = ({
   id?: string;
   items: { id: string; title: string }[] | null;
 }) => {
-  React.useEffect(() => setClickedId(id ?? null), [id]);
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
+  React.useEffect(() => setClickedId(id ?? null), [id]);
   const router = useTransitionRouter();
 
   const showComingSoon = React.useMemo(

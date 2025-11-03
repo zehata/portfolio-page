@@ -1,6 +1,9 @@
 import { ArticleType } from "@/lib/types";
 import queryArticle from "@/queries/queryArticle";
-import { requestConnectionPool, requestConnectionPoolEnd } from "@/lib/connection";
+import {
+  requestConnectionPool,
+  requestConnectionPoolEnd,
+} from "@/lib/connection";
 
 const QUERY_TEST_BLOG_ID = "7f4b2d5f-4608-40ac-b1b4-24b2828bc61e";
 
