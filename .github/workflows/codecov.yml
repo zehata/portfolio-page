@@ -17,13 +17,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: yarn install
 
       - name: Run tests
         run: yarn test:all
+        env:
+          DEV_DATABASE_URL: ${{ DEV_DATABASE_URL }}
+          ENV: ${{ ENV }}
+          NEON_PROJECT_ID: ${{ NEON_PROJECT_ID }}
+          DEV_ENDPOINT_ID: ${{ DEV_ENDPOINT_ID }}
+          NEON_API_KEY: ${{ NEON_API_KEY }}
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
