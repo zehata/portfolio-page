@@ -25,11 +25,11 @@ jobs:
       - name: Run tests
         run: yarn test:all
         env:
-          DEV_DATABASE_URL: ${{ DEV_DATABASE_URL }}
-          ENV: ${{ ENV }}
-          NEON_PROJECT_ID: ${{ NEON_PROJECT_ID }}
-          DEV_ENDPOINT_ID: ${{ DEV_ENDPOINT_ID }}
-          NEON_API_KEY: ${{ NEON_API_KEY }}
+          DEV_DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
+          ENV: ${{ secrets.ENV }}
+          NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+          DEV_ENDPOINT_ID: ${{ secrets.DEV_ENDPOINT_ID }}
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
