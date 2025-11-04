@@ -19,12 +19,7 @@ export const getAllArticles = async (articleType: ArticleType) => {
 
   requestConnectionPoolEnd();
 
-  return data.map((data) => {
-    return {
-      id: data.id,
-      title: data.title,
-    };
-  });
+  return data;
 };
 
 export default getAllArticles;

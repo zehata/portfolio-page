@@ -33,6 +33,7 @@ export const stampIcon = [
   "Rocket",
   "PawPrint",
   "Combine",
+  "",
 ] as const;
 export type StampIcon = (typeof stampIcon)[number];
 

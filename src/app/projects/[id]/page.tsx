@@ -1,10 +1,10 @@
 import Papers from "@/components/article/Papers";
-import getArticle from "@/lib/getArticle";
+import { getArticle } from "@/lib/getArticle";
 import { ArticleType } from "@/lib/types";
-import getAllArticles from "@/lib/getAllArticles";
+import { getAllArticles } from "@/lib/getAllArticles";
 import ArticlePage from "@/components/article/ArticlePage";
 import { isValidUuid } from "@/lib/isValidUuid";
-import getArticleBySlug from "@/lib/getArticleBySlug";
+import { getArticleBySlug } from "@/lib/getArticleBySlug";
 
 export const generateStaticParams = async () => {
   return (await getAllArticles(ArticleType.Project)).map((project) => {

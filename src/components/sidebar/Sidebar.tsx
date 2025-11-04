@@ -16,7 +16,7 @@ export const Sidebar = ({
 }: {
   articleType: ArticleType;
   id?: string;
-  items: { id: string; title: string }[] | null;
+  items: readonly { id: string; title: string }[] | null;
 }) => {
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
   React.useEffect(() => setClickedId(id ?? null), [id]);

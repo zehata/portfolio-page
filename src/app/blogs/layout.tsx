@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "@/components/sidebar/Sidebar";
-import getAllArticles from "@/lib/getAllArticles";
+import { getAllArticles } from "@/lib/getAllArticles";
 import { ArticleType } from "@/lib/types";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -10,7 +10,7 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const blogId = React.useMemo(() => pathname.split("/")[2], [pathname]);
   const [blogItems, setBlogItems] = React.useState<
-    | {
+    | readonly {
         id: string;
         title: string;
       }[]

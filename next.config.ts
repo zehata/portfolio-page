@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     // react-markdown and its dependencies for test suite to run
     "react-markdown",
     "bail",
+    "character-entities",
     "comma-separated-tokens",
     "decode-named-character-reference",
     "devlop",

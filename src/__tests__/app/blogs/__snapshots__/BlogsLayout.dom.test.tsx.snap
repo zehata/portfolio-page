@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BlogLayout about page layout should match snapshot 1`] = `
+<div>
+  <div
+    class="bg-black"
+  >
+    <div
+      class="w-[max(100vw,160vh)] h-[max(100vh,62.5vw)] dynamic-background animate-[2s_ease_delayed-fade-in]"
+    >
+      <div
+        class="absolute w-[max(100vw,160vh)] h-[max(100vh,62.5vw)] bg-cover top-0 left-0"
+        style="background-image: url("https://images.zehata.dev/public/dynamic-backgrounds/base/article-background.webp");"
+      />
+      <img
+        alt=""
+        class="absolute w-[max(10vw,16vh)] top-[max(8vh,5vw)] left-[max(5vw,8vh)] transform-[matrix3d(1.6945,-0.5087,1.2874,0.001,1.3841,1.038,-0.9336,0.001,0.0255,1.5901,1.3115,0,0,0,0,1)]"
+        src="https://images.zehata.dev/public/dynamic-backgrounds/label/devblog.svg"
+      />
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-black background-image-darken"
+      />
+    </div>
+    <div
+      class="absolute top-30 w-full h-[calc(100vh-7.5rem)] z-1 flex flex-row"
+    >
+      <div
+        class="relative w-full h-full overflow-auto sidebar"
+      >
+        <div
+          class="absolute top-0 left-0 pl-5 pr-5 w-full h-full flex flex-col justify-center items-center gap-4 text-white duration-250 opacity-0"
+        >
+          <div
+            class="relative w-20 h-20 bg-red-800 flex justify-center items-center p-1 border-2 border-black rounded-md"
+          >
+            <div
+              class="absolute w-1 h-full bg-black opacity-50"
+            />
+            <div
+              class="relative w-full h-full"
+            >
+              <div
+                class="absolute w-1/2 h-full bg-white border-black border"
+              />
+              <div
+                class="absolute w-1/2 left-1/2 h-full bg-white border-black border"
+              />
+              <div
+                class="absolute w-1/2 h-full bg-white border-black border animate-[2s_linear_flip_infinite]"
+              />
+            </div>
+          </div>
+          Loading
+        </div>
+        <div
+          class="relative w-full h-[var(--sidebar-height)] flex flex-col justify-center -left-5"
+          style="--sidebar-height: calc(4rem + 15rem + 4 * 1rem);"
+        >
+          <div
+            class="relative w-full ease-in-out duration-250 left-0"
+          >
+            <a
+              class="relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 hover:h-20 hover:py-6 flex items-center bg-background hover:bg-(--focus-background) hover:z-2 duration-250 ease-in-out sidebar-item shadow-center overflow-hidden focus:h-20 focus:py-6 focus:bg-(--focus-background) focus:-left-4 -left-5 hover:-left-4 active:left-1"
+              href="/blogs/7f4b2d5f-4608-40ac-b1b4-24b2828bc61e"
+              tabindex="0"
+            >
+              <div
+                class="absolute right-[1rem] bg-blue-500 w-[2rem] h-[100%] duration-250 bookmark bottom-[110%]"
+                style="animation: none;"
+              />
+              <span
+                class="truncate text-ellipsis"
+              >
+                test blog
+              </span>
+            </a>
+            <li>
+              <div
+                class="pl-10 w-full h-60 flex flex-col justify-center items-center gap-4"
+              >
+                <img
+                  alt=""
+                  class="w-20 h-auto"
+                  src="https://images.zehata.dev/public/articles/typewriter.svg"
+                />
+                <p
+                  class="text-white"
+                >
+                  More articles coming soon...
+                </p>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

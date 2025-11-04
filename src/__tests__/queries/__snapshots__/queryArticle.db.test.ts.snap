@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`queryArticle blogs query resulls should match snapshot 1`] = `
+{
+  "content": "test blog",
+  "created": 1749989836087,
+  "modified": 1750143527336,
+  "title": "test blog",
+}
+`;
