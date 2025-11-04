@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  pull_request:
+    branches: ["dev"]
+
+jobs:
+  test:
+    name: Run tests with coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test:all
+        env:
+          DEV_DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
+          ENV: ${{ secrets.ENV }}
+          NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+          DEV_ENDPOINT_ID: ${{ secrets.DEV_ENDPOINT_ID }}
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

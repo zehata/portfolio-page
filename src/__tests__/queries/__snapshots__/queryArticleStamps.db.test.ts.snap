@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`queryArticleStamps blogs query resulls should match snapshot 1`] = `
+[
+  {
+    "color": "#696",
+    "icon": "Check",
+    "id": "60a0c8b4-6190-4756-8289-24d0172b94c8",
+    "label": "Progress",
+    "value": "Completed",
+  },
+  {
+    "color": "#000",
+    "icon": "",
+    "id": "2a7313f5-5b8d-4b1b-9155-0c93a5ea5e80",
+    "label": "Status",
+    "value": "Ongoing",
+  },
+]
+`;

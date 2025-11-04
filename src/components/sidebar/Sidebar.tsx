@@ -13,15 +13,13 @@ export const Sidebar = ({
   articleType,
   id,
   items,
-  serverStarting,
 }: {
   articleType: ArticleType;
   id?: string;
-  items: { id: string; title: string }[] | null;
-  serverStarting: boolean;
+  items: readonly { id: string; title: string }[] | null;
 }) => {
-  React.useEffect(() => setClickedId(id ?? null), [id]);
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
+  React.useEffect(() => setClickedId(id ?? null), [id]);
   const router = useTransitionRouter();
 
   const showComingSoon = React.useMemo(
@@ -87,7 +85,7 @@ export const Sidebar = ({
         )}
       >
         <LoadingAnimation />
-        {serverStarting ? `Starting Database` : `Loading`}
+        {`Loading`}
       </div>
       <div
         className={classNames(

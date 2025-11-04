@@ -1,9 +1,8 @@
 import SimpleButton from "@/components/common/Button";
 import { Mail, MessageCircle, Phone, Send } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
-const ContactLayout = () => {
+const ContactPage = () => {
   return (
     <>
       <div className="absolute w-full h-full left-[-34vw] top-0 dynamic-background -z-2"></div>
@@ -68,4 +67,4 @@ const ContactLayout = () => {
   );
 };
 
-export default ContactLayout;
+export default ContactPage;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ArticlePage article page should match snapshot 1`] = `
+<div>
+  <div
+    class="relative w-full h-full overflow-hidden slant"
+  >
+    <div
+      class="relative w-full h-full p-10 pt-16 article-content overflow-auto"
+      id="main-content"
+    >
+      <div
+        class="mb-2 w-3/4 h-8 rounded-full skeleton"
+      />
+      <div
+        class="mb-4 w-1/4 h-4 rounded-full skeleton"
+      />
+      <div
+        class="relative mb-2 xl:absolute xl:top-18 flex gap-4 xl:right-20"
+      />
+      <div
+        class="mt-4"
+      >
+        <div
+          class="mb-4 w-3/4 h-60 rounded-lg skeleton"
+        />
+        <div
+          class="space-y-4 *:w-3/4 *:h-6 *:rounded-full *:skeleton"
+        >
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -9,6 +9,14 @@ import GlobalContext from "@/components/context/GlobalContext";
 import DialogPortrait from "./Portrait";
 
 export const DialogComponent = ({ id }: { id: string }) => {
+  const globalContext = React.useContext(GlobalContext);
+  const [showResponses, setShowResponses] = React.useState<boolean>(false);
+  const [currentQuestion, setCurrentQuestion] = React.useState<Dialog | null>(
+    null,
+  );
+  const [changingQuestion, setChangingQuestion] =
+    React.useState<boolean>(false);
+
   React.useEffect(() => {
     if (!id) {
       setCurrentQuestion(dialogs["0"]);
@@ -17,15 +25,7 @@ export const DialogComponent = ({ id }: { id: string }) => {
     setCurrentQuestion(dialogs[id]);
   }, [id]);
 
-  const globalContext = React.useContext(GlobalContext);
   const windowWidth = globalContext?.viewportDimensions?.width ?? null;
-
-  const [showResponses, setShowResponses] = React.useState<boolean>(false);
-  const [currentQuestion, setCurrentQuestion] = React.useState<Dialog | null>(
-    null,
-  );
-  const [changingQuestion, setChangingQuestion] =
-    React.useState<boolean>(false);
 
   const proceed = () => {
     setShowResponses(true);
