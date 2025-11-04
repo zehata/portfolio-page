@@ -2,30 +2,24 @@
 
 import queryAllArticles from "@/queries/queryAllArticles";
 import { ArticleType, tables } from "@/lib/types";
-import Connection from "./Connection";
-import { unstable_cache } from "next/cache";
+import {
+  requestConnectionPool,
+  requestConnectionPoolEnd,
+} from "@/lib/connection";
+import { cacheLife, cacheTag } from "next/cache";
 
-export const getAllArticles = async (articleType: ArticleType) =>
-  unstable_cache(
-    async (articleType: ArticleType) => {
-      const pool = await Connection.requestConnectionPool();
+export const getAllArticles = async (articleType: ArticleType) => {
+  "use cache";
+  cacheLife({ expire: 60 });
+  cacheTag(tables[articleType]);
 
-      const data = await queryAllArticles(pool, articleType);
+  const pool = await requestConnectionPool();
 
-      await Connection.requestConnectionPoolEnd();
+  const data = await queryAllArticles(pool, articleType);
 
-      return data.map((data) => {
-        return {
-          id: data.id,
-          title: data.title,
-        };
-      });
-    },
-    [],
-    {
-      tags: [tables[articleType]],
-      revalidate: 60,
-    },
-  )(articleType);
+  requestConnectionPoolEnd();
+
+  return data;
+};
 
 export default getAllArticles;

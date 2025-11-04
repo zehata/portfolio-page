@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 import { useTransitionRouter } from "next-view-transitions";
@@ -137,15 +137,12 @@ export const MainMenu = () => {
       current: menuOpen || path === "contact",
     });
 
-  const closeTransitionAnimation = React.useCallback(
-    (close: boolean) => {
-      setTransitionAnimationClosed({
-        prev: transitionAnimationClosed.current,
-        current: close,
-      });
-    },
-    [transitionAnimationClosed],
-  );
+  const closeTransitionAnimation = useCallback((close: boolean) => {
+    setTransitionAnimationClosed((transitionAnimationClosed) => ({
+      prev: transitionAnimationClosed.current,
+      current: close,
+    }));
+  }, []);
 
   React.useEffect(() => {
     setTransitionAnimationClosed((transitionAnimationClosed) => {

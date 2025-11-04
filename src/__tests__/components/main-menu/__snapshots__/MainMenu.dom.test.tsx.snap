@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MainMenu main menu snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="absolute left-0 w-[calc(10vw+14rem)] h-full backdrop-blur-md -z-2 ease-in-out duration-500"
+      >
+        <div
+          class="w-full h-full bg-background opacity-75"
+        />
+      </div>
+      <div
+        class="fixed left-[calc(0vw-0.5*200vmax)] top-[calc(0vh-0.5*200vmax)] w-[200vmax] h-[200vmax] bg-black -z-1 transition-animation"
+        style="opacity: 0;"
+      />
+      <div
+        class="absolute ml-[10vw] h-[100dvh] flex flex-col justify-center -z-1"
+      >
+        <div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="/about/hello"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                    style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/about.webp");"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                Me
+              </div>
+            </a>
+          </div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="/blogs"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                    style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/blogs.webp");"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                Dev Blog
+              </div>
+            </a>
+          </div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="/projects"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                    style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/projects.webp");"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                Projects
+              </div>
+            </a>
+          </div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="/contact"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                    style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/contacts.webp");"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                Contacts
+              </div>
+            </a>
+          </div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="https://github.com/zehata"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                GitHub
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-square-arrow-out-up-right"
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                  />
+                  <path
+                    d="m21 3-9 9"
+                  />
+                  <path
+                    d="M15 3h6v6"
+                  />
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div
+            class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+            style="transition-delay: 0s;"
+          >
+            <a
+              href="https://www.linkedin.com/in/zehata/"
+              tabindex="0"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+              />
+              <div
+                class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+              >
+                <div
+                  class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+                >
+                  <div
+                    class="w-full h-full brightness-50"
+                  />
+                </div>
+              </div>
+              <div
+                class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+              >
+                LinkedIn
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-square-arrow-out-up-right"
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                  />
+                  <path
+                    d="m21 3-9 9"
+                  />
+                  <path
+                    d="M15 3h6v6"
+                  />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="absolute left-0 w-[calc(10vw+14rem)] h-full backdrop-blur-md -z-2 ease-in-out duration-500"
+    >
+      <div
+        class="w-full h-full bg-background opacity-75"
+      />
+    </div>
+    <div
+      class="fixed left-[calc(0vw-0.5*200vmax)] top-[calc(0vh-0.5*200vmax)] w-[200vmax] h-[200vmax] bg-black -z-1 transition-animation"
+      style="opacity: 0;"
+    />
+    <div
+      class="absolute ml-[10vw] h-[100dvh] flex flex-col justify-center -z-1"
+    >
+      <div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="/about/hello"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                  style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/about.webp");"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              Me
+            </div>
+          </a>
+        </div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="/blogs"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                  style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/blogs.webp");"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              Dev Blog
+            </div>
+          </a>
+        </div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="/projects"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                  style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/projects.webp");"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              Projects
+            </div>
+          </a>
+        </div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="/contact"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                  style="background-image: url("https://images.zehata.dev/public/menu-item-backgrounds/contacts.webp");"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              Contacts
+            </div>
+          </a>
+        </div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="https://github.com/zehata"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              GitHub
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-square-arrow-out-up-right"
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                />
+                <path
+                  d="m21 3-9 9"
+                />
+                <path
+                  d="M15 3h6v6"
+                />
+              </svg>
+            </div>
+          </a>
+        </div>
+        <div
+          class="w-36 h-[min(5rem,10dvh)] text-lg md:text-2xl relative transition-all duration-500 active:duration-500 active:scale-90 no-view-transition selector duration-500 left-0 animate-[500ms_ease-in-out_main-menu-items-slide-in]"
+          style="transition-delay: 0s;"
+        >
+          <a
+            href="https://www.linkedin.com/in/zehata/"
+            tabindex="0"
+          >
+            <div
+              class="absolute w-36 h-full transition-all outer-box -z-1 no-view-transition bg-black outline-2 outline-transparent"
+            />
+            <div
+              class="absolute w-full h-full overflow-hidden transition-all duration-500 no-view-transition outline-2 outline-transparent"
+            >
+              <div
+                class="absolute w-36 h-full transition-all outline-2 inner-box outline-transparent"
+              >
+                <div
+                  class="w-full h-full brightness-50"
+                />
+              </div>
+            </div>
+            <div
+              class="relative w-full h-full flex justify-center items-center gap-2 z-2"
+            >
+              LinkedIn
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-square-arrow-out-up-right"
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                />
+                <path
+                  d="m21 3-9 9"
+                />
+                <path
+                  d="M15 3h6v6"
+                />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

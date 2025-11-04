@@ -3,7 +3,7 @@ import Dialog from "@/components/about/Dialog";
 import { dialogs } from "@/lib/dialogs";
 
 export const generateStaticParams = async () => {
-  return Object.keys(dialogs).map((id) => [id]);
+  return Object.keys(dialogs).map((id) => ({ id: [id] }));
 };
 
 const AboutPage = async ({
