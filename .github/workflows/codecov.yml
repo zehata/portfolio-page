@@ -1,4 +1,4 @@
-name: Run tests and upload coverage
+name: Tests
 
 on:
   # Trigger the workflow on push or pull request,
@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Run tests and collect coverage
+    name: Run tests with coverage
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
