@@ -1,6 +1,6 @@
 import BlogLayout from "@/app/blogs/layout";
 import { render } from "@testing-library/react";
-import { QUERY_TEST_BLOG_ID } from "@/__tests__/testUuids";
+import { QUERY_TEST_BLOG_ID } from "@/__tests__/testlibs/testUuids";
 
 import * as getAllArticles from "@/lib/getAllArticles";
 import { act } from "react";

@@ -1,6 +1,6 @@
 # zehata's Portfolio Page
 
-![GitHub License](https://img.shields.io/github/license/zehata/portfolio-page) ![Codecov (with branch)](https://img.shields.io/codecov/c/github/zehata/portfolio-page/dev)
+![GitHub License](https://img.shields.io/github/license/zehata/portfolio-page) ![Codecov (with branch)](https://img.shields.io/codecov/c/github/zehata/portfolio-page/dev) ![GitHub deployments](https://img.shields.io/github/deployments/zehata/portfolio-page/production?logo=vercel&label=Vercel&labelColor=black&link=https%3A%2F%2Fzehata.dev)
 
 This is the source code to my portfolio page, which you can find live at https://zehata.dev. It makes use of `next-view-transitions` library extensively to achieve fluid native animations between pages while leveraging the SSR capabilities of React with Next.js
 

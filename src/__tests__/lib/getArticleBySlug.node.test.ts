@@ -1,6 +1,6 @@
 import getArticleBySlug from "@/lib/getArticleBySlug";
 import { ArticleType } from "@/lib/types";
-import { QUERY_TEST_BLOG_ID } from "../testUuids";
+import { QUERY_TEST_BLOG_ID } from "../testlibs/testUuids";
 
 import * as queryArticleBySlug from "@/queries/queryArticleBySlug";
 import * as queryArticleStamps from "@/queries/queryArticleStamps";

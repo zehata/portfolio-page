@@ -1,4 +1,7 @@
-import { requestConnectionPool } from "@/lib/connection";
+import {
+  requestConnectionPool,
+  requestConnectionPoolEnd,
+} from "@/lib/connection";
 import { ArticleType } from "@/lib/types";
 import queryArticleBySlug from "@/queries/queryArticleBySlug";
 
@@ -11,5 +14,6 @@ describe(queryArticleBySlug, () => {
       "slug-test-blog",
     );
     expect(result).toMatchSnapshot();
+    await requestConnectionPoolEnd();
   });
 });

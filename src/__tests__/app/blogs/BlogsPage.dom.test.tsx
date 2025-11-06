@@ -1,4 +1,4 @@
-import { QUERY_TEST_BLOG_ID } from "@/__tests__/testUuids";
+import { QUERY_TEST_BLOG_ID } from "@/__tests__/testlibs/testUuids";
 import BlogPage from "@/app/blogs/[id]/page";
 import { render } from "@testing-library/react";
 
