@@ -1,4 +1,4 @@
-import { QUERY_TEST_PROJECT_ID } from "@/__tests__/testUuids";
+import { QUERY_TEST_PROJECT_ID } from "@/__tests__/testlibs/testUuids";
 import ProjectPage from "@/app/projects/[id]/page";
 import { render } from "@testing-library/react";
 

@@ -26,10 +26,10 @@ export const requestConnectionPool = async () => {
   return pool;
 };
 
-export const requestConnectionPoolEnd = () => {
+export const requestConnectionPoolEnd = async () => {
   if (!pool) return;
 
   if (pool.state().pendingConnections) return;
 
-  pool.end();
+  return pool.end();
 };

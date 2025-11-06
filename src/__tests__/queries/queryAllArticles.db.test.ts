@@ -1,4 +1,7 @@
-import { requestConnectionPool } from "@/lib/connection";
+import {
+  requestConnectionPool,
+  requestConnectionPoolEnd,
+} from "@/lib/connection";
 import { ArticleType } from "@/lib/types";
 import queryAllArticles from "@/queries/queryAllArticles";
 
@@ -7,5 +10,6 @@ describe(queryAllArticles, () => {
     const pool = await requestConnectionPool();
     const result = await queryAllArticles(pool, ArticleType.Blog);
     expect(result).toMatchSnapshot();
+    await requestConnectionPoolEnd();
   });
 });
