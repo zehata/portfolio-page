@@ -1,6 +1,6 @@
 import ProjectsLayout from "@/app/projects/layout";
 import { render } from "@testing-library/react";
-import { QUERY_TEST_PROJECT_ID } from "@/__tests__/testUuids";
+import { QUERY_TEST_PROJECT_ID } from "@/__tests__/testlibs/testUuids";
 
 import * as getAllArticles from "@/lib/getAllArticles";
 import { act } from "react";
