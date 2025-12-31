@@ -17,6 +17,22 @@ exports[`BaseBackground base background should match snapshot 1`] = `
             <div
               class="absolute w-[max(500vw/3,8000dvh/27)] h-[max(56.25vw,100dvh)] top-0 left-0 lamp-light bg-black opacity-20 z-1"
             />
+            <div
+              class="absolute w-[4.8%] aspect-square rounded-full top-[16.9%] left-[78.1%] z-1 clock-transform"
+            >
+              <div
+                class="absolute w-full h-full rotate-180"
+              >
+                <div
+                  class="hour-hand absolute bg-black left-[calc(49%)] top-[calc(39%)] w-[2%] h-[40%] origin-[50%_25%]"
+                  style="rotate: 0turn;"
+                />
+                <div
+                  class="minute-hand absolute bg-black left-[calc(49%)] top-[calc(39%)] w-[2%] h-[50%] origin-[50%_20%]"
+                  style="rotate: 0turn;"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -35,6 +51,22 @@ exports[`BaseBackground base background should match snapshot 1`] = `
           <div
             class="absolute w-[max(500vw/3,8000dvh/27)] h-[max(56.25vw,100dvh)] top-0 left-0 lamp-light bg-black opacity-20 z-1"
           />
+          <div
+            class="absolute w-[4.8%] aspect-square rounded-full top-[16.9%] left-[78.1%] z-1 clock-transform"
+          >
+            <div
+              class="absolute w-full h-full rotate-180"
+            >
+              <div
+                class="hour-hand absolute bg-black left-[calc(49%)] top-[calc(39%)] w-[2%] h-[40%] origin-[50%_25%]"
+                style="rotate: 0turn;"
+              />
+              <div
+                class="minute-hand absolute bg-black left-[calc(49%)] top-[calc(39%)] w-[2%] h-[50%] origin-[50%_20%]"
+                style="rotate: 0turn;"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

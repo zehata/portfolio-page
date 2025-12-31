@@ -752,7 +752,7 @@ body {
     mask: conic-gradient(from 125deg, #000, var(--lamp-light-color) 5deg 65deg, #000 70deg) 50% 70% / 100% 80% no-repeat,
           radial-gradient(ellipse 100% 20% at calc(750%/15) 52.5%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat,
           radial-gradient(ellipse 10% 30% at calc(749%/15) 52.9%, #000 10%, #0000 10%, #000 100%) 100% 100% / 100% 100% no-repeat;
-    /* animation: 5s ease flickering infinite; */
+    animation: 5s ease flickering infinite;
   }
 
   .star {
@@ -823,6 +823,15 @@ body {
 
   .dialog-text {
     view-transition-name: dialog-text;
+  }
+
+  .clock-transform {
+    transform: matrix3d(
+      0.84, 0, 0, -0.0005,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1
+    );
   }
 
   ::view-transition-old(root) {
