@@ -4,7 +4,12 @@ import React from "react";
 import classNames from "classnames";
 import { throttle } from "lodash";
 import { usePathname } from "next/navigation";
-import { getCurrentHandsRotation } from "@/lib/getCurrentHandsRotation";
+import { getHandsRotation } from "@/lib/getHandsRotation";
+
+const getCurrentHandsRotation = () => {
+  const currentDate = new Date();
+  return getHandsRotation(currentDate);
+};
 
 const getAnimateClock = (
   ref: React.RefObject<number | null>,

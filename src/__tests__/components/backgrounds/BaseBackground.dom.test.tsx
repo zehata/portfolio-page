@@ -7,8 +7,8 @@ jest.mock("next/navigation", () => ({
   },
 }));
 
-jest.mock("@/lib/getCurrentHandsRotation", () => ({
-  getCurrentHandsRotation() {
+jest.mock("@/lib/getHandsRotation", () => ({
+  getHandsRotation() {
     return [0, 0];
   },
 }));
