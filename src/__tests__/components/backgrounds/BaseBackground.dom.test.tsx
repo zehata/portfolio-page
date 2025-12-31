@@ -7,6 +7,12 @@ jest.mock("next/navigation", () => ({
   },
 }));
 
+jest.mock("@/lib/getHandsRotation", () => ({
+  getHandsRotation() {
+    return [0, 0];
+  },
+}));
+
 describe(BaseBackground, () => {
   test("base background should match snapshot", () => {
     const component = render(<BaseBackground></BaseBackground>);

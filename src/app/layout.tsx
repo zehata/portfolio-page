@@ -28,7 +28,9 @@ export default function RootLayout({
             >
               Skip to main content
             </Link>
-            <BaseBackground />
+            <React.Suspense>
+              <BaseBackground />
+            </React.Suspense>
             <MainMenu />
             {children}
           </GlobalContextProvider>
