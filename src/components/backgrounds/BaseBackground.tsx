@@ -42,11 +42,11 @@ const BaseBackground = () => {
       <div className="absolute w-[calc(500vw/3)] h-[100dvh] flex justify-end items-center">
         <div className="absolute w-[max(500vw/3,8000dvh/27)] h-[max(56.25vw,100dvh)] bg-cover bg-[url('https://images.zehata.dev/public/library-background.webp')]">
           <div className="absolute w-[max(500vw/3,8000dvh/27)] h-[max(56.25vw,100dvh)] top-0 left-0 lamp-light bg-black opacity-20 z-1"></div>
-          <Clock/>
+          <Clock />
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default BaseBackground;
