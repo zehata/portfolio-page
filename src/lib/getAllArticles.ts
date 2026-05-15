@@ -21,5 +21,3 @@ export const getAllArticles = async (articleType: ArticleType) => {
 
   return data;
 };
-
-export default getAllArticles;
