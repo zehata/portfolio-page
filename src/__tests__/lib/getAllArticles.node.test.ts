@@ -1,5 +1,5 @@
 import { ArticleType } from "@/lib/types";
-import getAllArticles from "@/lib/getAllArticles";
+import { getAllArticles } from "@/lib/getAllArticles";
 import {
   QUERY_TEST_BLOG_ID,
   QUERY_TEST_PROJECT_ID,
