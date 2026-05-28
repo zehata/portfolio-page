@@ -4,9 +4,8 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  lint
-    docker:
-      - image: cimg/base:stable
+  lint-and-test:
+    executor: node/default
     steps:
       - checkout
       - node/install-packages:
@@ -14,8 +13,11 @@ jobs:
       - run:
           command: yarn lint
           name: Run lint
+      - run:
+          command: yarn test
+          name: Run test
 
 workflows:
   lint:
     jobs:
-      - lint
+      - lint-and-test
