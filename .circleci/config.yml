@@ -15,7 +15,13 @@ jobs:
           name: Run lint
       - run:
           command: yarn test
-          name: Run test
+          name: Run test:all
+          env:
+            DEV_DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
+            ENV: ${{ secrets.ENV }}
+            NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+            DEV_ENDPOINT_ID: ${{ secrets.DEV_ENDPOINT_ID }}
+            NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
 
 workflows:
   lint:
