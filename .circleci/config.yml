@@ -5,7 +5,7 @@ orbs:
   codecov: codecov/codecov@5.4.3
 
 jobs:
-  lint-and-tests:
+  lint-and-test:
     executor: node/default
     steps:
       - checkout
@@ -26,6 +26,6 @@ jobs:
       - codecov/upload
 
 workflows:
-  lint-and-tests:
+  lint-and-test:
     jobs:
-      - lint-and-tests
+      - lint-and-test
