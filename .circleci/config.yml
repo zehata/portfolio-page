@@ -4,9 +4,8 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  lint-and-test
-    docker:
-      - image: cimg/base:stable
+  lint-and-test:
+    executor: node/default
     steps:
       - checkout
       - node/install-packages:
