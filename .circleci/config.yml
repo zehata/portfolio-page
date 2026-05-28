@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
+  codecov: codecov/codecov@5.4.3
 
 jobs:
   lint-and-test:
@@ -22,8 +23,9 @@ jobs:
             NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
             DEV_ENDPOINT_ID: ${{ secrets.DEV_ENDPOINT_ID }}
             NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+      - codecov/upload
 
 workflows:
-  lint:
+  lint-and-test:
     jobs:
       - lint-and-test
