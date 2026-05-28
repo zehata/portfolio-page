@@ -1,0 +1,21 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
+jobs:
+  lint
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn lint
+          name: Run lint
+
+workflows:
+  lint:
+    jobs:
+      - lint
