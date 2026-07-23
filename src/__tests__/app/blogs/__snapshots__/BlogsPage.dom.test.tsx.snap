@@ -101,7 +101,7 @@ exports[`BlogPage should match snapshot 1`] = `
           </button>
         </div>
         <div
-          class="mt-4"
+          class="mt-4 markdown-viewer"
         >
           <p>
             blog content

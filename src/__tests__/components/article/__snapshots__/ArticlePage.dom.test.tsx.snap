@@ -19,7 +19,7 @@ exports[`ArticlePage article page should match snapshot 1`] = `
         class="relative mb-2 xl:absolute xl:top-18 flex gap-4 xl:right-20"
       />
       <div
-        class="mt-4"
+        class="mt-4 markdown-viewer"
       >
         <div
           class="mb-4 w-3/4 h-60 rounded-lg skeleton"
