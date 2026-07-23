@@ -136,7 +136,7 @@ export const ArticlePage = ({
         ) : (
           <></>
         )}
-        <div className="mt-4">
+        <div className="mt-4 markdown-viewer">
           {article ? (
             <Markdown>{article.content}</Markdown>
           ) : (

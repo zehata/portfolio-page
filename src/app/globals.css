@@ -834,6 +834,25 @@ body {
     );
   }
 
+  .markdown-viewer {
+    & h1, h2 {
+      margin-top: 2rem;
+      line-height: 0;
+    }
+
+    & a {
+      color: var(--color-blue-700);
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+
+    & li {
+      list-style: disc inside;
+    }
+  }
+
   ::view-transition-old(root) {
     display: none;
   }
