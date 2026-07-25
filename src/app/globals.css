@@ -848,8 +848,12 @@ body {
       text-decoration: underline;
     }
 
-    & li {
+    & ul {
       list-style: disc inside;
+    }
+
+    & ol {
+      list-style: decimal inside;
     }
   }
 
