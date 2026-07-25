@@ -20,6 +20,7 @@ describe(ProjectPage, () => {
     jest.spyOn(getArticle, "getArticle").mockResolvedValueOnce({
       id: QUERY_TEST_PROJECT_ID,
       title: "test blog",
+      slug: "test_blog",
       created: "0",
       modified: "0",
       content: "blog content",

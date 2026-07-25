@@ -24,7 +24,7 @@ describe(ProjectsLayout, () => {
       id: QUERY_TEST_PROJECT_ID,
       title: "test project",
       slug: "test_project",
-      link: "/projects/test_project"
+      link: "/projects/test_project",
     },
   ]);
   test("about page layout should match snapshot", async () => {

@@ -13,6 +13,7 @@ describe(getArticle, () => {
     jest.spyOn(queryArticle, "queryArticle").mockResolvedValueOnce({
       id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
+      slug: "test_blog",
       created: "0",
       modified: "0",
       content: "blog content",
@@ -34,6 +35,7 @@ describe(getArticle, () => {
     expect(article).toStrictEqual({
       id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
+      slug: "test_blog",
       created: "0",
       modified: "0",
       content: "blog content",

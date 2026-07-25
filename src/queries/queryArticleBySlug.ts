@@ -10,7 +10,7 @@ export const queryArticleBySlug = (
   slug: string,
 ) =>
   pool.one(sql.type(article)`
-    SELECT id, title, created, modified, content
+    SELECT id, title, slug, created, modified, content
     FROM ${sql.identifier([tables[articleType]])}
     WHERE slug=${slug};
   `);

@@ -13,14 +13,12 @@ export const getAllArticles = async (articleType: ArticleType) => {
 
   const pool = await createConnectionPool();
 
-  const data = await queryAllArticles(pool, articleType)
-    .then(data => map(
-      data,
-      article => ({
-        ...article,
-        link: `/${tables[articleType]}/${article.slug !== "" ? article.slug : article.id}`
-      })
-    ))
+  const data = await queryAllArticles(pool, articleType).then((data) =>
+    map(data, (article) => ({
+      ...article,
+      link: `/${tables[articleType]}/${article.slug !== "" ? article.slug : article.id}`,
+    })),
+  );
 
   await endConnectionPool(pool);
 

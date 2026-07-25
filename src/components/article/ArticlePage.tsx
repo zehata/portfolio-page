@@ -12,6 +12,7 @@ import {
   DraftingCompass,
   FastForward,
   Lightbulb,
+  Link2,
   Pause,
   PawPrint,
   Rocket,
@@ -55,10 +56,29 @@ export const ArticlePage = ({
     articleRequest.then(setArticle);
   }, [articleRequest]);
 
-  const shareURL = React.useCallback(() => {
-    const urlWithoutId = window.location.href.split("/").slice(0, -1).join("/");
-    return `${urlWithoutId}/${article?.id}`;
-  }, [article]);
+  const urlWithoutId = React.useMemo(() => {
+    if (typeof window === "undefined") return;
+    return window.location.href.split("/").slice(0, -1).join("/");
+  }, []);
+
+  const shareURL = React.useMemo(() => {
+    if (!urlWithoutId || !article) return null;
+    return `${urlWithoutId}/${article.slug !== "" ? article.slug : article.id}`;
+  }, [urlWithoutId, article]);
+
+  const shareData = React.useMemo(() => {
+    if (!article || !shareURL) return;
+    return {
+      title: article.title,
+      text: `${article.content.substring(0, 140)}...`,
+      url: shareURL,
+    };
+  }, [article, shareURL]);
+
+  const permalinkURL = React.useMemo(() => {
+    if (!article || !article.id) return null;
+    return `${urlWithoutId}/${article.id}`;
+  }, [urlWithoutId, article]);
 
   return (
     <div className="relative w-full h-full overflow-hidden slant">
@@ -121,21 +141,31 @@ export const ArticlePage = ({
             <></>
           )}
         </div>
-        {article ? (
-          <SimpleButton
-            onClick={() =>
-              navigator.share({
-                title: article.title,
-                text: `${article.content.substring(0, 140)}...`,
-                url: shareURL(),
-              })
-            }
-          >
-            <Share2 />
-          </SimpleButton>
-        ) : (
-          <></>
-        )}
+        <div className="flex gap-2">
+          {article &&
+          shareData &&
+          navigator.canShare &&
+          navigator.canShare(shareData) ? (
+            <SimpleButton
+              onClick={() => navigator.share(shareData)}
+              tooltip="Share page"
+            >
+              <Share2 />
+            </SimpleButton>
+          ) : (
+            <></>
+          )}
+          {article && permalinkURL ? (
+            <SimpleButton
+              onClick={() => navigator.clipboard.writeText(permalinkURL)}
+              tooltip="Copy permalink"
+            >
+              <Link2 />
+            </SimpleButton>
+          ) : (
+            <></>
+          )}
+        </div>
         <div className="mt-4 markdown-viewer">
           {article ? (
             <Markdown>{article.content}</Markdown>

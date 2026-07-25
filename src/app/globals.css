@@ -635,6 +635,33 @@ body {
 }
 
 @layer components {
+  [role="tooltip"] {
+    visibility: hidden;
+    position: absolute;
+    width: fit-content;
+    max-width: 20rem;
+    top: calc(100% + 1rem);
+    left: 0;
+    background: var(--background);
+    color: var(--foreground);
+    padding: 0.5rem;
+    border: 2px solid var(--foreground);
+    @apply shadow-lg;
+    /* Give some time before hiding so mouse can exit the input
+    and enter the tooltip */
+    transition: visibility 0.5s;
+  }
+  [aria-describedby]:hover,
+  [aria-describedby]:focus {
+    position: relative;
+  }
+  [aria-describedby]:hover + [role="tooltip"],
+  [aria-describedby]:focus + [role="tooltip"],
+  [role="tooltip"]:hover,
+  [role="tooltip"]:focus {
+    visibility: visible;
+  }
+
   .portrait-mouth-1 {
     opacity: 0;
     /* animation: 1s mouth-speaking 250ms infinite; */

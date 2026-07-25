@@ -20,6 +20,7 @@ describe(BlogPage, () => {
     jest.spyOn(getArticle, "getArticle").mockResolvedValueOnce({
       id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
+      slug: "test_blog",
       created: "0",
       modified: "0",
       content: "blog content",
@@ -36,7 +37,9 @@ describe(BlogPage, () => {
     const { container } = await act(async () =>
       render(
         await BlogPage({
-          params: new Promise((resolve) => resolve({ id: QUERY_TEST_BLOG_1_ID })),
+          params: new Promise((resolve) =>
+            resolve({ id: QUERY_TEST_BLOG_1_ID }),
+          ),
         }),
       ),
     );
