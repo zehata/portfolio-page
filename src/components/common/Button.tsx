@@ -3,17 +3,24 @@ import { HTMLAttributes } from "react";
 
 export const SimpleButton = ({
   className,
+  tooltip,
   ...props
-}: HTMLAttributes<HTMLButtonElement>) => {
+}: HTMLAttributes<HTMLButtonElement> & {
+  tooltip: string;
+}) => {
   return (
-    <div className="flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center">
+    <div className="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center">
       <button
         className={classNames(
           "relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] ",
           className,
         )}
+        aria-describedby={`${tooltip}-tooltip`}
         {...props}
       ></button>
+      <div role="tooltip" id={`${tooltip}-tooltip`}>
+        {tooltip}
+      </div>
     </div>
   );
 };

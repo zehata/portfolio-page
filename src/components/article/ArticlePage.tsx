@@ -145,11 +145,12 @@ export const ArticlePage = ({
           )}
         </div>
         <div className="flex gap-2">
-          {article && shareData && navigator.canShare(shareData) ? (
+          {article && shareData && navigator.canShare && navigator.canShare(shareData) ? (
             <SimpleButton
               onClick={() =>
                 navigator.share(shareData)
               }
+              tooltip="Share page"
             >
               <Share2 />
             </SimpleButton>
@@ -161,6 +162,7 @@ export const ArticlePage = ({
               onClick={() =>
                 navigator.clipboard.writeText(permalinkURL)
               }
+              tooltip="Copy permalink"
             >
               <Link2 />
             </SimpleButton>
