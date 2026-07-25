@@ -52,53 +52,42 @@ exports[`ProjectPage about page layout should match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
+          class="flex gap-2"
         >
-          <button
-            class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
+          <div
+            class="flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
           >
-            <svg
-              aria-hidden="true"
-              class="lucide lucide-share2 lucide-share-2"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
             >
-              <circle
-                cx="18"
-                cy="5"
-                r="3"
-              />
-              <circle
-                cx="6"
-                cy="12"
-                r="3"
-              />
-              <circle
-                cx="18"
-                cy="19"
-                r="3"
-              />
-              <line
-                x1="8.59"
-                x2="15.42"
-                y1="13.51"
-                y2="17.49"
-              />
-              <line
-                x1="15.41"
-                x2="8.59"
-                y1="6.51"
-                y2="10.49"
-              />
-            </svg>
-          </button>
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-link2 lucide-link-2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 17H7A5 5 0 0 1 7 7h2"
+                />
+                <path
+                  d="M15 7h2a5 5 0 1 1 0 10h-2"
+                />
+                <line
+                  x1="8"
+                  x2="16"
+                  y1="12"
+                  y2="12"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
         <div
           class="mt-4 markdown-viewer"
