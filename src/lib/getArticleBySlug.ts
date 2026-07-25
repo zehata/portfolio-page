@@ -4,8 +4,8 @@ import { ArticleType, tables } from "@/lib/types";
 import queryArticleStamps from "@/queries/queryArticleStamps";
 import { keyBy } from "lodash";
 import queryArticleBySlug from "@/queries/queryArticleBySlug";
-import { requestConnectionPool, requestConnectionPoolEnd } from "./connection";
 import { cacheLife, cacheTag } from "next/cache";
+import { createConnectionPool, endConnectionPool } from "./connection";
 
 export const getArticleBySlug = async (
   articleType: ArticleType,
@@ -15,12 +15,12 @@ export const getArticleBySlug = async (
   cacheLife({ expire: 60 });
   cacheTag(tables[articleType]);
 
-  const pool = await requestConnectionPool();
+  const pool = await createConnectionPool();
 
   const data = await queryArticleBySlug(pool, articleType, slug);
   const stampsData = await queryArticleStamps(pool, articleType, data.id);
 
-  requestConnectionPoolEnd();
+  await endConnectionPool(pool);
 
   return {
     id: data.id,
