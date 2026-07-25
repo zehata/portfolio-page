@@ -19,9 +19,6 @@ import {
   Share2,
 } from "lucide-react";
 import SimpleButton from "../common/Button";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
-import { isUndefined } from "lodash";
 
 const getIcon = (icon?: StampIcon) => {
   switch (icon) {
@@ -60,26 +57,26 @@ export const ArticlePage = ({
   }, [articleRequest]);
 
   const urlWithoutId = React.useMemo(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === "undefined") return;
     return window.location.href.split("/").slice(0, -1).join("/");
-  }, [])
+  }, []);
 
   const shareURL = React.useMemo(() => {
-    if (!urlWithoutId || !article) return null
+    if (!urlWithoutId || !article) return null;
     return `${urlWithoutId}/${article.slug !== "" ? article.slug : article.id}`;
   }, [urlWithoutId, article]);
 
   const shareData = React.useMemo(() => {
-    if (!article || !shareURL) return
+    if (!article || !shareURL) return;
     return {
       title: article.title,
       text: `${article.content.substring(0, 140)}...`,
       url: shareURL,
-    }
-  }, [])
+    };
+  }, [article, shareURL]);
 
   const permalinkURL = React.useMemo(() => {
-    if (!article || !article.id) return null
+    if (!article || !article.id) return null;
     return `${urlWithoutId}/${article.id}`;
   }, [urlWithoutId, article]);
 
@@ -145,11 +142,12 @@ export const ArticlePage = ({
           )}
         </div>
         <div className="flex gap-2">
-          {article && shareData && navigator.canShare && navigator.canShare(shareData) ? (
+          {article &&
+          shareData &&
+          navigator.canShare &&
+          navigator.canShare(shareData) ? (
             <SimpleButton
-              onClick={() =>
-                navigator.share(shareData)
-              }
+              onClick={() => navigator.share(shareData)}
               tooltip="Share page"
             >
               <Share2 />
@@ -159,9 +157,7 @@ export const ArticlePage = ({
           )}
           {article && permalinkURL ? (
             <SimpleButton
-              onClick={() =>
-                navigator.clipboard.writeText(permalinkURL)
-              }
+              onClick={() => navigator.clipboard.writeText(permalinkURL)}
               tooltip="Copy permalink"
             >
               <Link2 />

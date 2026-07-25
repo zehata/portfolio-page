@@ -20,8 +20,8 @@ const ContactPage = () => {
                 <h2 className="md:text-xl">{`Email`}</h2>
                 <div className="flex justify-end items-center space-x-2 text-sm md:text-base">
                   <span>{`zehata@gmail.com`}</span>
-                  <Link target="_blank" href="mailto:zehata@gmail.com">
-                    <SimpleButton>
+                  <Link target="_blank" href="mailto:zehata@zehata.dev">
+                    <SimpleButton tooltip="Email">
                       <Mail />
                     </SimpleButton>
                   </Link>
@@ -32,7 +32,7 @@ const ContactPage = () => {
                 <h2 className="md:text-xl">{`WhatsApp`}</h2>
                 <div className="flex items-center space-x-2 text-sm md:text-base">
                   <Link href="tel:+6591948901">
-                    <SimpleButton>
+                    <SimpleButton tooltip="Call">
                       <Phone />
                     </SimpleButton>
                   </Link>
@@ -40,7 +40,7 @@ const ContactPage = () => {
                     target="_blank"
                     href="https://api.whatsapp.com/send?phone=6591948901"
                   >
-                    <SimpleButton>
+                    <SimpleButton tooltip="WhatsApp">
                       <MessageCircle />
                     </SimpleButton>
                   </Link>
@@ -51,7 +51,7 @@ const ContactPage = () => {
                 <h2 className="md:text-xl">{`Telegram`}</h2>
                 <div className="flex items-center space-x-2 text-sm md:text-base">
                   <Link target="_blank" href="https://t.me/zehata">
-                    <SimpleButton>
+                    <SimpleButton tooltip="Telegram">
                       <Send />
                     </SimpleButton>
                   </Link>

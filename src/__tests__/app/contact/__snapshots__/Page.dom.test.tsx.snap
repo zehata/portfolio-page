@@ -43,14 +43,14 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                     zehata@gmail.com
                   </span>
                   <a
-                    href="mailto:zehata@gmail.com"
+                    href="mailto:zehata@zehata.dev"
                     target="_blank"
                   >
                     <div
                       class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                     >
                       <button
-                        aria-describedby="undefined-tooltip"
+                        aria-describedby="Email-tooltip"
                         class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                       >
                         <svg
@@ -79,9 +79,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                         </svg>
                       </button>
                       <div
-                        id="undefined-tooltip"
+                        id="Email-tooltip"
                         role="tooltip"
-                      />
+                      >
+                        Email
+                      </div>
                     </div>
                   </a>
                 </div>
@@ -107,7 +109,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                     >
                       <button
-                        aria-describedby="undefined-tooltip"
+                        aria-describedby="Call-tooltip"
                         class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                       >
                         <svg
@@ -129,9 +131,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                         </svg>
                       </button>
                       <div
-                        id="undefined-tooltip"
+                        id="Call-tooltip"
                         role="tooltip"
-                      />
+                      >
+                        Call
+                      </div>
                     </div>
                   </a>
                   <a
@@ -142,7 +146,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                     >
                       <button
-                        aria-describedby="undefined-tooltip"
+                        aria-describedby="WhatsApp-tooltip"
                         class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                       >
                         <svg
@@ -164,9 +168,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                         </svg>
                       </button>
                       <div
-                        id="undefined-tooltip"
+                        id="WhatsApp-tooltip"
                         role="tooltip"
-                      />
+                      >
+                        WhatsApp
+                      </div>
                     </div>
                   </a>
                   <span>
@@ -191,7 +197,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                     >
                       <button
-                        aria-describedby="undefined-tooltip"
+                        aria-describedby="Telegram-tooltip"
                         class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                       >
                         <svg
@@ -216,9 +222,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                         </svg>
                       </button>
                       <div
-                        id="undefined-tooltip"
+                        id="Telegram-tooltip"
                         role="tooltip"
-                      />
+                      >
+                        Telegram
+                      </div>
                     </div>
                   </a>
                   <span>
@@ -274,14 +282,14 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                   zehata@gmail.com
                 </span>
                 <a
-                  href="mailto:zehata@gmail.com"
+                  href="mailto:zehata@zehata.dev"
                   target="_blank"
                 >
                   <div
                     class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                   >
                     <button
-                      aria-describedby="undefined-tooltip"
+                      aria-describedby="Email-tooltip"
                       class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                     >
                       <svg
@@ -310,9 +318,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       </svg>
                     </button>
                     <div
-                      id="undefined-tooltip"
+                      id="Email-tooltip"
                       role="tooltip"
-                    />
+                    >
+                      Email
+                    </div>
                   </div>
                 </a>
               </div>
@@ -338,7 +348,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                     class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                   >
                     <button
-                      aria-describedby="undefined-tooltip"
+                      aria-describedby="Call-tooltip"
                       class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                     >
                       <svg
@@ -360,9 +370,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       </svg>
                     </button>
                     <div
-                      id="undefined-tooltip"
+                      id="Call-tooltip"
                       role="tooltip"
-                    />
+                    >
+                      Call
+                    </div>
                   </div>
                 </a>
                 <a
@@ -373,7 +385,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                     class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                   >
                     <button
-                      aria-describedby="undefined-tooltip"
+                      aria-describedby="WhatsApp-tooltip"
                       class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                     >
                       <svg
@@ -395,9 +407,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       </svg>
                     </button>
                     <div
-                      id="undefined-tooltip"
+                      id="WhatsApp-tooltip"
                       role="tooltip"
-                    />
+                    >
+                      WhatsApp
+                    </div>
                   </div>
                 </a>
                 <span>
@@ -422,7 +436,7 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                     class="relative flex -mx-0.5 w-[2.5em] aspect-square justify-center items-center"
                   >
                     <button
-                      aria-describedby="undefined-tooltip"
+                      aria-describedby="Telegram-tooltip"
                       class="relative flex justify-center items-center w-[2em] h-[2em] aspect-square p-1 border-2 bg-background cursor-pointer duration-100 hover:w-[2.2em] hover:h-[2.2em] hover:rotate-5 active:rotate-0 active:w-[2em] active:h-[2em] "
                     >
                       <svg
@@ -447,9 +461,11 @@ exports[`ContactPage about page layout should match snapshot 1`] = `
                       </svg>
                     </button>
                     <div
-                      id="undefined-tooltip"
+                      id="Telegram-tooltip"
                       role="tooltip"
-                    />
+                    >
+                      Telegram
+                    </div>
                   </div>
                 </a>
                 <span>

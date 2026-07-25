@@ -37,7 +37,9 @@ describe(BlogPage, () => {
     const { container } = await act(async () =>
       render(
         await BlogPage({
-          params: new Promise((resolve) => resolve({ id: QUERY_TEST_BLOG_1_ID })),
+          params: new Promise((resolve) =>
+            resolve({ id: QUERY_TEST_BLOG_1_ID }),
+          ),
         }),
       ),
     );

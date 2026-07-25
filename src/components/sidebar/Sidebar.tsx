@@ -4,17 +4,14 @@ import React, { CSSProperties } from "react";
 import SidebarItem from "./SidebarItem";
 import classNames from "classnames";
 import { useTransitionRouter } from "next-view-transitions";
-import { ArticleType, tables } from "@/lib/types";
 import LoadingAnimation from "./LoadingAnimation";
 import Link from "next/link";
 import Mousetrap from "mousetrap";
 
 export const Sidebar = ({
-  articleType,
   id,
   items,
 }: {
-  articleType: ArticleType;
   id?: string;
   items: readonly { id: string; title: string; link: string }[] | null;
 }) => {
