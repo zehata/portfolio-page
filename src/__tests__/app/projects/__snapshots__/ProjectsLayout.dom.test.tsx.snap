@@ -61,7 +61,7 @@ exports[`ProjectsLayout about page layout should match snapshot 1`] = `
           >
             <a
               class="relative w-[calc(100%+1rem)] h-16 pl-20 pr-5 py-4 hover:h-20 hover:py-6 flex items-center bg-background hover:bg-(--focus-background) hover:z-2 duration-250 ease-in-out sidebar-item shadow-center overflow-hidden focus:h-20 focus:py-6 focus:bg-(--focus-background) focus:-left-4 -left-5 hover:-left-4 active:left-1"
-              href="/projects/c9956261-3de2-40bb-b650-276495d4f580"
+              href="/projects/test_project"
               tabindex="0"
             >
               <div

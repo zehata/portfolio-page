@@ -1,6 +1,6 @@
 import BlogLayout from "@/app/blogs/layout";
 import { render } from "@testing-library/react";
-import { QUERY_TEST_BLOG_ID } from "@/__tests__/testlibs/testUuids";
+import { QUERY_TEST_BLOG_1_ID } from "@/__tests__/testlibs/testUuids";
 
 import * as getAllArticles from "@/lib/getAllArticles";
 import { act } from "react";
@@ -21,8 +21,10 @@ jest.mock("@/lib/getAllArticles", () => ({
 describe(BlogLayout, () => {
   jest.spyOn(getAllArticles, "getAllArticles").mockResolvedValueOnce([
     {
-      id: QUERY_TEST_BLOG_ID,
+      id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
+      slug: "test_blog",
+      link: "/blogs/test_blog",
     },
   ]);
   test("about page layout should match snapshot", async () => {

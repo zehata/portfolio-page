@@ -8,6 +8,7 @@ export interface ArticleItem {
 export interface Article {
   id: string;
   title: string;
+  slug: string;
   created: string;
   modified: string;
   content: string;

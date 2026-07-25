@@ -13,6 +13,8 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
     | readonly {
         id: string;
         title: string;
+        slug: string;
+        link: string;
       }[]
     | null
   >(null);
@@ -26,7 +28,7 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="bg-black">
       <DynamicBackground name="blogs" />
       <div className="absolute top-30 w-full h-[calc(100vh-7.5rem)] z-1 flex flex-row">
-        <Sidebar articleType={ArticleType.Blog} items={blogItems} id={blogId} />
+        <Sidebar items={blogItems} id={blogId} />
         {children}
       </div>
     </div>

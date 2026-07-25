@@ -4,19 +4,16 @@ import React, { CSSProperties } from "react";
 import SidebarItem from "./SidebarItem";
 import classNames from "classnames";
 import { useTransitionRouter } from "next-view-transitions";
-import { ArticleType, tables } from "@/lib/types";
 import LoadingAnimation from "./LoadingAnimation";
 import Link from "next/link";
 import Mousetrap from "mousetrap";
 
 export const Sidebar = ({
-  articleType,
   id,
   items,
 }: {
-  articleType: ArticleType;
   id?: string;
-  items: readonly { id: string; title: string }[] | null;
+  items: readonly { id: string; title: string; link: string }[] | null;
 }) => {
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
   React.useEffect(() => setClickedId(id ?? null), [id]);
@@ -117,7 +114,7 @@ export const Sidebar = ({
                 if (!element) return;
                 listItemsRef.current[index] = element;
               }}
-              href={`/${tables[articleType]}/${item.id}`}
+              href={item.link}
               onPointerEnter={() => setPointerHovering(true)}
               onPointerLeave={() => setPointerHovering(false)}
               onClick={(event) => {
@@ -127,7 +124,7 @@ export const Sidebar = ({
                   setClickedId(item.id);
                 });
                 setTimeout(() => {
-                  router.push(`/${tables[articleType]}/${item.id}`);
+                  router.push(item.link);
                 }, 250);
               }}
               className={classNames(

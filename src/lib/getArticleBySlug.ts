@@ -25,6 +25,7 @@ export const getArticleBySlug = async (
   return {
     id: data.id,
     title: data.title,
+    slug: data.slug,
     created: data.created,
     modified: data.modified,
     content: data.content,

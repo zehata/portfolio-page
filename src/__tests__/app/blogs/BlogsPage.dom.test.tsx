@@ -1,4 +1,4 @@
-import { QUERY_TEST_BLOG_ID } from "@/__tests__/testlibs/testUuids";
+import { QUERY_TEST_BLOG_1_ID } from "@/__tests__/testlibs/testUuids";
 import BlogPage from "@/app/blogs/[id]/page";
 import { render } from "@testing-library/react";
 
@@ -18,8 +18,9 @@ jest.mock("@/lib/getArticleBySlug", () => ({
 describe(BlogPage, () => {
   it("should match snapshot", async () => {
     jest.spyOn(getArticle, "getArticle").mockResolvedValueOnce({
-      id: QUERY_TEST_BLOG_ID,
+      id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
+      slug: "test_blog",
       created: "0",
       modified: "0",
       content: "blog content",
@@ -36,7 +37,9 @@ describe(BlogPage, () => {
     const { container } = await act(async () =>
       render(
         await BlogPage({
-          params: new Promise((resolve) => resolve({ id: QUERY_TEST_BLOG_ID })),
+          params: new Promise((resolve) =>
+            resolve({ id: QUERY_TEST_BLOG_1_ID }),
+          ),
         }),
       ),
     );

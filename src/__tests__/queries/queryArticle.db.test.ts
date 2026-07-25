@@ -1,6 +1,6 @@
 import { ArticleType } from "@/lib/types";
 import queryArticle from "@/queries/queryArticle";
-import { QUERY_TEST_BLOG_ID } from "../testlibs/testUuids";
+import { QUERY_TEST_BLOG_1_ID } from "../testlibs/testUuids";
 import { createConnectionPool, endConnectionPool } from "@/lib/connection";
 
 describe(queryArticle, () => {
@@ -9,7 +9,7 @@ describe(queryArticle, () => {
     const result = await queryArticle(
       pool,
       ArticleType.Blog,
-      QUERY_TEST_BLOG_ID,
+      QUERY_TEST_BLOG_1_ID,
     );
     expect(result).toMatchSnapshot();
     await endConnectionPool(pool);

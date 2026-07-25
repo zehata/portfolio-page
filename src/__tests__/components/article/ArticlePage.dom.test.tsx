@@ -9,6 +9,7 @@ describe(ArticlePage, () => {
       return {
         id: "0",
         title: "",
+        slug: "",
         created: "0",
         modified: "0",
         content: "article content",
