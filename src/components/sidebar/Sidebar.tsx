@@ -16,7 +16,7 @@ export const Sidebar = ({
 }: {
   articleType: ArticleType;
   id?: string;
-  items: readonly { id: string; title: string }[] | null;
+  items: readonly { id: string; title: string; link: string }[] | null;
 }) => {
   const [clickedId, setClickedId] = React.useState<string | null>(id ?? null);
   React.useEffect(() => setClickedId(id ?? null), [id]);
@@ -117,7 +117,7 @@ export const Sidebar = ({
                 if (!element) return;
                 listItemsRef.current[index] = element;
               }}
-              href={`/${tables[articleType]}/${item.id}`}
+              href={item.link}
               onPointerEnter={() => setPointerHovering(true)}
               onPointerLeave={() => setPointerHovering(false)}
               onClick={(event) => {
@@ -127,7 +127,7 @@ export const Sidebar = ({
                   setClickedId(item.id);
                 });
                 setTimeout(() => {
-                  router.push(`/${tables[articleType]}/${item.id}`);
+                  router.push(item.link);
                 }, 250);
               }}
               className={classNames(
