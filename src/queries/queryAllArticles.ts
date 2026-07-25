@@ -9,7 +9,7 @@ export const queryAllArticles = (
   articleType: ArticleType,
 ) =>
   pool.any(sql.type(item)`
-    SELECT id, title
+    SELECT id, title, slug
     FROM ${sql.identifier([tables[articleType]])}
     ORDER BY created DESC;
   `);

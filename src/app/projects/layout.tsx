@@ -13,6 +13,8 @@ const ProjectsLayout = ({ children }: { children: React.ReactNode }) => {
     | readonly {
         id: string;
         title: string;
+        slug: string;
+        link: string;
       }[]
     | null
   >(null);

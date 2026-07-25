@@ -1,6 +1,6 @@
 import getArticleBySlug from "@/lib/getArticleBySlug";
 import { ArticleType } from "@/lib/types";
-import { QUERY_TEST_BLOG_ID } from "../testlibs/testUuids";
+import { QUERY_TEST_BLOG_1_ID } from "../testlibs/testUuids";
 
 import * as queryArticleBySlug from "@/queries/queryArticleBySlug";
 import * as queryArticleStamps from "@/queries/queryArticleStamps";
@@ -11,7 +11,7 @@ jest.mock("@/queries/queryArticleStamps");
 describe(getArticleBySlug, () => {
   test("retrieving a blog by its slug", async () => {
     jest.spyOn(queryArticleBySlug, "queryArticleBySlug").mockResolvedValueOnce({
-      id: QUERY_TEST_BLOG_ID,
+      id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
       created: "0",
       modified: "0",
@@ -33,7 +33,7 @@ describe(getArticleBySlug, () => {
     expect(queryArticleBySlug.queryArticleBySlug).toHaveBeenCalledTimes(1);
     expect(queryArticleStamps.queryArticleStamps).toHaveBeenCalledTimes(1);
     expect(article).toStrictEqual({
-      id: QUERY_TEST_BLOG_ID,
+      id: QUERY_TEST_BLOG_1_ID,
       title: "test blog",
       created: "0",
       modified: "0",
