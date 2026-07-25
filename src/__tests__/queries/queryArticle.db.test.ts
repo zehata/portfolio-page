@@ -1,20 +1,17 @@
-import {
-  requestConnectionPool,
-  requestConnectionPoolEnd,
-} from "@/lib/connection";
 import { ArticleType } from "@/lib/types";
 import queryArticle from "@/queries/queryArticle";
 import { QUERY_TEST_BLOG_ID } from "../testlibs/testUuids";
+import { createConnectionPool, endConnectionPool } from "@/lib/connection";
 
 describe(queryArticle, () => {
   test("blogs query resulls should match snapshot", async () => {
-    const pool = await requestConnectionPool();
+    const pool = await createConnectionPool();
     const result = await queryArticle(
       pool,
       ArticleType.Blog,
       QUERY_TEST_BLOG_ID,
     );
     expect(result).toMatchSnapshot();
-    await requestConnectionPoolEnd();
+    await endConnectionPool(pool);
   });
 });

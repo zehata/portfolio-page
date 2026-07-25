@@ -2,8 +2,8 @@
 import { createPool, DatabasePool } from "slonik";
 import { createPgDriverFactory } from "@slonik/pg-driver";
 
-const createDatabaseConnectionPool = async () => {
-  const pool = await createPool(
+export const createConnectionPool = async () => {
+  return await createPool(
     (process.env.ENV === "production"
       ? process.env.DATABASE_URL
       : process.env.DEV_DATABASE_URL) as string,
@@ -12,24 +12,8 @@ const createDatabaseConnectionPool = async () => {
       connectionTimeout: "DISABLE_TIMEOUT",
     },
   );
-  return pool;
 };
 
-let pool: DatabasePool | null = null;
-
-export const requestConnectionPool = async () => {
-  if (pool && pool.state().state === "ACTIVE") {
-    return pool;
-  }
-
-  pool = await createDatabaseConnectionPool();
-  return pool;
-};
-
-export const requestConnectionPoolEnd = async () => {
-  if (!pool) return;
-
-  if (pool.state().pendingConnections) return;
-
-  return pool.end();
+export const endConnectionPool = async (connectionPool: DatabasePool) => {
+  return await connectionPool.end();
 };
