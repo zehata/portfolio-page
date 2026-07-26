@@ -20,6 +20,9 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
+        <head>
+          <link rel="human-json" href="/human.json"/>
+        </head>
         <body className="fixed w-screen h-[100dvh] bg-black">
           <GlobalContextProvider>
             <Link
