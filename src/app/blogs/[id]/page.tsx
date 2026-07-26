@@ -5,11 +5,34 @@ import { getAllArticles } from "@/lib/getAllArticles";
 import ArticlePage from "@/components/article/ArticlePage";
 import { isValidUuid } from "@/lib/isValidUuid";
 import { getArticleBySlug } from "@/lib/getArticleBySlug";
+import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 
 export const generateStaticParams = async () => {
   return (await getAllArticles(ArticleType.Blog)).map((blog) => {
     return { id: blog.id };
   });
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> => {
+  "use cache";
+  cacheLife("days");
+  const articleRequest = isValidUuid((await params).id)
+    ? await getArticle(ArticleType.Blog, (await params).id)
+    : await getArticleBySlug(ArticleType.Blog, (await params).id);
+
+  return {
+    title: articleRequest.title,
+    description: articleRequest.content,
+    openGraph: {
+      title: articleRequest.title,
+      description: articleRequest.content,
+    },
+  };
 };
 
 const BlogPage = async ({
